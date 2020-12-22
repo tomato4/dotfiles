@@ -1,0 +1,7 @@
+[user]
+        email = 
+        name = 
+#[core]
+#	autocrlf = input
+[alias]
+        ll = log --oneline --graph --all --decorate
