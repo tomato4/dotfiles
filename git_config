@@ -1,7 +1,8 @@
 [user]
         email = 
         name = 
-#[core]
+[core]
+        editor = nano
 #	autocrlf = input
 [alias]
         ll = log --oneline --graph --all --decorate
