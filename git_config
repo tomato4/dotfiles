@@ -2,7 +2,7 @@
         email = 
         name = 
 [core]
-        editor = nano
+        editor = vim
 #	autocrlf = input
 [alias]
         ll = log --oneline --graph --all --decorate
