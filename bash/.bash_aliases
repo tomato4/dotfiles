@@ -2,6 +2,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias vim='nvim'
+
 alias plasma='./.prs.sh & exit'
 alias start='opera & spotify & discord & exit'
 alias work='google-chrome-stable & /home/tomato/netbeans-12.0/netbeans/bin/netbeans & slack &konsole --workdir ~/NetBeansProjects/cme/ & exit'
