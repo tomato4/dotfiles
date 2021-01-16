@@ -4,12 +4,12 @@ alias l='ls -CF'
 
 alias plasma='./.prs.sh & exit'
 alias start='opera & spotify & discord & exit'
-alias work='google-chrome-stable & /home/tomato/netbeans-12.0/netbeans/bin/netbeans & slack >
+alias work='google-chrome-stable & /home/tomato/netbeans-12.0/netbeans/bin/netbeans & slack &konsole --workdir ~/NetBeansProjects/cme/ & exit'
 alias cme='cd ~/NetBeansProjects/cme/'
 alias unity='cd ~/UnityProjects/The\ Project/'
 alias school='cd ~/School/'
 alias scrshare='~/Stažené/Mon2Cam.sh'
-alias scrsharerepair='sudo echo; cd ~/Stažené/v4l2loopback-master/; make clean; make; sudo m>
+alias scrsharerepair='sudo echo; cd ~/Stažené/v4l2loopback-master/; make clean; make; sudo make install; sudo depmod -a; sudo modprobe v4l2loopback; scrshare'
 alias cl='clear'
 alias hdd='sudo /usr/local/bin/hddquiet'
 alias commit='git add --all && git commit'
