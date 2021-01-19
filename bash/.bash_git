@@ -9,6 +9,7 @@ COLOR_BLUE="\033[0;34m"
 COLOR_WHITE="\033[0;37m"
 COLOR_RESET="\033[0m"
 
+# Function to get color from repo state
 function git_color {
   local git_status="$(git status 2> /dev/null)"
 
@@ -29,6 +30,7 @@ function git_color {
   fi
 }
 
+# Get name of current branch and echo non-pushed commits
 function git_branch {
   local git_status="$(git status 2> /dev/null)"
   local on_branch="On branch ([^${IFS}]*)"
