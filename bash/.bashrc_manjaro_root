@@ -1,0 +1,10 @@
+#!bin/bash
+
+# set default text editor
+export EDITOR=/usr/bin/nvim
+
+# add aliases file
+source /home/tomato/dotfiles/bash/.bash_aliases
+
+# enable pureline plug for bash "PS1" style
+source /home/tomato/Programs/pureline/pureline /home/tomato/.config/pureline/.pureline.conf

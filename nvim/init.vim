@@ -11,6 +11,9 @@ syntax on
 " Relative Linenumbers
 set nu rnu
 
+" Case insensitive search
+set ic
+
 " Mouse support
 set mouse=a
 
@@ -33,7 +36,6 @@ let g:coc_global_extensions = [
 			\'coc-json',
 			\'coc-java',
 			\'coc-html',
-			\'coc-discord-rpc',
 			\'coc-css',
 			\'coc-clangd'
 			\]
@@ -82,14 +84,15 @@ Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'itchyny/landscape.vim'
 Plug 'soli/prolog-vim'
 Plug 'metakirby5/codi.vim'
+Plug 'https://github.com/joshdick/onedark.vim.git'
+Plug 'https://github.com/lambdalisue/suda.vim.git'
 call plug#end()
 
 " Set rainbow parentheses
 let g:rainbow_active = 1
 
 " Set colorscheme
-" colorscheme NeoSolarized
-"colorscheme dracula 
+colorscheme onedark
 
 "let g:space_vim_dark_background = 233
 
@@ -125,4 +128,4 @@ let g:vimwiki_list = [{'path': '$HOME/vimwiki', 'template_path': '$HOME/vimwiki_
 " Edit config
 " <S-s> = Shift-s
 nnoremap <leader><S-s> :Ex $HOME/dotfiles<CR>
-nnoremap <leader>s     :e $HOME/dotfiles/neovim/init.vim<CR>
+nnoremap <leader>s     :e $HOME/dotfiles/nvim/init.vim<CR>

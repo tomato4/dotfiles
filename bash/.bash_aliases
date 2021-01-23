@@ -3,6 +3,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias vim='nvim'
+alias diff='diff --color=auto'
 
 # Open basic applications on start
 alias start='opera & spotify & discord & exit'
@@ -22,3 +23,9 @@ alias cl='clear'
 alias hdd='sudo /usr/local/bin/hddquiet'
 alias make='make -j12'
 alias myg++='g++ -Wall -pedantic -Wextra -g -fsanitize=address'
+
+# make dir and move into it shortcut
+mkcd() {
+  mkdir "$1"
+  cd "$1"
+}
