@@ -54,6 +54,10 @@ else
   echo ""
 fi
 
-if [[ "${WEATHER_TEMP}" -lt "${URGENT_LOWER}" ]] || [[ "${WEATHER_TEMP}" -gt "${URGENT_HIGHER}" ]]; then
-  exit 33
+if [[ "${WEATHER_TEMP}" -lt "${URGENT_LOWER}" ]]; then
+  echo "#0055FF"
+fi
+
+if [[ "${WEATHER_TEMP}" -gt "${URGENT_HIGHER}" ]]; then
+  echo "#CC0000"
 fi
