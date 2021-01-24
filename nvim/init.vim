@@ -78,7 +78,7 @@ Plug 'luochen1990/rainbow', { 'for': 'scheme' }
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-sensible'
 Plug 'sainnhe/edge'
-Plug 'dracula/vim', {'as': 'dracula' } 
+Plug 'dracula/vim', {'as': 'dracula' }
 Plug 'liuchengxu/space-vim-dark'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'itchyny/landscape.vim'
@@ -99,11 +99,11 @@ colorscheme onedark
 " colorscheme dracula
 
   "color space-vim-dark
-	"hi Comment cterm=italic gui=italic 
+	"hi Comment cterm=italic gui=italic
   "hi Normal ctermbg=NONE guibg=NONE
   "hi LineNr ctermbg=NONE guibg=NONE
   "hi Function cterm=italic gui=italic gui=bold
-  "hi Function guifg=#b09aff 
+  "hi Function guifg=#b09aff
 	"hi Identifier guibg=red
 
 " NERDTree config
