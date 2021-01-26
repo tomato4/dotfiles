@@ -1,6 +1,16 @@
 #!/bin/bash
 
+HIGH_USAGE=12.0
+ULTRA_HIGH_USAGE=14.0
+
 MEM_STAT=$(free -m | grep Mem | awk '{print $2,$3}')
 MEM_USED_MB=${MEM_STAT##* }
 MEM_USED_GB=$(echo "scale=2;$MEM_USED_MB/1024" | bc -l)
 echo "$MEM_USED_GB GB"
+echo "$MEM_USED_GB GB"
+
+if (( $(echo "$MEM_USED_GB > $ULTRA_HIGH_USAGE" | bc -l) )); then
+  echo "#FF0000"
+elif (( $(echo "$MEM_USED_GB > $HIGH_USAGE" | bc -l) )); then
+  echo "#FF8000"
+fi
