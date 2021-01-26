@@ -70,7 +70,11 @@ bindsym XF86AudioPlay exec playerctl -p spotify play-pause
 bindsym XF86AudioNext exec playerctl -p spotify next
 bindsym XF86AudioPrev exec playerctl -p spotify previous
 
+# shortcut for app launcher Rofi
 bindsym $mod+space --release exec "rofi -combi-modi drun,window,ssh -show combi -modi combi"
+
+# screenshot shortcut
+bindsym $mod+Shift+s exec flameshot gui
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -155,7 +159,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # toggle sticky
-bindsym $mod+Shift+s sticky toggle
+#bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
