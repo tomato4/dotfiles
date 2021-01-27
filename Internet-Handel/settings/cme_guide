@@ -1,0 +1,57 @@
+Aktualizace sytému
+Doporučuji mít aktuální systém.
+  sudo apt update
+  sudo apt upgrade
+
+Instalace závislostí
+Přidej si Ondrův repozitář.
+  sudo add-apt-repository ppa:ondrej/php
+  sudo apt-get update
+
+Nainstaluj balíčky.
+  sudo apt install git apache2 libapache2-mod-fcgid php7.4 php7.4-fpm php7.4-bcmath php7.4-curl php7.4-intl php7.4-mbstring php7.4-pgsql php7.4-xml php7.4-bcmath php7.4-gd composer yarnpkg
+
+Naklonování repa
+Naklonuj si repo s kódem cme. V tomto návodu budu předpokládat cestu ke kódu /home/uzivatel/NetBeansProjects.
+  git clone git@bitbucket.org:internethandel/cme.git
+
+Nastavení serveru
+Do souboru /etc/hosts přidej následující řádek.
+  127.0.0.1       cme
+
+Zapni potřebné moduly do apache.
+  sudo a2enmod proxy_fcgi setenvif rewrite
+  sudo a2enconf php7.4-fpm
+
+Vytvoř adresář pro logy.
+  sudo mkdir /var/log/apache2/cme/
+
+Vytvoř soubor /etc/apache2/sites-available/001-cme.conf (použij nejbližší volné číslo jako prefix, pokud jíž ve složce soubor začínající na 001- máš). Dej do něj následující obsah.
+
+<VirtualHost *:80>
+    ServerName cme
+    ServerAlias cme
+    DocumentRoot /home/uzivatel/NetBeansProjects/cme
+    ErrorLog ${APACHE_LOG_DIR}/cme/error.log
+    CustomLog ${APACHE_LOG_DIR}/cme/access.log combined
+    DirectoryIndex index.php
+    <Directory /home/uzivatel/NetBeansProjects/cme>
+        AllowOverride all
+        Require all granted
+    </Directory>
+    <FilesMatch \.php$>
+        SetHandler "proxy:unix:/run/php/php7.4-fpm.sock|fcgi://localhost/"
+    </FilesMatch>
+</VirtualHost>
+
+Zapni nově vytvořeného vhosta.
+  sudo a2ensite 001-cme.conf
+
+V souboru /etc/php/7.4/fpm/php.ini změň řádek
+  display_errors = Off
+na
+  display_errors = On
+
+Nakonec restartujeme apache a php aby se změny provedly.
+  sudo systemctl restart apache2
+  sudo systemctl restart php7.4-fpm
