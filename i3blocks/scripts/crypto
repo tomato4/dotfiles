@@ -1,0 +1,43 @@
+#!/bin/bash
+
+ICON_BITCOIN="₿"
+ICON_ETHEREUM="◈"
+
+API_URL="https://api.binance.com/api/v3/ticker/24hr?symbol="
+CRYPTO_ASSET="${BLOCK_INSTANCE}"
+REQUEST_URL="${API_URL}${CRYPTO_ASSET}USDT"
+
+RESPONSE=$(wget -qO- "${REQUEST_URL}")
+
+PRICE=$(echo "${RESPONSE}" | egrep -o '\"lastPrice\":\"[0-9]+([.][0-9]+)?\"' | awk -F ':' '{print $2}' | tr -d '"')
+PERCENT=$(echo "${RESPONSE}" | egrep -o '\"priceChangePercent\":\"[-]?[0-9]+([.][0-9]+)?\"' | awk -F ':' '{print $2}' | tr -d '"' | xargs printf "%.2f" | tr ',' '.')
+
+if (( $(echo "$PRICE < 1" | bc -l) )); then
+  PRICE_FORMATED=$(echo "${PRICE}" | xargs printf "%'.6f" | tr ',' '.')
+else
+  PRICE_FORMATED=$(echo "${PRICE}" | xargs printf "%'.2f" | tr ',' '.')
+fi
+
+if [[ $(echo "${PERCENT}" | head -c 1) == "-" ]]; then
+  PERCENT_FORMATED=$PERCENT
+else
+  PERCENT_FORMATED="+${PERCENT}"
+fi
+
+if [[ "${BLOCK_INSTANCE}" = *BTC* ]]; then
+  echo -n "${ICON_BITCOIN} "
+elif [[ "${BLOCK_INSTANCE}" = *ETH* ]]; then
+  echo -n "${ICON_ETHEREUM} "
+else
+  echo -n "${BLOCK_INSTANCE} "
+fi
+
+echo "${PRICE_FORMATED} (${PERCENT_FORMATED} %)"
+echo "${PRICE_FORMATED}"
+
+if (( $(echo "$PERCENT < 0" | bc -l) )); then
+  echo "#FF0000"
+else
+  echo "#26DD11"
+fi
+
