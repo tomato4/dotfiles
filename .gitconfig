@@ -3,6 +3,6 @@
         email = 
 [core]
         editor = nvim
-	autocrlf = input
+        autocrlf = input
 [alias]
         ll = log --oneline --graph --all --decorate
