@@ -89,6 +89,7 @@ Plug 'soli/prolog-vim'
 Plug 'metakirby5/codi.vim'
 Plug 'https://github.com/joshdick/onedark.vim.git'
 Plug 'https://github.com/lambdalisue/suda.vim.git'
+Plug 'https://github.com/chrisbra/unicode.vim'
 call plug#end()
 
 " Set rainbow parentheses
