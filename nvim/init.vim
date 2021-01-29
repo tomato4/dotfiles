@@ -8,6 +8,9 @@ set hidden
 filetype plugin on
 syntax on
 
+" Setup clipboard to system clipboard
+set clipboard+=unnamedplus
+
 " Relative Linenumbers
 set nu rnu
 
