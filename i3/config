@@ -16,6 +16,9 @@ set $key8 aacute
 set $key9 iacute
 set $key0 eacute
 
+# Set keyboard layout
+exec setxkb cz -model pc105
+
 # Set defualt terminal
 exec --no-startup-id alias gnome-terminal='gnome-terminal --hide-menubar'
 set $terminal gnome-terminal
