@@ -30,11 +30,6 @@ interval=60
 instance=ETH
 command=./scripts/crypto
 
-[crypto]
-interval=60
-instance=XTZ
-command=./scripts/crypto
-
 # Core temp
 [temp]
 command=./scripts/temp
