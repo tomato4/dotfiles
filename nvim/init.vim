@@ -90,6 +90,7 @@ Plug 'metakirby5/codi.vim'
 Plug 'https://github.com/joshdick/onedark.vim.git'
 Plug 'https://github.com/lambdalisue/suda.vim.git'
 Plug 'https://github.com/chrisbra/unicode.vim'
+Plug 'kevinhwang91/rnvimr'
 call plug#end()
 
 " Set rainbow parentheses
@@ -133,3 +134,6 @@ let g:vimwiki_list = [{'path': '$HOME/vimwiki', 'template_path': '$HOME/vimwiki_
 " <S-s> = Shift-s
 nnoremap <leader><S-s> :Ex $HOME/dotfiles<CR>
 nnoremap <leader>s     :e $HOME/dotfiles/nvim/init.vim<CR>
+
+" load settings for rangevim plug
+source $HOME/dotfiles/nvim/plug-config/rnvimr.vim
