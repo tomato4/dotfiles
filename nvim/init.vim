@@ -1,3 +1,5 @@
+let mapleader = "\<Space>"
+
 set nocompatible
 
 " Enable hidden buffers
@@ -100,6 +102,7 @@ Plug 'https://github.com/joshdick/onedark.vim.git'
 Plug 'https://github.com/lambdalisue/suda.vim.git'
 Plug 'https://github.com/chrisbra/unicode.vim'
 Plug 'kevinhwang91/rnvimr'
+Plug 'mbbill/undotree'
 call plug#end()
 
 " Set rainbow parentheses
@@ -143,6 +146,17 @@ nnoremap <C-f>     :NERDTreeFind<CR>
 " <S-s> = Shift-s
 nnoremap <leader><S-s> :Ex $HOME/dotfiles<CR>
 nnoremap <leader>s     :e $HOME/dotfiles/nvim/init.vim<CR>
+
+" key maping
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader><Left> :wincmd h<CR>
+nnoremap <leader><Down> :wincmd j<CR>
+nnoremap <leader><Up> :wincmd k<CR>
+nnoremap <leader><Right> :wincmd l<CR>
+nnoremap <leader>u :UndotreeShow<CR>
 
 " load settings for rangevim plug
 source $HOME/dotfiles/nvim/plug-config/rnvimr.vim
