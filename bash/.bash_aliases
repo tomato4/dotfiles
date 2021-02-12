@@ -18,6 +18,10 @@ alias school='cd ~/School/'
 alias scrshare='~/Stažené/Mon2Cam.sh'
 alias scrsharerepair='sudo echo; cd ~/Stažené/v4l2loopback-master/; make clean; make; sudo make install; sudo depmod -a; sudo modprobe v4l2loopback; scrshare'
 
+# Set wacom draw tablet
+alias wacomLeft='xsetwacom set "Wacom One by Wacom M Pen stylus" MapToOutput 1920x1080+0+0 & xsetwacom set "Wacom One by Wacom M Pen eraser" MapToOutput 1920x1080+0+0'
+alias wacomRight='xsetwacom set "Wacom One by Wacom M Pen stylus" MapToOutput 1920x1080+1920+0 & xsetwacom set "Wacom One by Wacom M Pen eraser" MapToOutput 1920x1080+1920+0'
+
 # Some basic shortcuts
 alias cl='clear'
 alias hdd='sudo /usr/local/bin/hddquiet'
