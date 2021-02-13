@@ -5,6 +5,7 @@ dotfilesDir = $(home)/dotfiles
 bashDir = $(dotfilesDir)/bash
 i3Dir = $(dotfilesDir)/i3
 i3varDir = $(i3Dir)/variables
+i3blocksDir = $(dotfilesDir)/i3blocks
 xkbDir = $(dotfilesDir)/xkb
 
 .PHONY: all rootCheck config i3blocks bash git nvim ranger redshift pureline xkb
@@ -35,6 +36,7 @@ i3blocks: rootCheck
 	@echo "[INFO] Installing i3blocks..."
 	@pamac install --no-confirm i3blocks > /dev/null
 	@echo "[DONE] Installed i3blocks."
+	@for file in $(i3blocksDir)/scripts/*; do chmod +x $$file; done
 	@rm -rf $(configDir)/i3blocks
 	@ln -s $(dotfilesDir)/i3blocks $(configDir)/i3blocks
 	@echo "[DONE] Linked i3blocks config folder."
