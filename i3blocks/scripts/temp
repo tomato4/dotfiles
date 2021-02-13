@@ -1,6 +1,13 @@
 #!/bin/bash
 
-readonly TEMP_RAW=$(sensors | head -n 5 | tail -n 1 | sed -n "s/.*+\(.*C\) .*/\1/p")
+PC=$(hostname)
+
+if [[ $PC == "Manjaro-Airbook" ]];
+then
+	TEMP_RAW=$(sensors | head -n 13 | tail -n 1 | sed -n "s/.*+\(.*C\) .*/\1/p")
+else
+	TEMP_RAW=$(sensors | head -n 5 | tail -n 1 | sed -n "s/.*+\(.*C\) .*/\1/p")
+fi
 
 echo "${TEMP_RAW}"
 echo "${TEMP_RAW}"
