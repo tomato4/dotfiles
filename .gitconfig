@@ -1,8 +1,8 @@
 [user]
-        name = Tomáš Glázr 
-        email = 
+  name =
+  email =
 [core]
-        editor = nvim
-        autocrlf = input
+  editor = nvim
+  autocrlf = input
 [alias]
-        ll = log --oneline --graph --all --decorate
+  ll = log --oneline --graph --all --decorate

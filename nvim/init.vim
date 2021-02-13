@@ -79,7 +79,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'powerline/fonts'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim' , {'branch': 'release'}
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'kshenoy/vim-signature'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

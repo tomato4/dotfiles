@@ -4,7 +4,7 @@
 export EDITOR=/usr/bin/nvim
 
 # add aliases file
-source ~/dotfiles/bash/.bash_aliases
+source ~/dotfiles/bash/tools/bash_aliases
 
 # enable pureline plug for bash "PS1" style
 source ~/Programs/pureline/pureline ~/.config/pureline/.pureline.conf
