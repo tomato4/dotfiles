@@ -1,3 +1,5 @@
+# DO NOT RUN THIS WITH MULTI CORE MAKE (run only one core because of sudo requests)
+
 user = tomato
 home = /home/tomato
 programs = $(home)/Programs
@@ -29,6 +31,11 @@ config:
 	@rm -rf $(home)/.i3
 	@ln -s $(i3Dir) $(home)/.i3
 	@echo "[DONE] Linked i3 conf folder."
+
+time:
+	@echo "[INFO] Setting time to use RTC..."
+	@sudo timedatectl set-local-rtc 1
+	@echo "[DONE] Time set."
 
 i3blocks:
 	@echo "[INFO] Installing i3blocks..."
