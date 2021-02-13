@@ -43,7 +43,7 @@ bash:
 	@echo -n "Choose which bash configuration you want:"
 	@for file in $(bashDir)/*; do if [ ! -d $${file} ]; then echo -n " $${file##*/}"; fi; done; echo ""
 	@var=null; until [ -f "/home/tomato/dotfiles/bash/$${var}" ]; do read -p "Choice: " var; done; \
-		echo -e "# Include bash configuration from dotfiles\nsource ~/dotfiles/bash/$${var}" >> ~/.bashrc
+		echo -e "\n# Include bash configuration from dotfiles\nsource ~/dotfiles/bash/$${var}" >> ~/.bashrc
 
 git:
 	@echo "[INFO] Preparing git configuration..."
@@ -86,7 +86,7 @@ redshift: rootCheck
 pureline: rootCheck
 	@echo "[INFO] Installing pureline..."
 	@mkdir -p $(programs)
-	@git clone -q https://github.com/chris-marsh/pureline.git $(programs)/pureline > /dev/null
+	@if [ ! -d "$(programs)/pureline" ]; then git clone -q https://github.com/chris-marsh/pureline.git $(programs)/pureline > /dev/null; fi
 	@chmod +x $(programs)/pureline/pureline
 	@echo "[DONE] Installed pureline."
 	@rm -rf $(config)/pureline
