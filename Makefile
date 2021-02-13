@@ -39,7 +39,10 @@ i3blocks: rootCheck
 	@ln -s $(dotfilesDir)/i3blocks $(configDir)/i3blocks
 	@echo "[DONE] Linked i3blocks config folder."
 
-bash:
+bash: rootCheck
+	@echo "[INFO] Installing gnome terminal..."
+	@pacman -S --needed --noconfirm gnome-terminal
+	@echo "[DONE] Installed gnome terminal."
 	@echo -n "Choose which bash configuration you want:"
 	@for file in $(bashDir)/*; do if [ ! -d $${file} ]; then echo -n " $${file##*/}"; fi; done; echo ""
 	@var=null; until [ -f "/home/tomato/dotfiles/bash/$${var}" ]; do read -p "Choice: " var; done; \
