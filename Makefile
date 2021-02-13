@@ -27,8 +27,8 @@ config:
 		cat $(i3varDir)/$${var} >> $(i3Dir)/config
 	@cat $(i3Dir)/base >> $(i3Dir)/config
 	@echo "[DONE] Created i3 config file."
-	@rm -rf ~/.i3
-	@ln -s $(i3Dir) ~/.i3
+	@rm -rf $(home)/.i3
+	@ln -s $(i3Dir) $(home)/.i3
 	@echo "[DONE] Linked i3 conf folder."
 
 i3blocks: rootCheck
@@ -43,7 +43,7 @@ bash:
 	@echo -n "Choose which bash configuration you want:"
 	@for file in $(bashDir)/*; do if [ ! -d $${file} ]; then echo -n " $${file##*/}"; fi; done; echo ""
 	@var=null; until [ -f "/home/tomato/dotfiles/bash/$${var}" ]; do read -p "Choice: " var; done; \
-		echo -e "\n# Include bash configuration from dotfiles\nsource ~/dotfiles/bash/$${var}" >> ~/.bashrc
+		echo -e "\n# Include bash configuration from dotfiles\nsource $(bashDir)/$${var}" >> $(home)/.bashrc
 
 git:
 	@echo "[INFO] Preparing git configuration..."
