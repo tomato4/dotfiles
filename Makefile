@@ -53,13 +53,19 @@ git:
 	@echo -n "Please write your name for global git configuration: "; read name; git config --global user.name "$${name}"
 	@echo -n "Please write your email for global git configuration: "; read email; git config --global user.email "$${email}"
 
-nvim: rootCheck
+nvim: rootCheck nvim-plug
 	@echo "[INFO] Installing neovim..."
 	@pacman -S --needed --noconfirm neovim > /dev/null
 	@echo "[DONE] Installed neovim."
 	@rm -rf $(config)/nvim
 	@ln -s $(dotfilesDir)/nvim $(config)/nvim
 	@echo "[DONE] Linked neovim config folder."
+
+nvim-plug:
+	@echo "[INFO] Downloading nvim plug manager..."
+	@sh -c 'curl -fLo $(home)/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	@echo "[DONE] Downloaded."
 
 ranger: rootCheck
 	@echo "[INFO] Installing ranger..."
