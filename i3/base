@@ -1,3 +1,7 @@
+################################################
+#               Base config file               #
+################################################
+
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
@@ -63,10 +67,6 @@ bindsym $mod+z exec --no-startup-id morc_menu
 
 exec --no-startup-id xrandr --output HDMI-0 --primary
 exec --no-startup-id xrandr --output DP-1 --right-of HDMI-1 --auto
-
-# monitors
-set $firstMonitor HDMI-0
-set $secondMonitor DP-1
 
 # assign workspaces to monitors
 workspace 1 output $firstMonitor

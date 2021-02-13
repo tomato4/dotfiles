@@ -1,0 +1,4 @@
+# monitors
+set $firstMonitor eDP-1
+set $secondMonitor eDP-1
+
