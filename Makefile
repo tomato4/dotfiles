@@ -36,7 +36,7 @@ i3blocks: rootCheck
 	@pamac install --no-confirm i3blocks > /dev/null
 	@echo "[DONE] Installed i3blocks."
 	@rm -rf $(configDir)/i3blocks
-	@ln -s $(dotfilesDir)/i3blocks $(config)/i3blocks
+	@ln -s $(dotfilesDir)/i3blocks $(configDir)/i3blocks
 	@echo "[DONE] Linked i3blocks config folder."
 
 bash:
@@ -57,8 +57,8 @@ nvim: rootCheck nvim-plug
 	@echo "[INFO] Installing neovim..."
 	@pacman -S --needed --noconfirm neovim > /dev/null
 	@echo "[DONE] Installed neovim."
-	@rm -rf $(config)/nvim
-	@ln -s $(dotfilesDir)/nvim $(config)/nvim
+	@rm -rf $(configDir)/nvim
+	@ln -s $(dotfilesDir)/nvim $(configDir)/nvim
 	@echo "[DONE] Linked neovim config folder."
 
 nvim-plug:
@@ -71,16 +71,16 @@ ranger: rootCheck
 	@echo "[INFO] Installing ranger..."
 	@pacman -S --needed --noconfirm ranger > /dev/null
 	@echo "[DONE] Installed ranger."
-	@rm -rf $(config)/ranger
-	@ln -s $(dotfilesDir)/ranger $(config)/ranger
+	@rm -rf $(configDir)/ranger
+	@ln -s $(dotfilesDir)/ranger $(configDir)/ranger
 	@echo "[DONE] Linked ranger config folder."
 
 redshift: rootCheck
 	@echo "[INFO] Installing redshift..."
 	@pacman -S --needed --noconfirm redshift > /dev/null
 	@echo "[DONE] Installed redshift."
-	@rm -rf $(config)/redshift
-	@ln -s $(dotfilesDir)/redshift $(config)/redshift
+	@rm -rf $(configDir)/redshift
+	@ln -s $(dotfilesDir)/redshift $(configDir)/redshift
 	@echo "[DONE] Linked redshift config folder."
 
 pureline: rootCheck
@@ -89,8 +89,8 @@ pureline: rootCheck
 	@if [ ! -d "$(programs)/pureline" ]; then git clone -q https://github.com/chris-marsh/pureline.git $(programs)/pureline > /dev/null; fi
 	@chmod +x $(programs)/pureline/pureline
 	@echo "[DONE] Installed pureline."
-	@rm -rf $(config)/pureline
-	@ln -s $(dotfilesDir)/pureline $(config)/pureline
+	@rm -rf $(configDir)/pureline
+	@ln -s $(dotfilesDir)/pureline $(configDir)/pureline
 	@echo "[DONE] Linked pureline config folder."
 
 xkb: rootCheck
