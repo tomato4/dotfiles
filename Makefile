@@ -5,10 +5,11 @@ dotfilesDir = $(home)/dotfiles
 bashDir = $(dotfilesDir)/bash
 i3Dir = $(dotfilesDir)/i3
 i3varDir = $(i3Dir)/variables
+xkbDir = $(dotfilesDir)/xkb
 
-.PHONY: all rootCheck config i3blocks bash git nvim ranger redshift pureline
+.PHONY: all rootCheck config i3blocks bash git nvim ranger redshift pureline xkb
 
-all: rootCheck update config i3blocks bash git nvim ranger redshift pureline
+all: rootCheck update config i3blocks bash git nvim ranger redshift pureline xkb
 
 rootCheck:
 	@if [ "$$EUID" -ne 0 ]; then echo "Root required. Please run with sudo."; exit 1; fi
@@ -45,6 +46,7 @@ bash:
 		echo -e "# Include bash configuration from dotfiles\nsource ~/dotfiles/bash/$${var}" >> ~/.bashrc
 
 git:
+	@echo "[INFO] Preparing git configuration..."
 	@rm -f $(home)/.gitconfig
 	@cp $(dotfilesDir)/.gitconfig $(home)/.gitconfig
 	@echo "[DONE] Copied gitconfig file for global git configuration."
@@ -85,3 +87,8 @@ pureline: rootCheck
 	@ln -s $(dotfilesDir)/pureline $(config)/pureline
 	@echo "[DONE] Linked pureline config folder."
 
+xkb: rootCheck
+	@echo "[INFO] Applying my keyboard settings..."
+	@rm -f /usr/share/X11/xkb/symbols/cz
+	@ln -s $(xkbDir)/my_cz /usr/share/X11/xkb/symbols/cz
+	@echo "[DONE] Linked my keyboard settings."
