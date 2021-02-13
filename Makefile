@@ -1,5 +1,5 @@
-home = ${HOME}
-programs = $(home)/programs
+home = /home/tomato
+programs = $(home)/Programs
 configDir = $(home)/.config
 dotfilesDir = $(home)/dotfiles
 bashDir = $(dotfilesDir)/bash
