@@ -14,7 +14,9 @@ rootCheck:
 	@if [ "$$EUID" -ne 0 ]; then echo "Root required. Please run with sudo."; exit 1; fi
 
 update: rootCheck
+	@echo "[INFO] Updating pacman..."
 	@pacman -Syu --noconfirm > /dev/null
+	@echo "[DONE] Update completed."
 
 config:
 	@echo -n "Choose which i3 configuration (variables pack) you want:"
@@ -75,7 +77,7 @@ redshift: rootCheck
 
 pureline: rootCheck
 	@echo "[INFO] Installing pureline..."
-	@mkdir $(programs)
+	@mkdir -p $(programs)
 	@git clone https://github.com/chris-marsh/pureline.git $(programs) > /dev/null
 	@chmod +x $(programs)/pureline/pureline
 	@echo "[DONE] Installed pureline."
