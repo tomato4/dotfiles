@@ -80,7 +80,7 @@ redshift: rootCheck
 pureline: rootCheck
 	@echo "[INFO] Installing pureline..."
 	@mkdir -p $(programs)
-	@git clone https://github.com/chris-marsh/pureline.git $(programs) > /dev/null
+	@git clone https://github.com/chris-marsh/pureline.git $(programs)/pureline > /dev/null
 	@chmod +x $(programs)/pureline/pureline
 	@echo "[DONE] Installed pureline."
 	@rm -rf $(config)/pureline
