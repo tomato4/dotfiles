@@ -1,3 +1,4 @@
+user = tomato
 home = /home/tomato
 programs = $(home)/Programs
 configDir = $(home)/.config
@@ -8,16 +9,13 @@ i3varDir = $(i3Dir)/variables
 i3blocksDir = $(dotfilesDir)/i3blocks
 xkbDir = $(dotfilesDir)/xkb
 
-.PHONY: all rootCheck config i3blocks bash git nvim ranger redshift pureline xkb
+.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb
 
-all: rootCheck update config i3blocks bash git nvim ranger redshift pureline xkb
+all: update config i3blocks bash git nvim ranger redshift pureline xkb
 
-rootCheck:
-	@if [ "$$EUID" -ne 0 ]; then echo "Root required. Please run with sudo."; exit 1; fi
-
-update: rootCheck
+update:
 	@echo "[INFO] Updating pacman..."
-	@pacman -Syu --noconfirm > /dev/null
+	@sudo pacman -Syu --noconfirm > /dev/null
 	@echo "[DONE] Update completed."
 
 config:
@@ -32,18 +30,18 @@ config:
 	@ln -s $(i3Dir) $(home)/.i3
 	@echo "[DONE] Linked i3 conf folder."
 
-i3blocks: rootCheck
+i3blocks:
 	@echo "[INFO] Installing i3blocks..."
-	@pamac install --no-confirm i3blocks > /dev/null
+	@sudo pamac install --no-confirm i3blocks > /dev/null
 	@echo "[DONE] Installed i3blocks."
 	@for file in $(i3blocksDir)/scripts/*; do chmod +x $$file; done
 	@rm -rf $(configDir)/i3blocks
 	@ln -s $(dotfilesDir)/i3blocks $(configDir)/i3blocks
 	@echo "[DONE] Linked i3blocks config folder."
 
-bash: rootCheck
+bash:
 	@echo "[INFO] Installing gnome terminal..."
-	@pacman -S --needed --noconfirm gnome-terminal
+	@sudo pacman -S --needed --noconfirm gnome-terminal
 	@echo "[DONE] Installed gnome terminal."
 	@echo -n "Choose which bash configuration you want:"
 	@for file in $(bashDir)/*; do if [ ! -d $${file} ]; then echo -n " $${file##*/}"; fi; done; echo ""
@@ -58,9 +56,9 @@ git:
 	@echo -n "Please write your name for global git configuration: "; read name; git config --global user.name "$${name}"
 	@echo -n "Please write your email for global git configuration: "; read email; git config --global user.email "$${email}"
 
-nvim: rootCheck nvim-plug
+nvim: nvim-plug
 	@echo "[INFO] Installing neovim..."
-	@pacman -S --needed --noconfirm neovim > /dev/null
+	@sudo pacman -S --needed --noconfirm neovim > /dev/null
 	@echo "[DONE] Installed neovim."
 	@rm -rf $(configDir)/nvim
 	@ln -s $(dotfilesDir)/nvim $(configDir)/nvim
@@ -72,23 +70,23 @@ nvim-plug:
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 	@echo "[DONE] Downloaded."
 
-ranger: rootCheck
+ranger:
 	@echo "[INFO] Installing ranger..."
-	@pacman -S --needed --noconfirm ranger > /dev/null
+	@sudo pacman -S --needed --noconfirm ranger > /dev/null
 	@echo "[DONE] Installed ranger."
 	@rm -rf $(configDir)/ranger
 	@ln -s $(dotfilesDir)/ranger $(configDir)/ranger
 	@echo "[DONE] Linked ranger config folder."
 
-redshift: rootCheck
+redshift:
 	@echo "[INFO] Installing redshift..."
-	@pacman -S --needed --noconfirm redshift > /dev/null
+	@sudo pacman -S --needed --noconfirm redshift > /dev/null
 	@echo "[DONE] Installed redshift."
 	@rm -rf $(configDir)/redshift
 	@ln -s $(dotfilesDir)/redshift $(configDir)/redshift
 	@echo "[DONE] Linked redshift config folder."
 
-pureline: rootCheck
+pureline:
 	@echo "[INFO] Installing pureline..."
 	@mkdir -p $(programs)
 	@if [ ! -d "$(programs)/pureline" ]; then git clone -q https://github.com/chris-marsh/pureline.git $(programs)/pureline > /dev/null; fi
@@ -98,8 +96,9 @@ pureline: rootCheck
 	@ln -s $(dotfilesDir)/pureline $(configDir)/pureline
 	@echo "[DONE] Linked pureline config folder."
 
-xkb: rootCheck
+xkb:
 	@echo "[INFO] Applying my keyboard settings..."
-	@rm -f /usr/share/X11/xkb/symbols/cz
-	@ln -s $(xkbDir)/my_cz /usr/share/X11/xkb/symbols/cz
+	@sudo rm -f /usr/share/X11/xkb/symbols/cz
+	@sudo ln -s $(xkbDir)/my_cz /usr/share/X11/xkb/symbols/cz
 	@echo "[DONE] Linked my keyboard settings."
+
