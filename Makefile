@@ -11,9 +11,9 @@ i3varDir = $(i3Dir)/variables
 i3blocksDir = $(dotfilesDir)/i3blocks
 xkbDir = $(dotfilesDir)/xkb
 
-.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb
+.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera
 
-all: update config i3blocks bash git nvim ranger redshift pureline xkb
+all: update config i3blocks bash git nvim ranger redshift pureline xkb opera
 
 update:
 	@echo "[INFO] Updating pacman..."
