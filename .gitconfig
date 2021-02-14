@@ -4,5 +4,7 @@
 [core]
   editor = nvim
   autocrlf = input
+[pull]
+  rebase = false
 [alias]
   ll = log --oneline --graph --all --decorate
