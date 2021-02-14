@@ -11,9 +11,9 @@ i3varDir = $(i3Dir)/variables
 i3blocksDir = $(dotfilesDir)/i3blocks
 xkbDir = $(dotfilesDir)/xkb
 
-.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera
+.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky
 
-all: update config i3blocks bash git nvim ranger redshift pureline xkb opera
+all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky
 
 update:
 	@echo "[INFO] Updating pacman..."
@@ -115,3 +115,9 @@ opera:
 	@echo "[INFO] Installing opera..."
 	@sudo snap install opera > /dev/null
 	@echo "[DONE] Opera installed."
+
+conky:
+	@echo "[INFO] Linking conky config..."
+	@sudo rm -f /usr/share/conky/conky_green
+	@sudo ln -s $(dotfilesDir)/conky/conky_green /usr/share/conky/conky_green
+	@echo "[DONE] Linked config file."
