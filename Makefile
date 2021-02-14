@@ -11,9 +11,9 @@ i3varDir = $(i3Dir)/variables
 i3blocksDir = $(dotfilesDir)/i3blocks
 xkbDir = $(dotfilesDir)/xkb
 
-.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky
+.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi
 
-all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky
+all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi
 
 update:
 	@echo "[INFO] Updating pacman..."
@@ -121,3 +121,8 @@ conky:
 	@sudo rm -f /usr/share/conky/conky_green
 	@sudo ln -s $(dotfilesDir)/conky/conky_green /usr/share/conky/conky_green
 	@echo "[DONE] Linked config file."
+
+rofi:
+	@echo "[INFO] Installing rofi menu..."
+	@sudo pacman -S --needed --noconfirm rofi > /dev/null
+	@echo "[DONE] Installed rofi menu..."
