@@ -11,9 +11,9 @@ i3varDir = $(i3Dir)/variables
 i3blocksDir = $(dotfilesDir)/i3blocks
 xkbDir = $(dotfilesDir)/xkb
 
-.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi
+.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot
 
-all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi
+all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot
 
 update:
 	@echo "[INFO] Updating pacman..."
@@ -126,3 +126,8 @@ rofi:
 	@echo "[INFO] Installing rofi menu..."
 	@sudo pacman -S --needed --noconfirm rofi > /dev/null
 	@echo "[DONE] Installed rofi menu..."
+
+flameshot:
+	@echo "[INFO] Installing flameshot..."
+	@sudo pacman -S --needed --noconfirm flameshot > /dev/null
+	@echo "[DONE] Installed flameshot..."
