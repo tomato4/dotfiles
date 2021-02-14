@@ -48,7 +48,7 @@ i3blocks:
 
 bash:
 	@echo "[INFO] Installing gnome terminal..."
-	@sudo pacman -S --needed --noconfirm gnome-terminal
+	@sudo pacman -S --needed --noconfirm gnome-terminal > /dev/null
 	@echo "[DONE] Installed gnome terminal."
 	@echo -n "Choose which bash configuration you want:"
 	@for file in $(bashDir)/*; do if [ ! -d $${file} ]; then echo -n " $${file##*/}"; fi; done; echo ""
@@ -74,7 +74,7 @@ nvim: nvim-plug
 nvim-plug:
 	@echo "[INFO] Downloading nvim plug manager..."
 	@sh -c 'curl -fLo $(home)/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' > /dev/null
 	@echo "[DONE] Downloaded."
 
 ranger:
@@ -99,6 +99,8 @@ pureline:
 	@if [ ! -d "$(programs)/pureline" ]; then git clone -q https://github.com/chris-marsh/pureline.git $(programs)/pureline > /dev/null; fi
 	@chmod +x $(programs)/pureline/pureline
 	@echo "[DONE] Installed pureline."
+	@echo "[WARN] Rollbacking pureline to commit a410b02 (last update of config)."
+	@git --git-dir $(programs)/pureline/.git reset --hard a410b02
 	@rm -rf $(configDir)/pureline
 	@ln -s $(dotfilesDir)/pureline $(configDir)/pureline
 	@echo "[DONE] Linked pureline config folder."
@@ -109,3 +111,7 @@ xkb:
 	@sudo ln -s $(xkbDir)/my_cz /usr/share/X11/xkb/symbols/cz
 	@echo "[DONE] Linked my keyboard settings."
 
+opera:
+	@echo "[INFO] Installing opera..."
+	@sudo snap install opera > /dev/null
+	@echo "[DONE] Opera installed."
