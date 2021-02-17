@@ -10,6 +10,8 @@ i3Dir = $(dotfilesDir)/i3
 i3varDir = $(i3Dir)/variables
 i3blocksDir = $(dotfilesDir)/i3blocks
 xkbDir = $(dotfilesDir)/xkb
+cme = $(home)/NetBeansProjects/cme
+WorkConf = $(dotfilesDir)/Work/config
 
 .PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot grub discord spotify chrome slack
 
@@ -156,3 +158,30 @@ spotify:
 	@echo "[INFO] Installing spotify..."
 	@sudo snap install spotify > /dev/null
 	@echo "[DONE] Installed spotify."
+
+php:
+	@echo "[INFO] Installing php and apache..."
+	@sudo pamac install --no-confirm apache php php-apache php-cgi php-fpm php-gd php-intl php-pgsql php56 php56-apache php56-cgi php56-fpm php56-gd php56-intl php56-sqlite > /dev/null
+	@echo "[DONE] Installed apache and php56/72."
+
+work: update chrome slack php
+	@echo "[INFO] Starting setup for work enviroment..."
+	@echo "[WARN] Don't forget to add ssh to bitbucket."
+	@mkdir -p $(home)/NetBeansProjects
+	@git clone -q git@bitbucket.org:internethandel/cme.git $(cme) > /dev/null
+	@sudo echo "127.0.0.1	cme" >> /etc/hosts
+	@sudo mkdir -p /var/log/apache/cme
+	@sudo ln -s $(work)/001-cme.conf /etc/httpd/conf/sites-enabled/001-cme.conf
+	@sudo rm /etc/httpd/conf/extra/httpd-default.conf
+	@sudo ln -s $(work)/httpd-default.conf /etc/httpd/conf/extra/httpd-default.conf
+	@sudo rm /etc/php/php.ini
+	@sudo rm /etc/php56/php.ini
+	@sudo ln -s $(work)/php.ini /etc/php/php.ini
+	@sudo ln -s $(work)/php56.ini /etc/php56/php.ini
+	@cp $(cme)/inc-local.php.example $(cme)/inc-local.php
+	@echo "[WARN] Don't forget to setup inc-local file."
+	@cd $(cme)/skripty/composer-php56/; composer install; cd ../composer-php72/; composer install
+	@sudo systemctl restart php56-fpm
+	@sudo systemctl restart php-fpm
+	@sudo systemctl restart httpd
+	@echo "[DONE] Work env setup done."
