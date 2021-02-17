@@ -11,9 +11,9 @@ i3varDir = $(i3Dir)/variables
 i3blocksDir = $(dotfilesDir)/i3blocks
 xkbDir = $(dotfilesDir)/xkb
 
-.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot
+.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot grub discord spotify chrome slack
 
-all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot
+all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot grub discord spotify
 
 update:
 	@echo "[INFO] Updating pacman..."
@@ -131,3 +131,28 @@ flameshot:
 	@echo "[INFO] Installing flameshot..."
 	@sudo pacman -S --needed --noconfirm flameshot > /dev/null
 	@echo "[DONE] Installed flameshot..."
+
+grub:
+	@echo "[INFO] Installing grub customizer..."
+	@sudo pamac install --no-confirm grub-customizer > /dev/null
+	@echo "[DONE] Installed grub customizer."
+
+discord:
+	@echo "[INFO] Installing discord..."
+	@sudo snap install discord > /dev/null
+	@echo "[DONE] Installed discord"
+
+chrome:
+	@echo "[INFO] Installing chrome..."
+	@sudo pamac install --no-confirm google-chrome > /dev/null
+	@echo "[DONE] Installed chrome..."
+
+slack:
+	@echo "[INFO] Downloading slack..."
+	@sudo snap install slack > /dev/null
+	@echo "[DONW] Installed slack."
+
+spotify:
+	@echo "[INFO] Installing spotify..."
+	@sudo snap install spotify > /dev/null
+	@echo "[DONE] Installed spotify."
