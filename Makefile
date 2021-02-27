@@ -168,6 +168,7 @@ work: update chrome slack php
 	@echo "[INFO] Starting setup for work enviroment..."
 	@echo "[WARN] Don't forget to add ssh to bitbucket."
 	@mkdir -p $(home)/NetBeansProjects
+	@read -p "Add ssh key of this pc to bitbucket and press enter..."
 	@git clone -q git@bitbucket.org:internethandel/cme.git $(cme) > /dev/null
 	@sudo echo "127.0.0.1	cme" >> /etc/hosts
 	@sudo mkdir -p /var/log/apache/cme
