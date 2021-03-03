@@ -78,6 +78,9 @@ nvim-plug:
 	@sh -c 'curl -fLo $(home)/.local/share/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' > /dev/null
 	@echo "[DONE] Downloaded."
+	@echo "[INFO] Downloading node.js for coc.nvim..."
+	@sudo curl -sL install-node.now.sh/lts | sudo bash
+	@echo "[DONE] Installed node.js."
 
 ranger:
 	@echo "[INFO] Installing ranger..."
