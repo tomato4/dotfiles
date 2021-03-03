@@ -174,7 +174,7 @@ spotify:
 
 rofimoji:
 	@echo "[INFO] Installing rofimoji..."
-	@sudo pacman -S --needed --noconfirm emoji-font python rofi xdotool xsel > /dev/null
+	@sudo pacman -S --needed --noconfirm rofimoji emoji-font python rofi xdotool xsel > /dev/null
 	@echo "[DONE] Installed rofimoji."
 
 php:
