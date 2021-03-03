@@ -13,9 +13,9 @@ xkbDir = $(dotfilesDir)/xkb
 cme = $(home)/NetBeansProjects/cme
 workConf = $(dotfilesDir)/Work/config
 
-.PHONY: all config i3blocks bash bash-tab git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify grub chrome slack php composer work
+.PHONY: all config i3blocks bash bash-tab git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify rofimoji grub chrome slack php composer work
 
-all: update config i3blocks bash bash-tab git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify
+all: update config i3blocks bash bash-tab git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify rofimoji
 
 update:
 	@echo "[INFO] Updating pacman..."
@@ -171,6 +171,11 @@ spotify:
 	@echo "[INFO] Installing spotify..."
 	@sudo snap install spotify > /dev/null
 	@echo "[DONE] Installed spotify."
+
+rofimoji:
+	@echo "[INFO] Installing rofimoji..."
+	@sudo pacman -S --needed --noconfirm emoji-font python rofi xdotool xsel
+	@echo "[DONE] Installed rofimoji."
 
 php:
 	@echo "[INFO] Installing php and apache..."

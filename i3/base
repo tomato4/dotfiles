@@ -88,6 +88,9 @@ bindsym XF86AudioPrev exec playerctl -p spotify previous
 # shortcut for app launcher Rofi
 bindsym $mod+space --release exec "rofi -combi-modi drun,window,ssh -show combi -modi combi"
 
+# setup rofimoji
+bindsym $mod+period exec "rofimoji"
+
 # screenshot shortcut
 bindsym $mod+Shift+s exec flameshot gui
 
