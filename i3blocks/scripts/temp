@@ -14,10 +14,10 @@ echo "${TEMP_RAW}"
 
 TEMP_ROUND=${TEMP_RAW%.*}
 
-if (( $(echo "$TEMP_ROUND > 75" | bc -l) ))
+if (( $(echo "$TEMP_ROUND >= 75" | bc -l) ))
 then
 	echo "#FF6666"
-elif (( $(echo "$TEMP_ROUND > 60" | bc -l) ))
+elif (( $(echo "$TEMP_ROUND >= 60" | bc -l) ))
 then
 	echo "#FFBF00"
 else

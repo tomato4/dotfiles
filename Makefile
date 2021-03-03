@@ -11,9 +11,9 @@ i3varDir = $(i3Dir)/variables
 i3blocksDir = $(dotfilesDir)/i3blocks
 xkbDir = $(dotfilesDir)/xkb
 cme = $(home)/NetBeansProjects/cme
-WorkConf = $(dotfilesDir)/Work/config
+workConf = $(dotfilesDir)/Work/config
 
-.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify grub chrome slack php work
+.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify grub chrome slack php composer work
 
 all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify
 
@@ -52,10 +52,11 @@ bash:
 	@echo "[INFO] Installing gnome terminal..."
 	@sudo pacman -S --needed --noconfirm gnome-terminal > /dev/null
 	@echo "[DONE] Installed gnome terminal."
-	@echo -n "Choose which bash configuration you want:"
-	@for file in $(bashDir)/*; do if [ ! -d $${file} ]; then echo -n " $${file##*/}"; fi; done; echo ""
-	@var=null; until [ -f "/home/tomato/dotfiles/bash/$${var}" ]; do read -p "Choice: " var; done; \
-		echo -e "\n# Include bash configuration from dotfiles\nsource $(bashDir)/$${var}" >> $(home)/.bashrc
+	@if [[ $$(cat $(home)/.bashrc | grep "# Include bash configuration from dotfiles") ]]; then echo "[INFO] Bash config already imported in .bashrc..."; else \
+	echo -n "Choose which bash configuration you want:"; \
+	for file in $(bashDir)/*; do if [ ! -d $${file} ]; then echo -n " $${file##*/}"; fi; done; echo ""; \
+	var=null; until [ -f "/home/tomato/dotfiles/bash/$${var}" ]; do read -p "Choice: " var; done; \
+		echo -e "\n# Include bash configuration from dotfiles\nsource $(bashDir)/$${var}" >> $(home)/.bashrc; fi
 
 git:
 	@echo "[INFO] Preparing git configuration..."
@@ -81,6 +82,10 @@ nvim-plug:
 	@echo "[INFO] Downloading node.js for coc.nvim..."
 	@sudo curl -sL install-node.now.sh/lts | sudo bash
 	@echo "[DONE] Installed node.js."
+	@echo "[DONE] Installing pynvim and ueberzug for rnvimr..."
+	@pip3 install pynvim > /dev/null
+	@pip3 install ueberzug > /dev/null
+	@echo "[DONE] Installed plug dependencies."
 
 ranger:
 	@echo "[INFO] Installing ranger..."
@@ -114,6 +119,7 @@ xkb:
 	@echo "[INFO] Applying my keyboard settings..."
 	@sudo rm -f /usr/share/X11/xkb/symbols/cz
 	@sudo ln -s $(xkbDir)/my_cz /usr/share/X11/xkb/symbols/cz
+	@setxkbmap cz -model pc105
 	@echo "[DONE] Linked my keyboard settings."
 
 opera:
@@ -154,7 +160,7 @@ chrome:
 
 slack:
 	@echo "[INFO] Downloading slack..."
-	@sudo snap install slack > /dev/null
+	@sudo snap install --classic slack > /dev/null
 	@echo "[DONW] Installed slack."
 
 spotify:
@@ -164,27 +170,43 @@ spotify:
 
 php:
 	@echo "[INFO] Installing php and apache..."
+	@echo "[WARN] There could be problem with key signatures. If so, install via pamac gui php56 and other php56 dep. This should add these keys."
 	@sudo pamac install --no-confirm apache php php-apache php-cgi php-fpm php-gd php-intl php-pgsql php56 php56-apache php56-cgi php56-fpm php56-gd php56-intl php56-sqlite > /dev/null
 	@echo "[DONE] Installed apache and php56/72."
 
-work: update chrome slack php
+composer:
+	@echo "[INFO] Installing composer..."
+	@curl -sS https://getcomposer.org/installer | php
+	@sudo mv composer.phar /usr/local/bin/composer
+	@sudo systemctl restart httpd
+	@sudo composer self-update
+	@echo "[DONE] Installed composer."
+
+work: update chrome slack php composer
 	@echo "[INFO] Starting setup for work enviroment..."
-	@echo "[WARN] Don't forget to add ssh to bitbucket."
 	@mkdir -p $(home)/NetBeansProjects
 	@read -p "Add ssh key of this pc to bitbucket and press enter..."
-	@git clone -q git@bitbucket.org:internethandel/cme.git $(cme) > /dev/null
-	@sudo echo "127.0.0.1	cme" >> /etc/hosts
+	@if [ ! -d $(cme) ]; then git clone -q git@bitbucket.org:internethandel/cme.git $(cme) > /dev/null; fi
+	@if ! [[ $$(sudo cat /etc/hosts | egrep "127.0.0.1\s+cme") ]]; then echo "127.0.0.1	cme" | sudo tee -a /etc/hosts; fi
 	@sudo mkdir -p /var/log/apache/cme
-	@sudo ln -s $(work)/001-cme.conf /etc/httpd/conf/sites-enabled/001-cme.conf
+	@sudo mkdir -p /etc/httpd/conf/sites-enabled
+	@sudo rm -f /etc/httpd/conf/sites-enabled/001-cme.conf
+	@sudo ln -s $(workConf)/001-cme.conf /etc/httpd/conf/sites-enabled/001-cme.conf
 	@sudo rm /etc/httpd/conf/extra/httpd-default.conf
-	@sudo ln -s $(work)/httpd-default.conf /etc/httpd/conf/extra/httpd-default.conf
+	@sudo ln -s $(workConf)/httpd-default.conf /etc/httpd/conf/extra/httpd-default.conf
 	@sudo rm /etc/php/php.ini
 	@sudo rm /etc/php56/php.ini
-	@sudo ln -s $(work)/php.ini /etc/php/php.ini
-	@sudo ln -s $(work)/php56.ini /etc/php56/php.ini
+	@sudo ln -s $(workConf)/php.ini /etc/php/php.ini
+	@sudo ln -s $(workConf)/php56.ini /etc/php56/php.ini
+	@sudo rm /etc/httpd/conf/httpd.conf
+	@sudo ln -s $(workConf)/httpd.conf /etc/httpd/conf/httpd.conf
+	@sudo rm -f /etc/httpd/conf/extra/php-fpm.conf
+	@sudo ln -s $(workConf)/php-fpm.conf /etc/httpd/conf/extra/php-fpm.conf
+	@sudo rm -f /etc/httpd/conf/extra/httpd-vhosts.conf
+	@sudo ln -s $(workConf)/httpd-vhosts.conf /etc/httpd/conf/extra/httpd-vhosts.conf
 	@cp $(cme)/inc-local.php.example $(cme)/inc-local.php
 	@echo "[WARN] Don't forget to setup inc-local file."
-	@cd $(cme)/skripty/composer-php56/; composer install; cd ../composer-php72/; composer install
+	#@cd $(cme)/skripty/composer-php56/; composer install; cd ../composer-php72/; composer install
 	@sudo systemctl restart php56-fpm
 	@sudo systemctl restart php-fpm
 	@sudo systemctl restart httpd
