@@ -13,9 +13,9 @@ xkbDir = $(dotfilesDir)/xkb
 cme = $(home)/NetBeansProjects/cme
 workConf = $(dotfilesDir)/Work/config
 
-.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify grub chrome slack php composer work
+.PHONY: all config i3blocks bash bash-tab git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify grub chrome slack php composer work
 
-all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify
+all: update config i3blocks bash bash-tab git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify
 
 update:
 	@echo "[INFO] Updating pacman..."
@@ -57,6 +57,10 @@ bash:
 	for file in $(bashDir)/*; do if [ ! -d $${file} ]; then echo -n " $${file##*/}"; fi; done; echo ""; \
 	var=null; until [ -f "/home/tomato/dotfiles/bash/$${var}" ]; do read -p "Choice: " var; done; \
 		echo -e "\n# Include bash configuration from dotfiles\nsource $(bashDir)/$${var}" >> $(home)/.bashrc; fi
+
+bash-tab:
+	@echo "[INFO] Setting up bash autocompletion case-insensitive..."
+	@if ! [[ $$(cat /etc/inputrc | egrep "set\s+completion-ignore-case\s+On") ]]; then echo "set completion-ignore-case On" | sudo tee -a /etc/inputrc > /dev/null; fi
 
 git:
 	@echo "[INFO] Preparing git configuration..."
