@@ -1,4 +1,4 @@
-# DO NOT RUN THIS WITH MULTI CORE MAKE (run only one core because of sudo requests)
+# DO NOT RUN THIS WITH MORE CORES (run only one core because of sudo requests)
 
 user = tomato
 home = /home/tomato
@@ -13,9 +13,9 @@ xkbDir = $(dotfilesDir)/xkb
 cme = $(home)/NetBeansProjects/cme
 WorkConf = $(dotfilesDir)/Work/config
 
-.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot grub discord spotify chrome slack
+.PHONY: all config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify grub chrome slack php work
 
-all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot grub discord spotify
+all: update config i3blocks bash git nvim ranger redshift pureline xkb opera conky rofi flameshot discord spotify
 
 update:
 	@echo "[INFO] Updating pacman..."
@@ -171,6 +171,7 @@ work: update chrome slack php
 	@echo "[INFO] Starting setup for work enviroment..."
 	@echo "[WARN] Don't forget to add ssh to bitbucket."
 	@mkdir -p $(home)/NetBeansProjects
+	@read -p "Add ssh key of this pc to bitbucket and press enter..."
 	@git clone -q git@bitbucket.org:internethandel/cme.git $(cme) > /dev/null
 	@sudo echo "127.0.0.1	cme" >> /etc/hosts
 	@sudo mkdir -p /var/log/apache/cme
