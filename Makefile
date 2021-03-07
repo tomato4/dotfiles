@@ -177,6 +177,11 @@ rofimoji:
 	@sudo pacman -S --needed --noconfirm rofimoji emoji-font python rofi xdotool xsel > /dev/null
 	@echo "[DONE] Installed rofimoji."
 
+jetbrains:
+	@echo "[INFO] Installing jetbrains toolbox..."
+	@sudo pamac install --no-confirm jetbrains-toolbox > /dev/null
+	@echo "[DONE] Installed jetbrains toolbox."
+
 php:
 	@echo "[INFO] Installing php and apache..."
 	@echo "[WARN] There could be problem with key signatures. If so, install via pamac gui php56 and other php56 dep. This should add these keys."
