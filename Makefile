@@ -48,6 +48,12 @@ i3blocks:
 	@ln -s $(dotfilesDir)/i3blocks $(configDir)/i3blocks
 	@echo "[DONE] Linked i3blocks config folder."
 
+profile:
+	@echo "[INFO] Setting up profile."
+	@rm -f $(home)/.profile
+	@ln -s $(dotfilesDir)/.profile $(home)/.profile
+	@echo "[DONE] profile setup linked."
+
 bash:
 	@echo "[INFO] Installing gnome terminal..."
 	@sudo pacman -S --needed --noconfirm gnome-terminal > /dev/null
