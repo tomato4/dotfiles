@@ -46,10 +46,7 @@ let g:polyglot_disabled = ['markdown']
 let g:coc_global_extensions = [
 			\'coc-json',
 			\'coc-git',
-			\'coc-svelte',
-			\'coc-tsserver',
 			\'coc-python',
-			\'coc-json',
 			\'coc-java',
 			\'coc-html',
 			\'coc-css',
@@ -104,6 +101,7 @@ Plug 'https://github.com/lambdalisue/suda.vim.git'
 Plug 'https://github.com/chrisbra/unicode.vim'
 Plug 'kevinhwang91/rnvimr'
 Plug 'mbbill/undotree'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 
 " Set rainbow parentheses
