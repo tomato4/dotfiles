@@ -7,17 +7,16 @@ source ./messages.sh
 
 # Open rofi menu with all commands available
 message_info "Opening menu for commands. Multiple items can be selected by holding shift."
-OUTPUT=$(cat ./cmdList | rofi -dmenu -multi-select -format 's\n' 2> /dev/null | sed 's/\\n//g')
+OUTPUT=$(for file in ./scripts/*; do echo "$(basename $file)"; done | rofi -dmenu -multi-select -format 's\n' 2> /dev/null | sed 's/\\n//g')
 PRINT=$(echo "$OUTPUT" | sed -z 's/\n/, /g')
 message_info "Selected commands: ${PRINT::-2}"
 
 while IFS= read -r line
 do
-   # TODO do for each line
-   echo $line
+   if ! [ $line ]; then continue; fi
+
+   # run each selected script
+   ./scripts/$line
 done <<< "$OUTPUT"
 
-#for cmd in "${commands[@]}"
-#do
-#   echo $cmd
-#done
+message_done "Execution finished."
