@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source ./variables.sh
 source ./messages.sh
 
 # Check all requirements for setup
@@ -13,10 +14,11 @@ message_info "Selected commands: ${PRINT::-2}"
 
 while IFS= read -r line
 do
+   # skip empty line
    if ! [ $line ]; then continue; fi
 
    # run each selected script
-   ./scripts/$line
+   source ./scripts/$line
 done <<< "$OUTPUT"
 
 message_done "Execution finished."
