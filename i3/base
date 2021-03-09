@@ -91,6 +91,9 @@ bindsym $mod+space --release exec "rofi -combi-modi drun,window,ssh -show combi 
 # setup rofimoji
 bindsym $mod+period exec "rofimoji --skin-tone light"
 
+# setup my rofi setup menu
+bindsym $mod+Ctrl+space exec "gnome-terminal --working-directory ~/dotfiles/setup/ --profile Main-donotclose -- ~/dotfiles/setup/setup.sh" 
+
 # screenshot shortcut
 bindsym $mod+Shift+s exec flameshot gui
 
