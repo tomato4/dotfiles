@@ -1,0 +1,9 @@
+{
+    "rpc.checkIdle": false,
+    "rpc.detailsViewing": "In {workspace}",
+    "rpc.detailsEditing": "In {workspace}",
+    "rpc.detailsInExplorer": "{none}",
+    "rpc.lowerDetailsEditing": "{filename}",
+    "rpc.lowerDetailsInExplorer": "{none}",
+    "rpc.lowerDetailsViewing": "{filename}"
+}

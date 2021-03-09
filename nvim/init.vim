@@ -51,26 +51,13 @@ let g:coc_global_extensions = [
 			\'coc-html',
 			\'coc-css',
 			\'coc-clangd',
-			\'coc-sh'
+			\'coc-sh',
+			\'coc-discord-rpc'
 			\]
-
-" Colorscheme Settings
-"let g:neosolarized_vertSplitBgTrans = 0
-"let g:neosolarized_contrast         = "high"
-"let g:neosolarized_visibility       = "high"
-"let g:neosolarized_bold             = 1
-"let g:neosolarized_underline        = 1
-"let g:neosolarized_italic           = 1
-"let g:neosolarized_termBoldAsBright = 0
-
-"set background=dark
 
 " Airline Settings
 let g:airline_powerline_fonts = 1
 let g:airline_theme           = 'violet'
-
-" Goyo settings
-"let g:goyo_width = "70%"
 
 " Manage plugins
 call plug#begin(stdpath('data') . '/plugged')
@@ -110,18 +97,6 @@ let g:rainbow_active = 1
 " Set colorscheme
 colorscheme onedark
 
-"let g:space_vim_dark_background = 233
-
-" colorscheme dracula
-
-"color space-vim-dark
-"hi Comment cterm=italic gui=italic
-"hi Normal ctermbg=NONE guibg=NONE
-"hi LineNr ctermbg=NONE guibg=NONE
-"hi Function cterm=italic gui=italic gui=bold
-"hi Function guifg=#b09aff
-"hi Identifier guibg=red
-
 " NERDTree config
 " <C-t> = ctrl-t
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -137,10 +112,6 @@ nnoremap <C-f>     :NERDTreeFind<CR>
 "let g:neovide_cursor_animation_length = 0.23
 
 " VimWiki settings
-"let wiki = {}
-"let g:vimwiki_list = [{'path': '$HOME/vimwiki', 'template_path': '$HOME/vimwiki_tpl'}]
-
-" Default <leader> is '\'
 " Edit config
 " <S-s> = Shift-s
 nnoremap <leader><S-s> :Ex $HOME/dotfiles<CR>
