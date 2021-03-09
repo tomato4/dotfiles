@@ -4,7 +4,7 @@ source ./variables.sh
 source ./messages.sh
 
 # Check all requirements for setup
-#source ./pre_setup.sh
+source ./pre_setup.sh
 
 # Open rofi menu with all commands available
 message_info "Opening menu for commands. Multiple items can be selected by holding shift."
