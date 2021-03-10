@@ -67,6 +67,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 
 exec --no-startup-id xrandr --output HDMI-0 --primary
 exec --no-startup-id xrandr --output DP-1 --right-of HDMI-1 --auto
+exec --no-startup-id redshift-gtk
 
 # assign workspaces to monitors
 workspace 1 output $firstMonitor
