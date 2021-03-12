@@ -4,6 +4,8 @@
 [core]
   editor = nvim
   autocrlf = input
+[init]
+  defaultBranch = master
 [pull]
   rebase = false
 [alias]
