@@ -130,3 +130,6 @@ nnoremap <leader>u :UndotreeShow<CR>
 
 " load settings for rangevim plug
 source $HOME/dotfiles/nvim/plug-config/rnvimr.vim
+
+" save as root
+com -bar W exe 'w !sudo tee >/dev/null %:p:S' | setl nomod
