@@ -6,8 +6,8 @@ alias vim='nvim'
 alias diff='diff --color=auto'
 
 # Open basic applications on start
-alias start='opera & spotify & discord & exit'
-alias work='google-chrome-stable & /home/tomato/netbeans-12.0/netbeans/bin/netbeans & slack &konsole --workdir ~/NetBeansProjects/cme/ & exit'
+# alias start='opera & spotify & discord & exit'
+# alias work='google-chrome-stable & /home/tomato/netbeans-12.0/netbeans/bin/netbeans & slack &konsole --workdir ~/NetBeansProjects/cme/ & exit'
 
 # Open folders
 alias cme='cd ~/NetBeansProjects/cme/'
@@ -19,13 +19,12 @@ alias scrshare='~/Stažené/Mon2Cam.sh'
 alias scrsharerepair='sudo echo; cd ~/Stažené/v4l2loopback-master/; make clean; make; sudo make install; sudo depmod -a; sudo modprobe v4l2loopback; scrshare'
 
 # Set wacom draw tablet
-alias wacomLeft='xsetwacom set "Wacom One by Wacom M Pen stylus" MapToOutput 1920x1080+0+0 & xsetwacom set "Wacom One by Wacom M Pen eraser" MapToOutput 1920x1080+0+0'
-alias wacomRight='xsetwacom set "Wacom One by Wacom M Pen stylus" MapToOutput 1920x1080+1920+0 & xsetwacom set "Wacom One by Wacom M Pen eraser" MapToOutput 1920x1080+1920+0'
+alias wacomLeft='xsetwacom set "Wacom One by Wacom M Pen stylus" MapToOutput 1920x1080+0+0; xsetwacom set "Wacom One by Wacom M Pen eraser" MapToOutput 1920x1080+0+0'
+alias wacomRight='xsetwacom set "Wacom One by Wacom M Pen stylus" MapToOutput 1920x1080+1920+0; xsetwacom set "Wacom One by Wacom M Pen eraser" MapToOutput 1920x1080+1920+0'
 
 # Some basic shortcuts
 alias cl='clear'
-alias hdd='sudo /usr/local/bin/hddquiet'
-alias myg++='g++ -Wall -pedantic -Wextra -g -fsanitize=address'
+alias myg++='g++ -std=c++17 -Wall -pedantic -Wextra -g -fsanitize=address'
 
 # make dir and move into it shortcut
 mkcd() {
