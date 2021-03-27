@@ -54,7 +54,21 @@ label=P
 instance=3067696
 interval=300
 
-# Date Time
-[time]
-command=date '+%a %d.%m. %H:%M:%S'
+[battery]
+command=./i3blocks-contrib/battery2/battery2
+markup=pango
+interval=30
+
+[calendar]
+command=./i3blocks-contrib/calendar/calendar
 interval=1
+LABEL= 
+DATEFMT=+%a %d.%m. %H:%M:%S
+# SHORTFMT=+%H:%M:%S
+HEIGHT=180
+WIDTH=220
+
+# Date Time
+#[time]
+#command=date '+%a %d.%m. %H:%M:%S'
+#interval=1

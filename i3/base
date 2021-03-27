@@ -98,6 +98,9 @@ bindsym $mod+Ctrl+space exec "gnome-terminal --working-directory ~/dotfiles/setu
 # screenshot shortcut
 bindsym $mod+Shift+s exec flameshot gui
 
+# make yad (calendar of i3blocks tileable)
+for_window [class="Yad"] floating enable
+
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
