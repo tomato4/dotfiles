@@ -1,0 +1,70 @@
+# i3blocks config file
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+separator_block_width=15
+#markup=none
+
+# Crypto test
+[crypto]
+interval=60
+instance=BTC
+command=./scripts/crypto
+
+[crypto]
+interval=60
+instance=ETH
+command=./scripts/crypto
+
+# Core temp
+[temp]
+command=./i3blocks-contrib/temperature/temperature
+interval=5
+T_WARN=60
+T_CRIT=75
+#SENSOR_CHIP=""
+
+# Ram usage
+[ram]
+command=./i3blocks-contrib/memory/memory
+interval=10
+
+# Weather in Liberec
+[weather]
+command=./scripts/weather
+label=L
+instance=3071961
+interval=300
+
+# Weather in Prague
+[weather]
+command=./scripts/weather
+label=P
+instance=3067696
+interval=300
+
+[rofi-calendar]
+command=./i3blocks-contrib/rofi-calendar/rofi-calendar
+interval=1
+DATEFTM=+%a %d.%m. %H:%M:%S
+#SHORTFMT=+%d/%m/%Y
+LABEL= 
+FONT=Monospace 10
+#LEFTCLICK_PREV_MONTH=true
+#PREV_MONTH_TEXT=« previous month «
+#NEXT_MONTH_TEXT=» next month »
+#ROFI_CONFIG_FILE=/dev/null
