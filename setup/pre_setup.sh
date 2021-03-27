@@ -15,4 +15,11 @@ for file in $DOTFILES_SETUP/scripts/*
 do
    chmod +x $file
 done
+
+if ! [[ -f $DOTFILES_SETUP/env ]]
+then
+   message_warn "Enviroment not set. Setup enviroment var before continuing."
+   source ./setup_env.sh
+fi
+
 message_done "Requirements done."
