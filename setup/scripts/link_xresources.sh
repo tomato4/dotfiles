@@ -6,6 +6,6 @@ then
 fi
 
 rm $SETUP_HOME/.Xresources 2> /dev/null
-ln -s $DOTFILES_CONFIGS/.Xresources/.Xresources_$DOTFILES_ENV $SETUP_HOME/.Xresources
+ln -s $DOTFILES_CONFIGS/Xresources/.Xresources_$DOTFILES_ENV $SETUP_HOME/.Xresources
 
 message_done "Linked Xresources."
