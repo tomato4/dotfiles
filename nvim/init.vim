@@ -39,6 +39,9 @@ set nobackup
 set undodir=~/.config/nvim/undodir
 set undofile
 
+" sensible settings (:help 'option')
+set scrolloff=3 "set 3 space above cursor
+
 " Settings for vim-polyglot
 let g:polyglot_disabled = ['markdown']
 
@@ -64,31 +67,24 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'powerline/fonts'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim' , {'branch': 'release'}
-"Plug 'airblade/vim-gitgutter'
-Plug 'kshenoy/vim-signature'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
-"Plug 'godlygeek/tabular'
-"Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-"Plug 'gko/vim-coloresque'
-"Plug 'rhysd/vim-clang-format'
-"Plug 'luochen1990/rainbow', { 'for': 'scheme' }
-"Plug 'vimwiki/vimwiki'
-"Plug 'tpope/vim-sensible'
-"Plug 'sainnhe/edge'
-"Plug 'dracula/vim', {'as': 'dracula' }
-"Plug 'liuchengxu/space-vim-dark'
-"Plug 'tyrannicaltoucan/vim-deep-space'
-"Plug 'itchyny/landscape.vim'
-"Plug 'soli/prolog-vim'
-"Plug 'metakirby5/codi.vim'
-Plug 'https://github.com/joshdick/onedark.vim.git'
-Plug 'https://github.com/lambdalisue/suda.vim.git'
+Plug 'gko/vim-coloresque'
+Plug 'rhysd/vim-clang-format'
+Plug 'tpope/vim-sensible'
+Plug 'metakirby5/codi.vim'
 Plug 'https://github.com/chrisbra/unicode.vim'
 Plug 'kevinhwang91/rnvimr'
 Plug 'mbbill/undotree'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+" Themes
+Plug 'dracula/vim', {'as': 'dracula' }
+Plug 'https://github.com/joshdick/onedark.vim.git'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'sainnhe/edge'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Set rainbow parentheses
@@ -103,15 +99,6 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-t>     :NERDTreeToggle<CR>
 nnoremap <C-f>     :NERDTreeFind<CR>
 
-" Markdown settings
-"autocmd bufreadpre *.md setlocal conceallevel=2
-"autocmd bufreadpre *.md setlocal nofoldenable
-
-" Neovide settings
-"let g:neovide_cursor_vfx_mode         = "sonicboom"
-"let g:neovide_cursor_animation_length = 0.23
-
-" VimWiki settings
 " Edit config
 " <S-s> = Shift-s
 nnoremap <leader><S-s> :Ex $HOME/dotfiles<CR>
