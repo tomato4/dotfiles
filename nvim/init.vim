@@ -115,6 +115,12 @@ nnoremap <leader><Up> :wincmd k<CR>
 nnoremap <leader><Right> :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 
+" Mapping Tab commands
+nnoremap <leader>g :tabprevious<CR>
+nnoremap <leader>h :tabnext<CR>
+nnoremap <C-T> :tabclose<CR>
+nnoremap <C-t> :tabnew<CR>
+
 " load settings for rangevim plug
 source $HOME/dotfiles/nvim/plug-config/rnvimr.vim
 

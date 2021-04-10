@@ -23,7 +23,7 @@ set $key0 eacute
 # Set keyboard layout
 exec --no-startup-id setxkbmap cz -model pc105
 
-# Set defualt terminal
+# Set default terminal
 exec --no-startup-id alias gnome-terminal='gnome-terminal --hide-menubar'
 set $terminal gnome-terminal
 
