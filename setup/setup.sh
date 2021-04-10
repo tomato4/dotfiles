@@ -32,3 +32,5 @@ do
 done <<< "$OUTPUT"
 
 message_done "Execution finished."
+
+read -n1 -s -r -p $'Press any key to exit...\n' key

@@ -8,6 +8,9 @@ set hidden
 " disable sound on eol
 set noerrorbells
 
+" Color support
+set termguicolors
+
 " Sane settings
 filetype plugin on
 syntax on
@@ -55,7 +58,8 @@ let g:coc_global_extensions = [
 			\'coc-css',
 			\'coc-clangd',
 			\'coc-sh',
-			\'coc-discord-rpc'
+			\'coc-discord-rpc',
+			\'coc-highlight'
 			\]
 
 " Airline Settings
@@ -91,7 +95,7 @@ call plug#end()
 let g:rainbow_active = 1
 
 " Set colorscheme
-colorscheme onedark
+colorscheme dracula
 
 " NERDTree config
 " <C-t> = ctrl-t
@@ -118,7 +122,7 @@ nnoremap <leader>u :UndotreeShow<CR>
 " Mapping Tab commands
 nnoremap <leader>g :tabprevious<CR>
 nnoremap <leader>h :tabnext<CR>
-nnoremap <C-T> :tabclose<CR>
+nnoremap <C-S-T> :tabclose<CR>
 nnoremap <C-t> :tabnew<CR>
 
 " load settings for rangevim plug
