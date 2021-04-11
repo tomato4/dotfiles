@@ -3,6 +3,9 @@
 # set default text editor
 export EDITOR=/usr/bin/nvim
 
+# set global variables
+export DOTFILES=/home/tomato/dotfiles
+
 # add aliases file
 source /home/tomato/dotfiles/bash/tools/bash_aliases
 
