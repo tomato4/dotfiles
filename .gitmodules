@@ -4,3 +4,6 @@
 [submodule "/home/tomato/dotfiles/i3blocks/i3blocks-contrib"]
 	path = i3blocks/i3blocks-contrib
 	url = https://github.com/vivien/i3blocks-contrib.git
+[submodule "programs/dragon"]
+	path = programs/dragon
+	url = https://github.com/mwh/dragon.git
