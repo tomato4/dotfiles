@@ -4,6 +4,3 @@
 [submodule "/home/tomato/dotfiles/i3blocks/i3blocks-contrib"]
 	path = i3blocks/i3blocks-contrib
 	url = https://github.com/vivien/i3blocks-contrib.git
-[submodule "ranger/colorschemes"]
-	path = ranger/colorschemes
-	url = https://github.com/ranger/colorschemes.git
