@@ -56,10 +56,14 @@ let g:coc_global_extensions = [
 			\'coc-java',
 			\'coc-html',
 			\'coc-css',
+			\'coc-xml',
+			\'coc-yaml',
 			\'coc-clangd',
 			\'coc-sh',
 			\'coc-discord-rpc',
 			\'coc-highlight',
+			\'coc-diagnostic',
+			\'coc-markdownlint',
 			\]
 
 " Airline Settings
@@ -80,6 +84,10 @@ Plug 'https://github.com/chrisbra/unicode.vim'
 Plug 'kevinhwang91/rnvimr'
 Plug 'mbbill/undotree'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'mhinz/vim-startify'
+Plug 'liuchengxu/vim-which-key'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Plug 'dense-analysis/ale'
 " Plug 'scrooloose/syntastic'
 
@@ -142,6 +150,36 @@ nnoremap <leader>g :tabprevious<CR>
 nnoremap <leader>h :tabnext<CR>
 nnoremap <C-S-T> :tabclose<CR>
 nnoremap <C-t> :tabnew<CR>
+
+" navigate chunks of current buffer
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+" navigate conflicts of current buffer
+nmap [c <Plug>(coc-git-prevconflict)
+nmap ]c <Plug>(coc-git-nextconflict)
+" show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap gc <Plug>(coc-git-commit)
+" create text object for git chunks
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
+
+" Vim Which key settings
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+set timeoutlen=500
+
+" fzf settings
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " load settings for rangevim plug
 source $HOME/dotfiles/nvim/plug-config/rnvimr.vim
