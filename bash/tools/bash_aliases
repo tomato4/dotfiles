@@ -25,6 +25,8 @@ alias wacomRight='xsetwacom set "Wacom One by Wacom M Pen stylus" MapToOutput 19
 # Some basic shortcuts
 alias cl='clear'
 alias myg++='g++ -std=c++17 -Wall -pedantic -Wextra -g -fsanitize=address'
+alias r='ranger'
+alias e='exit'
 
 # make dir and move into it shortcut
 mkcd() {
