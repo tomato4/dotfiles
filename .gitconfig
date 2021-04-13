@@ -10,3 +10,4 @@
   rebase = false
 [alias]
   ll = log --oneline --graph --all --decorate
+  amend = commit --amend --no-edit
