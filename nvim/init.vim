@@ -56,6 +56,7 @@ let g:coc_global_extensions = [
 			\'coc-java',
 			\'coc-html',
 			\'coc-css',
+			\'coc-phpls',
 			\'coc-xml',
 			\'coc-yaml',
 			\'coc-clangd',
