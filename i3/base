@@ -93,7 +93,7 @@ bindsym $mod+space --release exec "rofi -combi-modi drun,window,ssh -show combi 
 bindsym $mod+period exec "rofimoji --skin-tone light"
 
 # setup my rofi setup menu
-bindsym $mod+Ctrl+space exec "termite -d ~/dotfiles/setup/ -e ~/dotfiles/setup/setup.sh" 
+bindsym $mod+Ctrl+space exec "$terminal -d ~/dotfiles/setup/ -e ~/dotfiles/setup/setup.sh" 
 
 # screenshot shortcut
 bindsym $mod+Shift+s exec flameshot gui
@@ -120,8 +120,7 @@ bindsym $mod+Ctrl+m exec pavucontrol
 # Start Applications
 bindsym $mod+Ctrl+b exec $terminal -e 'bmenu'
 bindsym $mod+F2 exec opera
-bindsym $mod+e exec pcmanfm
-bindsym $mod+F3 exec $terminal -e 'ranger'
+bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec $terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill picom
@@ -173,8 +172,8 @@ bindsym $mod+q split toggle
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
 #bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
