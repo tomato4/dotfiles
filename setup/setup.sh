@@ -10,6 +10,7 @@ source ./pre_setup.sh
 if ! [[ -f $DOTFILES_SETUP/env ]]
 then
    message_error "Env variable not set. Exiting..."
+   read -n1 -s -r -p $'Press any key to exit...\n' key
    exit 1
 fi
 
