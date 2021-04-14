@@ -43,7 +43,7 @@ set undodir=~/.config/nvim/undodir
 set undofile
 
 " sensible settings (:help 'option')
-set scrolloff=3 "set 3 space above cursor
+set scrolloff=5 "set 5 space above cursor
 
 " Settings for vim-polyglot
 let g:polyglot_disabled = ['markdown']
@@ -65,6 +65,7 @@ let g:coc_global_extensions = [
 			\'coc-highlight',
 			\'coc-diagnostic',
 			\'coc-markdownlint',
+			\'coc-pairs',
 			\]
 
 " Airline Settings
@@ -77,6 +78,10 @@ Plug 'powerline/fonts'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim' , {'branch': 'release'}
 Plug 'preservim/nerdtree'
+Plug 'tsony-tsonev/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdcommenter'
 Plug 'gko/vim-coloresque'
 Plug 'rhysd/vim-clang-format'
 Plug 'tpope/vim-sensible'
@@ -184,6 +189,49 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " load settings for rangevim plug
 source $HOME/dotfiles/nvim/plug-config/rnvimr.vim
+
+" NerdTree git highlight
+let g:NERDTreeGitStatusWithFlags = 0
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:NERDTreeGitStatusNodeColorization = 1
+let g:NERDTreeColorMapCustom = {
+    \ "Modified"  : "#528AB3",  
+    \ "Staged"    : "#538B54",  
+    \ "Untracked" : "#BE5849",  
+    \ "Dirty"     : "#299999",  
+    \ "Clean"     : "#87939A",   
+    \ "Ignored"   : "#808080"   
+    \ }   
+
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 0
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+" NerdCommenter
+map <silent><c-_> :call NERDComment('n', 'Toggle')<CR>
 
 " save as root
 com -bar W exe 'w !sudo tee >/dev/null %:p:S' | setl nomod

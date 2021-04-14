@@ -67,9 +67,13 @@ bindsym $mod+z exec --no-startup-id morc_menu
 
 exec --no-startup-id xrandr --output HDMI-0 --primary
 exec --no-startup-id xrandr --output DP-1 --right-of HDMI-1 --auto
-exec --no-startup-id redshift-gtk
+
+# Do not change active workspace with mouse; do not move mouse  when changing workspace
+focus_follows_mouse no
+mouse_warping none
 
 # assign workspaces to monitors
+workspace @ output $firstMonitor
 workspace 1 output $firstMonitor
 workspace 2 output $firstMonitor
 workspace 3 output $firstMonitor
@@ -101,6 +105,12 @@ bindsym $mod+Shift+s exec flameshot gui
 # make yad (calendar of i3blocks tileable)
 for_window [class="Yad"] floating enable
 
+# start email client
+#exec --no-startup-id i3-msg 'workspace @; exec bluemail'
+
+# start redshift automatically
+exec --no-startup-id redshift-gtk
+
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
@@ -131,8 +141,6 @@ bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-
-# focus_follows_mouse no
 
 # change focus
 #bindsym $mod+j focus left
