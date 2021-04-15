@@ -73,7 +73,6 @@ focus_follows_mouse no
 mouse_warping none
 
 # assign workspaces to monitors
-workspace @ output $firstMonitor
 workspace 1 output $firstMonitor
 workspace 2 output $firstMonitor
 workspace 3 output $firstMonitor
@@ -106,7 +105,7 @@ bindsym $mod+Shift+s exec flameshot gui
 for_window [class="Yad"] floating enable
 
 # start email client
-#exec --no-startup-id i3-msg 'workspace @; exec bluemail'
+exec --no-startup-id i3-msg 'workspace 10; exec bluemail'
 
 # start redshift automatically
 exec --no-startup-id redshift-gtk
