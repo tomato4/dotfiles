@@ -105,7 +105,7 @@ bindsym $mod+Shift+s exec flameshot gui
 for_window [class="Yad"] floating enable
 
 # start email client
-exec --no-startup-id i3-msg 'workspace 10; exec bluemail'
+exec --no-startup-id i3-msg 'workspace 1; exec bluemail'
 
 # start redshift automatically
 exec --no-startup-id redshift-gtk
