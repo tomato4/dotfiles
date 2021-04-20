@@ -22,6 +22,9 @@ alias scrsharerepair='sudo echo; cd ~/Stažené/v4l2loopback-master/; make clean
 alias wacomLeft='xsetwacom set "Wacom One by Wacom M Pen stylus" MapToOutput 1920x1080+0+0; xsetwacom set "Wacom One by Wacom M Pen eraser" MapToOutput 1920x1080+0+0'
 alias wacomRight='xsetwacom set "Wacom One by Wacom M Pen stylus" MapToOutput 1920x1080+1920+0; xsetwacom set "Wacom One by Wacom M Pen eraser" MapToOutput 1920x1080+1920+0'
 
+# Mon2Cam screenshare
+alias mon2cam="deno run --unstable -A -r -q ~/Programs/Mon2Cam/src/mod.ts"
+
 # Some basic shortcuts
 alias cl='clear'
 alias myg++='g++ -std=c++17 -Wall -pedantic -Wextra -g -fsanitize=address'
