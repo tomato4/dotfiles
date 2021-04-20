@@ -30,6 +30,7 @@ alias cl='clear'
 alias myg++='g++ -std=c++17 -Wall -pedantic -Wextra -g -fsanitize=address'
 alias r='ranger'
 alias e='exit'
+alias q='exit'
 
 # make dir and move into it shortcut
 mkcd() {
