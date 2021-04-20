@@ -13,6 +13,9 @@ nnoremap <leader>g :tabprevious<CR>
 nnoremap <leader>h :tabnext<CR>
 nnoremap <C-S-T> :tabclose<CR>
 
+" Undotree shortcut
+nnoremap <leader>u :UndotreeShow<CR>
+
 " Edit configs
 " <S-s> = Shift-s
 nnoremap <leader><S-s> :Ex $HOME/dotfiles<CR>
