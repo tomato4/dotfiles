@@ -1,3 +1,3 @@
 message_info "Installing opera."
-sudo snap install opera > /dev/null
+sudo pacman -S --needed --noconfirm opera > /dev/null
 message_done "Installed opera."
