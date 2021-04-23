@@ -292,6 +292,9 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 
+# My setup
+for_window [class="openssh-askpass"] floating enable, move absolute position 25 px 520 px
+#
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -441,7 +444,7 @@ bindsym $mod+m bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
+gaps inner 30
 gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.

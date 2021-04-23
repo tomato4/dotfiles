@@ -7,3 +7,6 @@
 [submodule "programs/dragon"]
 	path = programs/dragon
 	url = https://github.com/mwh/dragon.git
+[submodule "wallpapers"]
+	path = wallpapers
+	url = git@github.com:tomato4/wallpapers.git
