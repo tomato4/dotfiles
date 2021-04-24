@@ -110,6 +110,10 @@ exec --no-startup-id i3-msg 'workspace 1; exec bluemail'
 # start redshift automatically
 exec --no-startup-id redshift-gtk
 
+# start linux-notification-center (deadd)
+exec --no-startup-id deadd-notification-center
+bindsym $mod+a exec "kill -s USR1 $(pidof deadd-notification-center)"
+
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
@@ -134,7 +138,7 @@ bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec $terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+t exec --no-startup-id picom -b --experimental-backend
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $mod+Shift+d --release exec "kill $(pidof deadd-notification-center); exec deadd-notification-center; exec notify-send.py 'Restarted notify center'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -193,7 +197,7 @@ bindsym $mod+space focus mode_toggle
 #bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus parent
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad

@@ -17,3 +17,4 @@ source $HOME/dotfiles/nvim/setup/nerdcommenter.vim
 source $HOME/dotfiles/nvim/setup/themes.vim
 source $HOME/dotfiles/nvim/setup/rnvimr.vim
 source $HOME/dotfiles/nvim/setup/markdown-preview.vim
+source $HOME/dotfiles/nvim/setup/php-psr2.vim
