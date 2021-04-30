@@ -18,8 +18,7 @@ nnoremap <leader>u :UndotreeShow<CR>
 
 " Edit configs
 " <S-s> = Shift-s
-nnoremap <leader><S-s> :Ex $HOME/dotfiles<CR>
-nnoremap <leader>s     :e $HOME/dotfiles/nvim/init.vim<CR>
+nnoremap <leader><S-s> :e $HOME/dotfiles/nvim/init.vim<CR>
 
 " save as root
 com -bar W exe 'w !sudo tee >/dev/null %:p:S' | setl nomod
