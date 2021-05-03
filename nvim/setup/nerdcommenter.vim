@@ -26,4 +26,4 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 
 " NerdCommenter
-map <silent><c-_> :call NERDComment('n', 'Toggle')<CR>
+map <silent><c-_> :call NERDComment('n', 'Toggle')<CR><CR>

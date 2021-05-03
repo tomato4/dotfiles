@@ -19,51 +19,144 @@
 include-directory = ~/.config/polybar/modules
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+background = #282a36
+background-alt = #44475a
+foreground = #f8f8f2
+primary = #ff79c6
+alert = #ff5555
+line = ${colors.primary}
 
-[bar/example]
-bottom = true
-;monitor = ${env:MONITOR:HDMI-1}
+[style]
+padding = 1
+
+[bar/pc-left]
+bottom = false
+monitor = HDMI-0
 width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
-radius = 6.0
+height = 32
+offset-x = 0
+offset-y = 0
+
 fixed-center = false
+
+enable-ipc = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = #f00
-
-border-size = 4
-border-color = #00000000
+line-color = ${colors.line}
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
+format-padding = 0
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 0
+module-margin-right = 1
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = SourceCodeProMedium:pixelsize=10;
+font-1 = Weather Icons:size=11;0
+font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
+font-3 = Font Awesome 5 Free:size=10;
 
 modules-left = i3
-;modules-center = 
-modules-right = filesystem pulseaudio memory cpu eth temperature date
+;modules-center = spotify previous playpause next
+modules-right = weather-lbc weather-prg pulseaudio filesystem memory cpu eth temperature date
 
+;tray setup
 tray-position = right
+tray-background = ${colors.background}
 tray-padding = 2
+tray-offset-x = 0
+tray-offest-y = 0
+tray-scale = 1.0
+
+scroll-up = "#i3.prev"
+scroll-down = "#i3.next"
+
+cursor-click = pointer
+cursor-scroll = default
+
+[bar/pc-right]
+bottom = false
+monitor = DP-1
+width = 100%
+height = 32
+offset-x = 0
+offset-y = 0
+
+fixed-center = false
+
+enable-ipc = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = ${colors.line}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 1
+
+font-0 = SourceCodeProMedium:pixelsize=10;
+font-1 = Weather Icons:size=11;0
+font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
+font-3 = Font Awesome 5 Free:size=10;
+
+modules-left = i3
+;modules-center = spotify previous playpause next
+modules-right = weather-lbc weather-prg pulseaudio filesystem memory cpu eth temperature date
+
+scroll-up = "#i3.prev"
+scroll-down = "#i3.next"
+
+cursor-click = pointer
+cursor-scroll = default
+
+[bar/ntb]
+bottom = false
+;monitor = HDMI-0
+width = 100%
+height = 32
+offset-x = 0
+offset-y = 0
+
+fixed-center = false
+
+enable-ipc = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = ${colors.line}
+
+padding-left = 0
+padding-right = 0
+format-padding = 0
+
+module-margin-left = 0
+module-margin-right = 1
+
+font-0 = SourceCodeProMedium:pixelsize=10;
+font-1 = Weather Icons:size=11;0
+font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
+font-3 = Font Awesome 5 Free:size=10;
+
+modules-left = i3
+;modules-center = spotify previous playpause next
+modules-right = weather-lbc weather-prg pulseaudio filesystem memory cpu eth temperature date
+
+;tray setup
+tray-position = right
+tray-background = ${colors.background}
+tray-padding = 2
+tray-offset-x = 0
+tray-offest-y = 0
+tray-scale = 1.0
 
 scroll-up = "#i3.prev"
 scroll-down = "#i3.next"
@@ -73,9 +166,11 @@ cursor-scroll = default
 
 [settings]
 screenchange-reload = true
+margin-top = 0
 
-[global/wm]
-margin-top = 5
-margin-bottom = 5
+;format modules by default - fallback
+format-background = ${colors.background-alt}
+format-underline = ${colors.line}
+;format-padding = 1
 
 ; vim:ft=dosini

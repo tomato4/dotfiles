@@ -5,9 +5,20 @@ killall -q polybar
 # If all your bars have ipc enabled, you can also use 
 # polybar-msg cmd quit
 
-# Launch bar1 and bar2
 echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
-polybar bar1 2>&1 | tee -a /tmp/polybar1.log & disown
-polybar bar2 2>&1 | tee -a /tmp/polybar2.log & disown
+
+ENV=$(cat ~/dotfiles/setup/env)
+
+if [ $ENV = "pc" ]
+then
+    polybar pc-left 2>&1 | tee -a /tmp/polybar1.log & disown
+    polybar pc-right 2>&1 | tee -a /tmp/polybar2.log & disown
+elif [ $ENV = "airbook" ]
+then
+    polybar ntb 2>&1 | tee -a /tmp/polybar1.log & disown
+else
+    echo "!!!Error!!! for this ENV is not predefined polybar bar. Launching ntb default bar..." | tee -a /tmp/polybar1.log
+    polybar ntb 2>&1 & disown
+fi
 
 echo "Bars launched..."
