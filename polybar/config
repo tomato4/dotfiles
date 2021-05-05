@@ -24,6 +24,7 @@ background-alt = #44475a
 foreground = #f8f8f2
 primary = #ff79c6
 alert = #ff5555
+orange = #ffb86c
 line = ${colors.primary}
 
 [style]
@@ -61,7 +62,7 @@ font-3 = Font Awesome 5 Free:size=10;
 
 modules-left = i3
 ;modules-center = spotify previous playpause next
-modules-right = weather-lbc weather-prg pulseaudio filesystem memory cpu eth temperature date
+modules-right = crypto weather-lbc weather-prg pulseaudio filesystem memory cpu eth temperature date
 
 ;tray setup
 tray-position = right
@@ -144,7 +145,8 @@ module-margin-right = 1
 font-0 = SourceCodeProMedium:pixelsize=10;
 font-1 = Weather Icons:size=11;0
 font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
-font-3 = Font Awesome 5 Free:size=10;
+;font-3 = Font Awesome 5 Free:size=10;
+font-3 = "coins:style=Regular;0"
 
 modules-left = i3
 ;modules-center = spotify previous playpause next
