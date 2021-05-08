@@ -124,6 +124,8 @@ width = 100%
 height = 32
 offset-x = 0
 offset-y = 0
+dpi-x = 126
+dpi-y = 126
 
 fixed-center = false
 
@@ -150,7 +152,7 @@ font-3 = "coins:style=Regular;0"
 
 modules-left = i3
 ;modules-center = spotify previous playpause next
-modules-right = weather-lbc weather-prg pulseaudio filesystem memory cpu eth temperature date
+modules-right = weather-lbc weather-prg pulseaudio filesystem memory cpu temperature date
 
 ;tray setup
 tray-position = right
