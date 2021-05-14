@@ -31,7 +31,7 @@ set $terminal termite
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 1
+default_border pixel 2
 default_floating_border normal
 
 # Hide borders
@@ -308,9 +308,6 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
 # Set shut down, restart and locking features
 bindsym $mod+Escape mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)leep, (h)ibernate, (r)eboot, (Shift+s)hutdown
@@ -449,7 +446,7 @@ bindsym $mod+m bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 20
+gaps inner 15
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
