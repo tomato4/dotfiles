@@ -25,7 +25,7 @@ exec --no-startup-id setxkbmap cz -model pc105
 exec --no-startup-id xset r rate 150 50
 
 # Set default terminal
-set $terminal termite
+set $terminal alacritty
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -96,7 +96,7 @@ bindsym $mod+space --release exec "rofi -combi-modi drun,window,ssh -show combi 
 bindsym $mod+period exec "rofimoji --skin-tone light"
 
 # setup my rofi setup menu
-bindsym $mod+Ctrl+space exec "$terminal -d ~/dotfiles/setup/ -e ~/dotfiles/setup/setup.sh" 
+bindsym $mod+Ctrl+space exec "$terminal --working-directory ~/dotfiles/setup/ -e ~/dotfiles/setup/setup.sh" 
 
 # screenshot shortcut
 bindsym $mod+Shift+s exec flameshot gui

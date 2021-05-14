@@ -107,6 +107,7 @@ font-0 = SourceCodeProMedium:pixelsize=10;
 font-1 = Weather Icons:size=11;0
 font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
 font-3 = Font Awesome 5 Free:size=10;
+font-4 = coins:style=Regular
 
 modules-left = i3
 ;modules-center = spotify previous playpause next
