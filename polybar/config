@@ -25,6 +25,7 @@ foreground = #f8f8f2
 primary = #ff79c6
 alert = #ff5555
 orange = #ffb86c
+green = #50fa7b
 line = ${colors.primary}
 
 [style]
@@ -62,8 +63,8 @@ font-3 = Font Awesome 5 Free:size=10;
 font-4 = coins:style=Regular
 
 modules-left = i3
-;modules-center = spotify previous playpause next
-modules-right = crypto weather-lbc weather-prg pulseaudio filesystem memory cpu temperature-pc date
+;modules-center = spotify
+modules-right = spotify crypto weather-lbc weather-prg pulseaudio filesystem memory cpu temperature-pc date
 
 ;tray setup
 tray-position = right
@@ -110,8 +111,8 @@ font-3 = Font Awesome 5 Free:size=10;
 font-4 = coins:style=Regular
 
 modules-left = i3
-;modules-center = spotify previous playpause next
-modules-right = crypto weather-lbc weather-prg pulseaudio filesystem memory cpu temperature-pc date
+;modules-center = spotify
+modules-right = spotify crypto weather-lbc weather-prg pulseaudio filesystem memory cpu temperature-pc date
 
 scroll-up = "#i3.prev"
 scroll-down = "#i3.next"
@@ -153,8 +154,8 @@ font-3 = Font Awesome 5 Free:size=10;
 font-4 = coins:style=Regular
 
 modules-left = i3
-;modules-center = spotify previous playpause next
-modules-right = crypto weather-lbc weather-prg pulseaudio filesystem memory cpu temperature date
+modules-center = spotify
+modules-right = spotify crypto weather-lbc weather-prg pulseaudio filesystem memory cpu temperature date
 
 ;tray setup
 tray-position = right

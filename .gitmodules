@@ -16,3 +16,6 @@
 [submodule "polybar/modules_binary/polybar-cryptocurrency"]
 	path = polybar/modules_binary/polybar-cryptocurrency
 	url = git@github.com:tomato4/polybar-cryptocurrency.git
+[submodule "polybar/modules_binary/polybar-spotify"]
+	path = polybar/modules_binary/polybar-spotify
+	url = https://github.com/Jvanrhijn/polybar-spotify.git
