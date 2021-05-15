@@ -111,7 +111,7 @@ exec --no-startup-id i3-msg 'workspace 1; exec bluemail'
 exec --no-startup-id redshift-gtk
 
 # start linux-notification-center (deadd)
-exec --no-startup-id deadd-notification-center
+#exec --no-startup-id deadd-notification-center
 bindsym $mod+a exec "kill -s USR1 $(pidof deadd-notification-center)"
 
 ################################################################################################
