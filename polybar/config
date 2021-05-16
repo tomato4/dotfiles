@@ -150,12 +150,12 @@ module-margin-right = 1
 font-0 = SourceCodeProMedium:pixelsize=10;
 font-1 = Weather Icons:size=11;0
 font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
-font-3 = Font Awesome 5 Free:size=10;
+font-3 = Font Awesome 5 Pro:size=10;
 font-4 = coins:style=Regular
 
 modules-left = i3
 ;modules-center = spotify
-modules-right = spotify crypto weather-lbc weather-prg pulseaudio filesystem memory cpu temperature date
+modules-right = spotify crypto weather-lbc weather-prg pulseaudio battery memory cpu temperature date
 
 ;tray setup
 tray-position = right
