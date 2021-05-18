@@ -33,7 +33,11 @@ parser.add_argument("--prefix", type=str, nargs="?", default="", help="Prefix to
 
 args = parser.parse_args()
 
-response = requests.get(f"http://api.openweathermap.org/data/2.5/weather?id={args.city}&appid={args.api}&units={args.units}").json()
+try:
+    response = requests.get(f"http://api.openweathermap.org/data/2.5/weather?id={args.city}&appid={args.api}&units={args.units}").json()
+except requests.ConnectionError:
+    print("")
+    exit()
 
 weather = response["main"]
 temp = int(round(weather["temp"]))
