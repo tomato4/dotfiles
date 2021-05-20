@@ -19,3 +19,6 @@
 [submodule "polybar/modules_binary/polybar-spotify"]
 	path = polybar/modules_binary/polybar-spotify
 	url = https://github.com/Jvanrhijn/polybar-spotify.git
+[submodule "fonts"]
+	path = fonts
+	url = git@github.com:tomato4/fonts.git

@@ -25,3 +25,13 @@ install_pamac(){
       sudo pamac install --no-confirm $arg > /dev/null
    done
 }
+
+confirm(){
+   read -p "$1 [y/n]: "$reply -n 1 -r < /dev/tty
+   echo
+   if [[ ! $REPLY =~ ^[Yy]$ ]]
+   then
+      return 1
+   fi
+   return 0
+}

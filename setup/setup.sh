@@ -2,6 +2,7 @@
 
 source ./variables.sh
 source ./messages.sh
+source ./functions.sh
 
 # Check all requirements for setup
 source ./pre_setup.sh
