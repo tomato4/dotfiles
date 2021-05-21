@@ -1,3 +1,12 @@
+message_warn "****************************************"
+message_warn "*     !!!This script needs edit!!!     *"
+message_warn "****************************************"
+message_warn "This script is deprecated. It is not updated due to newer configuration with alacritty as terminal emulator and fish as shell."
+if ! confirm "Do you really want to continue?"
+then
+   return
+fi
+
 message_info "Installing gnome terminal."
 sudo pacman -S --needed --noconfirm gnome-terminal > /dev/null
 message_done "Installed gnome terminal."

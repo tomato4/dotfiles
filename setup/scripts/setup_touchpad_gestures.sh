@@ -1,6 +1,4 @@
-message_info "Instaling gestures libraries."
-sudo pacman -S --needed --noconfirm libinput libinput-gestures gestures > /dev/null
-message_info "Link config file."
+install_pacman libinput libinput-gestures gestures
 rm -f $CONFIG/libinput-gestures.conf
 ln -s $DOTFILES_CONFIGS/libinput-gestures.conf $CONFIG/libinput-gestures.conf
 message_info "Setting things up."

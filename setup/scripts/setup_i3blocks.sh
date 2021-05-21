@@ -1,6 +1,4 @@
-message_info "Installing i3blocks."
-sudo pamac install --no-confirm i3blocks > /dev/null
-message_done "Installed i3blocks."
+install_pamac i3blocks
 for file in $DOTFILES_I3BLOCK/scripts/*
 do
    chmod +x $file

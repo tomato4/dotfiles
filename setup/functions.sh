@@ -26,8 +26,22 @@ install_pamac(){
    done
 }
 
+install_snap(){
+   for arg in "$@"
+   do
+      if [[ $(snap list $arg) ]]
+      then
+         message_info "$SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET already installed. Skipping..."
+         continue
+      fi
+      message_info "Installing $SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET."
+      sudo snap install $arg > /dev/null
+   done
+}
+
 confirm(){
-   read -p "$1 [y/n]: "$reply -n 1 -r < /dev/tty
+   echo -en "$SETUP_COLOR_ORANGE$SETUP_FORMATING_BOLD[WARN]$SETUP_COLOR_RESET $1"
+   read -p " [y/n]: "$reply -n 1 -r < /dev/tty
    echo
    if [[ ! $REPLY =~ ^[Yy]$ ]]
    then

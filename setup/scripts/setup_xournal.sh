@@ -1,5 +1,4 @@
-message_info "Installing Xournal++"
-sudo pacman -S --needed --noconfirm xournalpp > /dev/null
+install_pacman xournalpp
 
 rm -rf $SETUP_HOME/.xournalpp
 ln -s $DOTFILES/xournal $SETUP_HOME/.xournalpp

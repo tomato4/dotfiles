@@ -1,4 +1,10 @@
 message_info "Preparing git configuration."
+
+if ! confirm "This will delete global .gitconfig file. Do you want to continue?"
+then
+    return
+fi
+
 rm -f $SETUP_HOME/.gitconfig
 cp $DOTFILES/.gitconfig $SETUP_HOME/.gitconfig
 message_done "Copied gitconfig file for global git configuration."

@@ -1,5 +1,5 @@
 message_info "Installing deadd-notification-center and notify-send.py."
-sudo pamac install --no-confirm deadd-notification-center-bin > /dev/null
+install_pamac deadd-notification-center-bin
 pip install notify-send.py > /dev/null
 message_info "Linking config file."
 rm -rf $CONFIG/deadd
