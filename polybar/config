@@ -64,7 +64,7 @@ font-4 = coins:style=Regular
 
 modules-left = i3
 ;modules-center = spotify
-modules-right = spotify crypto weather-lbc weather-prg pulseaudio filesystem memory cpu temperature-pc date
+modules-right = spotify crypto weather-lbc weather-prg pulseaudio memory cpu temperature-pc date
 
 ;tray setup
 tray-position = right
@@ -112,7 +112,7 @@ font-4 = coins:style=Regular
 
 modules-left = i3
 ;modules-center = spotify
-modules-right = spotify crypto weather-lbc weather-prg pulseaudio filesystem memory cpu temperature-pc date
+modules-right = spotify crypto weather-lbc weather-prg pulseaudio memory cpu temperature-pc date
 
 scroll-up = "#i3.prev"
 scroll-down = "#i3.next"
