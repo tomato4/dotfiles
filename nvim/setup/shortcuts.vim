@@ -22,5 +22,6 @@ nnoremap <leader><S-s> :e $HOME/dotfiles/nvim/init.vim<CR>
 nnoremap <leader>sv :source! $MYVIMRC<CR>
 
 " save as root
-com -bar W exe 'w !sudo tee >/dev/null %:p:S' | setl nomod
+"com -bar W exe 'w !sudo tee >/dev/null %:p:S' | setl nomod
+com -bar W exe 'w !sudo tee %<CR>' > /dev/null
 nnoremap <C-t> :tabnew<CR>

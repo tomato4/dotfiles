@@ -2,3 +2,5 @@
 set $firstMonitor eDP-1
 set $secondMonitor eDP-1
 
+exec --no-startup-id libinput-gestures-setup start
+
