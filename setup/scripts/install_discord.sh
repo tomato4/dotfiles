@@ -1,1 +1,1 @@
-install_pacman discord
+install_pamac discord-development-electron-bin
