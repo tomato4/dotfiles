@@ -22,3 +22,6 @@
 [submodule "fonts"]
 	path = fonts
 	url = git@github.com:tomato4/fonts.git
+[submodule "qutebrowser/dracula"]
+	path = qutebrowser/dracula
+	url = https://github.com/dracula/qutebrowser-dracula-theme.git
