@@ -1,4 +1,4 @@
-install_pacman fish fastfetch
+install_pacman fish fastfetch exa
 
 rm -rf $CONFIG/fish
 ln -s $DOTFILES/fish $CONFIG/fish
