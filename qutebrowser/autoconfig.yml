@@ -9,6 +9,7 @@ settings:
   bindings.commands:
     global:
       normal:
+        ;b: spawn --userscript qute-bitwarden
         J: tab-prev
         K: tab-next
   url.searchengines:
