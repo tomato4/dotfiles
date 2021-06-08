@@ -114,6 +114,9 @@ exec --no-startup-id redshift-gtk
 #exec --no-startup-id deadd-notification-center
 bindsym $mod+a exec "kill -s USR1 $(pidof deadd-notification-center)"
 
+# autostart wallpaper
+exec --no-startup-id "nitrogen --restore"
+
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
