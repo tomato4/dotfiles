@@ -16,13 +16,13 @@ install_pacman(){
 install_pamac(){
    for arg in "$@"
    do
-      if [[ $(pamac search --installed $arg) ]]
+      if [[ $(pamac search -a --installed $arg) ]]
       then
          message_info "$SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET already installed. Skipping..."
          continue
       fi
       message_info "Installing $SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET."
-      sudo pamac install --no-confirm $arg > /dev/null
+      sudo pamac install -a --no-confirm $arg > /dev/null
    done
 }
 
