@@ -178,7 +178,7 @@ c.tabs.indicator.width = 1
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'g': 'www.google.com/search?q={}', 'w': 'cs.wikipedia.org/w/index.php?search={}', 'yt': 'www.youtube.com/results?search_query={}'}
+c.url.searchengines = {'DEFAULT': 'www.google.com/search?q={}', 'd': 'https://duckduckgo.com/?q={}', 'w': 'cs.wikipedia.org/w/index.php?search={}', 'yt': 'www.youtube.com/results?search_query={}'}
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
