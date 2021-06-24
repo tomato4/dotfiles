@@ -85,9 +85,9 @@ workspace 9 output $secondMonitor
 workspace 10 output $secondMonitor
 
 # setup media keys on keyboard
-bindsym XF86AudioPlay exec playerctl -p spotify play-pause
-bindsym XF86AudioNext exec playerctl -p spotify next
-bindsym XF86AudioPrev exec playerctl -p spotify previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # shortcut for app launcher Rofi
 bindsym $mod+space --release exec "rofi -combi-modi drun,window,ssh -show combi -modi combi"
