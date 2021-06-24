@@ -1,7 +1,15 @@
 message_info "Installing php and apache."
 message_warn "There could be problem with key signatures. If so, install via pamac gui php56 and other php56 dep. This should add these keys."
-#sudo pamac install --no-confirm apache php php-apache php-cgi php-fpm php-gd php-intl php-pgsql php56 php56-apache php56-cgi php56-fpm php56-gd php56-intl php56-sqlite > /dev/null
-install_pacman apache php7 php7-fpm php7-gd php7-intl php7-pgsql phpmyadmin
-install_pamac php56-apache php56 php72 php72-apache php72-cgi php72-dblib php72-fpm php72-gd php72-intl php72-odbc php72-pgsql php72-sqlite php72-xsl
+
+# gpg keys for php 5.6
+message_info "Adding keyserver for php keys."
+if ! [[ $(sudo cat $SETUP_HOME/.gnupg/gpg.conf | egrep "keyserver\s+keyserver.ubuntu.com") ]]
+then
+   echo "keyserver keyserver.ubuntu.com" | sudo tee -a $SETUP_HOME/.gnupg/gpg.conf
+fi
+
+#install_pacman apache php7 php7-fpm php7-gd php7-intl php7-pgsql phpmyadmin
+install_pamac php56-apache php56 php74 php74-apache php74-dblib php74-fpm php74-gd php74-intl php74-xsl
+sudo ln -s /usr/bin/php74 /usr/bin/php
 message_done "Installed apache and php56/72."
 

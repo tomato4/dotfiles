@@ -13,6 +13,13 @@ then
    echo "127.0.0.1	cme" | sudo tee -a /etc/hosts
 fi
 
+if ! confirm "Linking php74 to php. This action will break the newest php installation!!!"
+then
+   return
+fi
+sudo rm -f /usr/bin/php
+sudo ln -s /usr/bin/php74 /usr/bin/php
+
 sudo mkdir -p /var/log/apache/cme
 sudo mkdir -p /etc/httpd/conf/sites-enabled
 sudo rm -f /etc/httpd/conf/sites-enabled/001-cme.conf
@@ -20,9 +27,14 @@ sudo rm -f /etc/httpd/conf/sites-enabled/000-cme.conf
 sudo ln -s $DOTFILES_WORK/001-cme.conf /etc/httpd/conf/sites-enabled/001-cme.conf
 sudo rm /etc/httpd/conf/extra/httpd-default.conf
 sudo ln -s $DOTFILES_WORK/httpd-default.conf /etc/httpd/conf/extra/httpd-default.conf
-sudo rm /etc/php/php.ini
+sudo rm -rf /etc/php/
 sudo rm /etc/php56/php.ini
-sudo ln -s $DOTFILES_WORK/php.ini /etc/php/php.ini
+#sudo rm /etc/php7/php.ini
+sudo rm /etc/php74/php.ini
+sudo mkdir /etc/php
+#sudo ln -s $DOTFILES_WORK/php.ini /etc/php/php.ini
+#sudo ln -s $DOTFILES_WORK/php.ini /etc/php7/php.ini
+sudo ln -s $DOTFILES_WORK/php74.ini /etc/php74/php.ini
 sudo ln -s $DOTFILES_WORK/php56.ini /etc/php56/php.ini
 sudo rm /etc/httpd/conf/httpd.conf
 sudo ln -s $DOTFILES_WORK/httpd.conf /etc/httpd/conf/httpd.conf
@@ -37,7 +49,11 @@ fi
 message_warn "Don't forget to setup inc-local file."
 message_warn "Running composer install... This action could potentialy fail on composer for php7.2."
 cd $WORK_CME/skripty/composer-php56/; composer install; cd ../composer-php72/; composer install
-sudo systemctl restart php56-fpm
-sudo systemctl restart php-fpm
+
+sudo systemctl enable php74-fpm
+sudo systemctl start php74-fpm
+sudo systemctl restart php74-fpm
+#sudo systemctl restart php56-fpm
+#sudo systemctl restart php-fpm
 sudo systemctl restart httpd
 message_done "Work env setup done."
