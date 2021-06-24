@@ -25,3 +25,6 @@
 [submodule "qutebrowser/dracula"]
 	path = qutebrowser/dracula
 	url = https://github.com/dracula/qutebrowser-dracula-theme.git
+[submodule "wallpapers_animated"]
+	path = wallpapers_animated
+	url = git@github.com:tomato4/wallpapers_animated.git
