@@ -22,7 +22,7 @@ install_pamac(){
          continue
       fi
       message_info "Installing $SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET."
-      sudo pamac install -a --no-confirm $arg > /dev/null
+      sudo pamac install --no-confirm $arg > /dev/null
    done
 }
 

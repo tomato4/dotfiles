@@ -34,6 +34,8 @@ do
 
    # run each selected script
    source ./scripts/$line
+   # reset script location
+   cd $DOTFILES_SETUP
 done <<< "$OUTPUT"
 
 message_done "Execution finished."
