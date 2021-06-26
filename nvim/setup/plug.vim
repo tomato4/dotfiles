@@ -21,7 +21,7 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'kana/vim-submode'
-"Plug 'sapphirecat/php-psr2-vim'
+Plug 'sapphirecat/php-psr2-vim'
 " Plug 'dense-analysis/ale'
 " Plug 'scrooloose/syntastic'
 

@@ -3,4 +3,3 @@
 let g:submode_always_show_submode = 1
 let g:submode_timeout = 0
 
-source $HOME/dotfiles/nvim/setup/submode-winresize.vim
