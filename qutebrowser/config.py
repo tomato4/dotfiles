@@ -180,6 +180,9 @@ c.tabs.indicator.width = 1
 # Type: Dict
 c.url.searchengines = {'DEFAULT': 'www.google.com/search?q={}', 'd': 'https://duckduckgo.com/?q={}', 'w': 'cs.wikipedia.org/w/index.php?search={}', 'yt': 'www.youtube.com/results?search_query={}'}
 
+c.url.default_page = "www.google.com"
+c.url.start_pages = "www.google.com"
+
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
 # Type: List of QtColor, or QtColor
@@ -505,3 +508,4 @@ config.set("colors.webpage.darkmode.enabled", True)
 config.bind(';b', 'spawn --userscript qute-bitwarden')
 config.bind('J', 'tab-prev')
 config.bind('K', 'tab-next')
+config.bind('M', 'hint links spawn --detach vlc -f {hint-url}')
