@@ -7,7 +7,7 @@ sudo curl -sL install-node.now.sh/lts | sudo bash
 message_done "Installed node.js."
 
 message_info "Installing pynvim and ueberzug for rnvimr..."
-pip3 install pynvim > /dev/null
+install_pacman pynvim
 pip3 install ueberzug > /dev/null
 message_done "Installed pynvim and ueberzug."
 
