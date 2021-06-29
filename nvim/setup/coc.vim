@@ -7,6 +7,8 @@ let g:coc_global_extensions = [
 			\'coc-xml',
 			\'coc-yaml',
 			\'coc-clangd',
+            \'coc-php-cs-fixer',
+            \'coc-pyright',
 			\'coc-sh',
 			\'coc-discord-rpc',
 			\'coc-highlight',
