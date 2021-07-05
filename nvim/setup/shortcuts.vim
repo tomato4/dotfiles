@@ -1,17 +1,23 @@
-" win key maping
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader><Left> :wincmd h<CR>
-nnoremap <leader><Down> :wincmd j<CR>
-nnoremap <leader><Up> :wincmd k<CR>
-nnoremap <leader><Right> :wincmd l<CR>
+" Window navigation mapping
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" window resize mapping
+noremap <silent> <C-S-Left> :vertical resize +3<CR>
+noremap <silent> <C-S-Right> :vertical resize -3<CR>
+noremap <silent> <C-S-Up> :resize +3<CR>
+noremap <silent> <C-S-Down> :resize -3<CR>
+
+" Change 2 split windows from vert to horiz or horiz to vert
+map <leader>th <C-w>t<C-w>H
+map <leader>tk <C-w>t<C-w>K
 
 " Tab mapping commands
-nnoremap <leader>g :tabprevious<CR>
-nnoremap <leader>h :tabnext<CR>
-nnoremap <C-S-T> :tabclose<CR>
+"nnoremap <leader>g :tabprevious<CR>
+"nnoremap <leader>h :tabnext<CR>
+"nnoremap <C-S-T> :tabclose<CR>
 
 " Undotree shortcut
 nnoremap <leader>u :UndotreeShow<CR>

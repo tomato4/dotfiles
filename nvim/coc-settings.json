@@ -2,9 +2,7 @@
     "rpc.checkIdle": false,
     "rpc.detailsViewing": "In {workspace}",
     "rpc.detailsEditing": "In {workspace}",
-    "rpc.detailsInExplorer": "{none}",
     "rpc.lowerDetailsEditing": "{filename}",
-    "rpc.lowerDetailsInExplorer": "{none}",
     "rpc.lowerDetailsViewing": "{filename}",
     "clangd.path": "/home/tomato/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
     "languageserver": {

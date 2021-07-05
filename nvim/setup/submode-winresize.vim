@@ -1,6 +1,6 @@
 " We're taking over the default <C-w> setting. Don't worry we'll do
 " our best to put back the default functionality.
-call submode#enter_with('window', 'n', '', '<C-w>')
+call submode#enter_with('window', 'n', '', '<C-S-W>')
 
 " Note: <C-c> will also get you out to the mode without this mapping.
 " Note: <C-[> also behaves as <ESC>

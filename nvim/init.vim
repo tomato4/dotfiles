@@ -21,4 +21,4 @@ source $HOME/dotfiles/nvim/setup/markdown-preview.vim
 "source $HOME/dotfiles/nvim/setup/clang-format.vim
 
 " Submodes include
-source $HOME/dotfiles/nvim/setup/submode-winresize.vim
+"source $HOME/dotfiles/nvim/setup/submode-winresize.vim
