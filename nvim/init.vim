@@ -18,6 +18,7 @@ source $HOME/dotfiles/nvim/setup/submode.vim
 source $HOME/dotfiles/nvim/setup/themes.vim
 source $HOME/dotfiles/nvim/setup/rnvimr.vim
 source $HOME/dotfiles/nvim/setup/markdown-preview.vim
+source $HOME/dotfiles/nvim/setup/session.vim
 "source $HOME/dotfiles/nvim/setup/clang-format.vim
 
 " Submodes include

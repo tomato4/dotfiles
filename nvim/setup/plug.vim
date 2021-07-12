@@ -21,6 +21,8 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'kana/vim-submode'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 " Plug 'dense-analysis/ale'
 " Plug 'scrooloose/syntastic'
 
