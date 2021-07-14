@@ -298,7 +298,7 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-for_window [class="gnome-calculator"] floating enable
+for_window [class="Gnome-calculator"] floating enable
 
 # My setup
 for_window [class="openssh-askpass"] floating enable, move absolute position 25 px 520 px
