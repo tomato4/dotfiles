@@ -2,6 +2,7 @@ let g:coc_global_extensions = [
 			\'coc-json',
 			\'coc-git',
 			\'coc-java',
+            \'coc-omnisharp',
 			\'coc-html',
 			\'coc-css',
 			\'coc-xml',
