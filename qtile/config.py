@@ -33,6 +33,7 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from libqtile.utils import logger
 
 mod = "mod4"
 terminal = guess_terminal(preference="alacritty")
@@ -100,22 +101,20 @@ keys = [
     Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="Make screenshot using flameshot."),
 ]
 
-groups = []
-group_names = ["plus", "ecaron", "scaron", "ccaron", "rcaron", "zcaron", "yacute", "aacute", "iacute", "eacute"]
-group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+groups_setup = [
+    ("plus",    {'label': '1',  'layout': 'monadtall'}),
+    ("ecaron",  {'label': '2',  'layout': 'monadtall'}),
+    ("scaron",  {'label': '3',  'layout': 'monadtall'}),
+    ("ccaron",  {'label': '4',  'layout': 'monadtall'}),
+    ("rcaron",  {'label': '5',  'layout': 'monadtall'}),
+    ("zcaron",  {'label': '6',  'layout': 'monadtall'}),
+    ("yacute",  {'label': '7',  'layout': 'monadtall'}),
+    ("aacute",  {'label': '8',  'layout': 'monadtall'}),
+    ("iacute",  {'label': '9',  'layout': 'monadtall'}),
+    ("eacute",  {'label': '10', 'layout': 'monadtall'})
+]
 
-# integrity check
-if len(group_names) != len(group_labels) or len(group_labels) != len(group_layouts):
-    raise Exception('Invalid groups length.')
-
-for i in range(len(group_names)):
-    groups.append(
-        Group(
-            name=group_names[i],
-            layout=group_layouts[i].lower(),
-            label=group_labels[i],
-        ))
+groups = [Group(name, **kwargs) for name, kwargs in groups_setup]
 
 for i in groups:
     keys.extend([
