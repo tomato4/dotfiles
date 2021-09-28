@@ -33,7 +33,6 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-from libqtile.utils import logger
 
 mod = "mod4"
 terminal = guess_terminal(preference="alacritty")
@@ -143,36 +142,110 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='sans',
+    font='Hack Nerd Font Mono:style=Bold',
     fontsize=12,
-    padding=3,
+    padding=2,
 )
 extension_defaults = widget_defaults.copy()
 
-screens = [
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.QuickExit(),
-            ],
-            24,
+colors = [["#282c34", "#282c34"], # panel background
+          ["#3d3f4b", "#434758"], # background for current screen tab
+          ["#ffffff", "#ffffff"], # font color for group names
+          ["#ff5555", "#ff5555"], # border line color for current tab
+          ["#74438f", "#74438f"], # border line color for 'other tabs' and color for 'odd widgets'
+          ["#4f76c7", "#4f76c7"], # color for the 'even widgets'
+          ["#e1acff", "#e1acff"], # window name
+          ["#ecbbfb", "#ecbbfb"]] # backbround for inactive screens
+
+# colors = {
+#     'panel_bg': ["#282c34", "#282c34"], # panel background
+#     'tab_active': ["#3d3f4b", "#434758"], # background for current screen tab
+#     'font': ["#ffffff", "#ffffff"], # font color for group names
+#     '': ["#74438f", "#74438f"], # border line color for 'other tabs' and color for 'odd widgets'
+#     '': ["#4f76c7", "#4f76c7"], # color for the 'even widgets'
+#     'line_active': ["#e1acff", "#e1acff"], # window name
+#     'line_inactive': ["#ecbbfb", "#ecbbfb"]
+# }
+
+def default_separator(padding = 6):
+    return widget.Sep(
+        linewidth = 0,
+        padding = padding,
+        foreground = colors[2],
+        background = colors[0]
+    )
+
+def init_default_widgets():
+    widgets = [
+        default_separator(),
+        widget.GroupBox(
+            # font = "Ubuntu Bold",
+            margin_y = 3,
+            margin_x = 0,
+            padding_y = 5,
+            padding_x = 6,
+            borderwidth = 3,
+            active = colors[2],
+            inactive = colors[7],
+            rounded = False,
+            highlight_color = colors[1],
+            highlight_method = "line",
+            this_current_screen_border = colors[6],
+            this_screen_border = colors[4],
+            other_current_screen_border = colors[6],
+            other_screen_border = colors[4],
+            foreground = colors[2],
+            background = colors[0]
         ),
-    ),
-]
+        widget.Spacer(),
+        widget.TextBox(
+            text = '',
+            background = colors[4],
+            foreground = colors[5],
+            padding = 0,
+            fontsize = 65
+        ),
+        widget.Clock(
+            foreground = colors[2],
+            background = colors[5],
+            format = "%A, %d %B %H:%M:%S"
+        ),
+    ]
+    return widgets
+
+def init_screens():
+    return [
+        Screen(top=bar.Bar(widgets=init_default_widgets(), opacity=1.0, size=30)),
+        Screen(top=bar.Bar(widgets=init_default_widgets(), opacity=1.0, size=30)),
+    ]
+
+if __name__ in ["config", "__main__"]:
+    screens = init_screens()
+
+# screens = [
+#     Screen(
+#         bottom=bar.Bar(
+#             [
+#                 widget.CurrentLayout(),
+#                 widget.GroupBox(),
+#                 widget.Prompt(),
+#                 widget.WindowName(),
+#                 widget.Chord(
+#                     chords_colors={
+#                         'launch': ("#ff0000", "#ffffff"),
+#                     },
+#                     name_transform=lambda name: name.upper(),
+#                 ),
+#                 widget.TextBox("default config", name="default"),
+#                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+#                 widget.Systray(),
+#                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+#                 widget.QuickExit(),
+#             ],
+#             24,
+#         ),
+#     ),
+# ]
 
 # Drag floating layouts.
 mouse = [
