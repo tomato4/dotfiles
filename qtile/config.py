@@ -198,12 +198,18 @@ def init_default_widgets():
             background = colors[0]
         ),
         widget.Spacer(),
+        widget.CurrentLayout(
+            foreground = colors[2],
+            background = colors[4],
+            padding = 5
+        ),
         widget.TextBox(
-            text = '',
+            text = '',
+            font = "PowerlineSymbols",
             background = colors[4],
             foreground = colors[5],
             padding = 0,
-            fontsize = 65
+            fontsize = 60
         ),
         widget.Clock(
             foreground = colors[2],
@@ -219,8 +225,7 @@ def init_screens():
         Screen(top=bar.Bar(widgets=init_default_widgets(), opacity=1.0, size=30)),
     ]
 
-if __name__ in ["config", "__main__"]:
-    screens = init_screens()
+screens = init_screens()
 
 # screens = [
 #     Screen(
