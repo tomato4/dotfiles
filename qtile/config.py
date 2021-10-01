@@ -91,7 +91,7 @@ keys = [
     Key([mod], "space", lazy.spawn("rofi -combi-modi drun,window,ssh -show combi -modi combi"), desc="Start application launcher."),
 
     # Emoji picker
-    Key([mod], "period", lazy.spawn("rofimoji --skin-tone light"), desc="Start emoji picker in rofi."),
+    Key([mod], "period", lazy.spawn("rofimoji --typer xdotool --action type --skin-tone light"), desc="Start emoji picker in rofi."),
 
     # Setup script
     Key([mod, "control"], "space", lazy.spawn(terminal + " --working-directory ~/dotfiles/setup/ -e 'bash ~/dotfiles/setup/setup.sh'"), desc="Run my setup bash script."),
@@ -205,11 +205,12 @@ def init_default_widgets():
         ),
         widget.TextBox(
             text = '',
-            font = "PowerlineSymbols",
+            font = "Source Code Pro for Powerline",
             background = colors[4],
             foreground = colors[5],
             padding = 0,
-            fontsize = 60
+            fontsize = 22,
+            width = 14
         ),
         widget.Clock(
             foreground = colors[2],
@@ -221,8 +222,8 @@ def init_default_widgets():
 
 def init_screens():
     return [
-        Screen(top=bar.Bar(widgets=init_default_widgets(), opacity=1.0, size=30)),
-        Screen(top=bar.Bar(widgets=init_default_widgets(), opacity=1.0, size=30)),
+        Screen(top=bar.Bar(widgets=init_default_widgets(), opacity=1.0, size=25)),
+        Screen(top=bar.Bar(widgets=init_default_widgets(), opacity=1.0, size=25)),
     ]
 
 screens = init_screens()
