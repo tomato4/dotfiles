@@ -12,3 +12,6 @@ pa-applet &
 # set keyboard settings (TODO: make it system default)
 setxkbmap cz -model pc105 &
 xset r rate 150 50 &
+
+# power manager (eg. light setup needs this)
+xfce4-power-manager &
