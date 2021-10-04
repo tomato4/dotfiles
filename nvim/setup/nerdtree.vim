@@ -1,6 +1,6 @@
 " <C-t> = ctrl-t
 nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-t>     :NERDTreeToggle<CR>
+"nnoremap <C-t>     :NERDTreeToggle<CR>
 nnoremap <C-f>     :NERDTreeFind<CR>
 
 " NerdTree git highlight
