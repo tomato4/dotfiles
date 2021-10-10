@@ -9,6 +9,7 @@ SETUVAR _fish_abbr_g_2B_2B_:g\x2b\x2b\x20\x2dstd\x3dc\x2b\x2b17\x20\x2dWall\x20\
 SETUVAR _fish_abbr_ga:git\x20add\x20\x2dA
 SETUVAR _fish_abbr_gc:git\x20commit
 SETUVAR _fish_abbr_gd:git\x20diff
+SETUVAR _fish_abbr_gitclean:git\x20branch\x20\x2d\x2dmerged\x20\x7c\x20egrep\x20\x2dv\x20\x22\x28\x5e\x5c\x2a\x7cmaster\x7cdev\x29\x22\x20\x7c\x20xargs\x20git\x20branch\x20\x2dd
 SETUVAR _fish_abbr_gl:git\x20ll
 SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_gs:git\x20status
