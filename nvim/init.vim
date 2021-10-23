@@ -44,6 +44,8 @@ set expandtab
 set shell=fish
 " location of vim swap files
 set backupskip=/tmp/*,/private/tmp/*
+" Use system clipboard
+set clipboard+=unnamedplus
 
 " live substitution (only neovim)
 if has('nvim')
@@ -77,7 +79,7 @@ set smartindent "Smart indent
 " don't wrap (autoenter new line) code
 set nowrap
 " Finding files - Search down into subfolders
-"set path+=**
+"set path+=*
 set wildignore+=*/node_modules/*
 "}}}
 
@@ -132,13 +134,12 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 "}}}
 
+let g:coq_settings = { 'auto_start': 'shut-up' }
+let mapleader = "\<Space>"
+
 " Imports "{{{
 " ---------------------------------------------------------------------
 runtime ./plug.vim
-if has("unix")
-  let s:uname = system("uname -s")
-endif
-
 runtime ./maps.vim
 "}}}
 
@@ -158,8 +159,7 @@ endif
 
 "}}}
 
-" Extras "{{{
-" ---------------------------------------------------------------------
+" Extras {{{
 set exrc
 set secure
 "}}}
