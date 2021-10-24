@@ -19,6 +19,9 @@ command! W w !sudo tee > /dev/null %
 nmap <silent><c-_> gcc<CR>
 vmap <silent><c-_> gc<CR>
 
+" File manager shortcut
+nnoremap <leader>v <cmd>CHADopen<cr>
+
 " Search for selected text {{{
 " Forwards
 vnoremap <silent> * :<C-U>

@@ -22,6 +22,7 @@ if has("nvim")
     Plug 'kyazdani42/nvim-web-devicons' " Custom icons for telescope
     Plug 'hoob3rt/lualine.nvim' " Lualine = powerline status bar
     Plug 'b3nj5m1n/kommentary' " Plugin for comments
+    Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'} " File manager
 endif
 
 " Themes
