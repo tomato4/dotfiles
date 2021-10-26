@@ -16,6 +16,8 @@ if has("nvim")
     Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'} " third party snippets
     Plug 'glepnir/lspsaga.nvim' " LSP plugin for UI
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Better coloring based on language
+    " Workaround for twig not being catched by TS.
+    Plug 'nelsyeung/twig.vim' " twig highlight
     Plug 'nvim-lua/popup.nvim' " DEP for telescope; Popup window management
     Plug 'nvim-lua/plenary.nvim' " DEP for telescope; async module
     Plug 'nvim-telescope/telescope.nvim' " Fuzy like browser

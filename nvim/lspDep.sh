@@ -3,4 +3,5 @@
 sudo npm install -g intelephense # PHP
 sudo npm install -g pyright # Python
 sudo npm install -g vim-language-server # Vim script
-sudo npm install -g vs-code-langservers-extracted # Other like HTML, ...
+sudo npm install -g vscode-langservers-extracted # Other like HTML, CSS, etc...
+sudo npm install -g diagnostic-languageserver
