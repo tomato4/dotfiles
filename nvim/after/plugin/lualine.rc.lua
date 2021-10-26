@@ -10,7 +10,7 @@ require'lualine'.setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff'},
-    lualine_c = {{'filename', file_status = true, path = 1}},
+    lualine_c = {{'filename', file_status = true, path = 0}},
     lualine_x = {
         { 'diagnostics', sources = {"nvim_lsp"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
         'encoding',

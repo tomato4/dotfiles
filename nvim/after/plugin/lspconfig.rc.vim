@@ -50,7 +50,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[augroup END]]
   end
 
-  require'completion'.on_attach(client, bufnr)
+  --require'completion'.on_attach(client, bufnr)
 
   --protocol.SymbolKind = { }
   protocol.CompletionItemKind = {
@@ -82,23 +82,30 @@ local on_attach = function(client, bufnr)
   }
 end
 
-local lsp_installer = require("nvim-lsp-installer")
+--local lsp_installer = require("nvim-lsp-installer")
 
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
+--lsp_installer.on_server_ready(function(server)
+--    local opts = {}
     -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-    server:setup(opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
-end)
+--    server:setup(opts)
+--    vim.cmd [[ do User LspAttachBuffers ]]
+--end)
 
-nvim_lsp.flow.setup {
-  on_attach = on_attach
-}
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'pyright', 'intelephense', 'vimls' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
 
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
-}
+--nvim_lsp.flow.setup {
+--  on_attach = on_attach
+--}
 
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
