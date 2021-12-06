@@ -46,6 +46,8 @@ set shell=fish
 set backupskip=/tmp/*,/private/tmp/*
 " Use system clipboard
 set clipboard+=unnamedplus
+" May reduce performance but needed for better response for git extension
+set updatetime=1000
 
 " live substitution (only neovim)
 if has('nvim')
