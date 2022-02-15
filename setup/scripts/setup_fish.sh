@@ -11,6 +11,6 @@ else
     message_done "OMF already installed..."
 fi
 
-chsh -s /usr/bin/fish
+chsh -s /usr/bin/fish < /dev/tty
 
 message_done "Fish setup completed."
