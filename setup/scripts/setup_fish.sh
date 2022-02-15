@@ -11,6 +11,9 @@ else
     message_done "OMF already installed..."
 fi
 
+fish -c "omf install bobthefish"
+fish -c "omf theme bobthefish"
+
 chsh -s /usr/bin/fish < /dev/tty
 
 message_done "Fish setup completed."
