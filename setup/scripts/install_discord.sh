@@ -1,1 +1,1 @@
-install_pamac discord-development-electron-bin
+install_yay discord

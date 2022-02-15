@@ -1,1 +1,1 @@
-install_snap slack
+install_yay slack
