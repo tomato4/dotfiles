@@ -1,1 +1,1 @@
-install_pamac jetbrains-toolbox
+install_yay jetbrains-toolbox
