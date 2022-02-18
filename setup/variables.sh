@@ -15,3 +15,10 @@ export DOTFILES_XKB="$DOTFILES/xkb"
 export WORK_CME="$SETUP_HOME/NetBeansProjects/cme"
 export DOTFILES_WORK="$DOTFILES/Work/config"
 
+# Apache
+export HTTPD="/etc/httpd/conf"
+export HTTPD_VHOSTS="$HTTPD/vhosts"
+export HTTPD_VHOSTS_ENABLED="$HTTPD/vhosts-enabled"
+export DOTFILES_APACHE="$DOTFILES/apache"
+export DOTFILES_HTTPD="$DOTFILES_APACHE/httpd"
+export PHP="/etc/php"

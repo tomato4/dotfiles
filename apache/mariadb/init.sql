@@ -1,0 +1,3 @@
+CREATE USER 'tomato'@localhost IDENTIFIED BY '12345';
+GRANT USAGE ON *.* TO 'tomato'@localhost IDENTIFIED BY '12345';
+FLUSH PRIVILEGES;

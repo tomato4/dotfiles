@@ -21,6 +21,18 @@ dd(){
     fi
 }
 
+ask_rofi(){
+    echo -n $@ | sed 's/ /\n/g' | rofi -dmenu -format 's\n' 2> /dev/null | sed 's/\\n//g'
+}
+
+ask_rofi_multi(){
+    echo -n $@ | sed 's/ /\n/g' | rofi -dmenu -multi-select -format 's\n' 2> /dev/null | sed 's/\\n//g'
+}
+
+get_all_files(){
+    for file in $1/*; do echo "$(basename $file)"; done
+}
+
 install_pacman(){
    for arg in "$@"
    do
