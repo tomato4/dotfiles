@@ -11,6 +11,16 @@ confirm(){
    return 0
 }
 
+dd(){
+    read -n1 -s -r -p $'Press any key to exit...\n' key
+    if [ -z "$1" ]
+    then
+        exit 0
+    else
+        exit $1
+    fi
+}
+
 install_pacman(){
    for arg in "$@"
    do

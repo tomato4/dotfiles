@@ -5,11 +5,38 @@ source ./messages.sh
 
 # This script checks all requirements for setup
 
+check(){
+    if ! $(which $1 > /dev/null 2>&1)
+    then
+        message_error "$1 is not installed. Exiting..."
+        dd 1
+    fi
+}
+
+install_and_check(){
+    CMD=$1
+    PKG=$2
+
+    if [ -z "$PKG" ]
+    then
+        PKG=$CMD
+    fi
+
+    if ! [[ $(pacman -Qe | grep "$PKG") ]]
+    then
+        if confirm "Requiered app $CMD is not installed. Install?"
+        then
+            install_pacman $PKG
+        fi
+    fi
+    check $CMD
+}
+
 message_info "Checking requirements for setup scripts."
-if ! [[ $(pacman -Qe | grep "rofi ") ]]
-then
-   sudo pacman -Sq --needed --noconfirm rofi > /dev/null
-fi
+
+install_and_check rofi
+install_and_check yay
+install_and_check pip python-pip
 
 for file in $DOTFILES_SETUP/scripts/*
 do

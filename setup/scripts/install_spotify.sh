@@ -1,1 +1,1 @@
-install_snap spotify
+install_yay spotify
