@@ -1,4 +1,4 @@
-install_pacman neovim
+install_pacman neovim xsel
 
 rm -rf $CONFIG/nvim
 ln -s $DOTFILES/nvim $CONFIG/nvim
