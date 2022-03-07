@@ -1,0 +1,32 @@
+partial alphanumeric_keys
+xkb_symbols "basic" {
+    include "cz(basic)"
+    name[Group1]= "Czech (own layout)";
+
+    key <TLDE> {	[ grave,	asciitilde      ]	};
+    key <AE01> {	[ plus,	  exclam,     1   ]	};
+    key <AE02> {	[	ecaron,	at,         2   ]	};
+    key <AE03> {	[	scaron,	numbersign, 3   ]	};
+    key <AE04> {	[	ccaron,	dollar,     4   ]	};
+    key <AE05> {	[	rcaron,	percent,    5   ]	};
+    key <AE06> {	[	zcaron,	asciicircum,6   ]	};
+    key <AE07> {	[	yacute,	ampersand,  7   ]	};
+    key <AE08> {	[	aacute,	asterisk,   8   ]	};
+    key <AE09> {	[	iacute,	parenleft,  9   ]	};
+    key <AE10> {	[	eacute,	parenright, 0   ]	};
+    key <AE11> {	[ minus,	underscore      ]	};
+    key <AE12> {	[ equal,	plus,   dead_acute, dead_caron  ]	};
+
+    key <AD06>  { [         y,          Y,     NoSymbol,     NoSymbol ] };
+    key <AD11>  { [bracketleft, braceleft,  uacute, NoSymbol ] };
+    key <AD12>  { [bracketright,  braceright,   NoSymbol,   NoSymbol ] };
+
+    key <AC10>  { [ semicolon,      colon,        uring,     NoSymbol ] };
+    key <AC11>  { [apostrophe,   quotedbl,     NoSymbol,     NoSymbol ] };
+    key <BKSL>  { [backslash, bar, NoSymbol, NoSymbol ] };
+
+    key <AB01>  { [         z,          Z,       degree,     NoSymbol ] };
+    key <AB08>  { [     comma,       less,     NoSymbol,     NoSymbol ] };
+    key <AB09>  { [    period,    greater,     NoSymbol,     NoSymbol ] };
+    key <AB10>  { [     slash,   question,     NoSymbol,     NoSymbol ] };
+};
