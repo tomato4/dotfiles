@@ -1,5 +1,5 @@
-message_info "Installing httpd, composer, php and it's modules"
-install_pacman apache composer php php-fpm php-apache php-cgi php-intl
+message_info "Installing httpd, composer, php and it's modules, xdebug (php debugger)"
+install_pacman apache composer php php-fpm php-apache php-cgi php-intl xdebug
 message_done "Installed"
 
 # link vhosts
@@ -28,6 +28,10 @@ fi
 # php.ini
 sudo rm -f $PHP/php.ini
 sudo ln -s $DOTFILES_APACHE/php.ini $PHP/php.ini
+
+# xdebug.ini
+sudo rm -f $PHP/conf.d/xdebug.ini
+sudo ln -s $DOTFILES_APACHE/xdebug.ini $PHP/conf.d/xdebug.ini
 
 # enable some hosts
 source $DOTFILES_SETUP/scripts/apache_enable.sh
