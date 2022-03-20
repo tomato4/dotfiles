@@ -14,6 +14,7 @@ SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_gs:git\x20status
 SETUVAR _fish_abbr_pipinstall:curl\x20https\x3a//bootstrap\x2epypa\x2eio/get\x2dpip\x2epy\x20\x7c\x20python
 SETUVAR _fish_abbr_q:exit
+SETUVAR _fish_abbr_sc:php\x20bin/console
 SETUVAR _fish_abbr_setup:alacritty\x20\x2d\x2dworking\x2ddirectory\x20\x7e/dotfiles/setup/\x20\x2de\x20\x2e/setup\x2esh
 SETUVAR _fish_abbr_v:nvim
 SETUVAR _fish_abbr_vim:nvim
