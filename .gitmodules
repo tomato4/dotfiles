@@ -35,3 +35,6 @@
 [submodule "Kde/Theme/Layan/Layan-kde"]
 	path = Kde/Theme/Layan/Layan-kde
 	url = https://github.com/vinceliuice/Layan-kde.git
+[submodule "colorscheme/phpstorm-light-lite-theme"]
+	path = colorscheme/phpstorm-light-lite-theme
+	url = git@github.com:brendt/phpstorm-light-lite-theme.git
