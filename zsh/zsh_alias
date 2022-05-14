@@ -1,0 +1,103 @@
+#
+# # ex - archive extractor
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.tar.xz)    tar xJf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# List commands
+alias ls='ls'
+alias ll='exa -alF'
+# ls, the common ones I use a lot shortened for rapid fire usage
+alias ll='exa -lF'    #size,show type
+alias la='exa -alF'   #show all, long, show type
+alias ldot='ls -l .*'
+alias lS='ls -1FSsh'
+
+# Quick access to the zshrc files
+alias zshrc='${=EDITOR} ~/.zshrc'
+alias zshalias='${=EDITOR} $DOTFILES/zsh/zsh_alias'
+
+alias grep='grep --color'
+
+# Command line head / tail shortcuts
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g L="| less"
+alias -g M="| most"
+alias -g LL="2>&1 | less"
+alias -g CA="2>&1 | cat -A"
+alias -g NE="2> /dev/null"
+alias -g NUL="> /dev/null 2>&1"
+
+# find
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
+alias h='history'
+alias hgrep="fc -El 0 | grep"
+alias p='ps -f'
+
+# git shortcuts
+alias g='git'
+alias ga='git add -A'
+alias gc='git commit'
+alias gA='git amend'
+alias gd='git diff'
+alias gl='git log --oneline --graph --all --decorate'
+alias gp='git push'
+alias gs='git status'
+
+# custom shortcuts
+alias e='exit'
+alias q='exit'
+alias cl='clear; fastfetch'
+alias sc='php bin/console'
+alias setup='(cd $DOTFILES/setup; ./setup.sh)'
+
+# ranger function with auto-cd to directory
+function r {
+    local SID=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 5)
+    ranger --choosedir=$HOME/.config/ranger/sessions/$SID
+    cd $(cat ~/.config/ranger/sessions/$SID)
+    rm ~/.config/ranger/sessions/$SID
+}
+
+# create folder and move to the folder
+function mkcd {
+    mkdir $1
+    cd $1
+}
+
+# clean git from deleted origin branches
+function gitclean {
+    git fetch --all -p
+    git branch -vv | grep ": gone]" | awk '{ print $1 }' | xargs -r -n 1 git branch -D
+    git branch --merged | egrep -v "(^\*|master|dev)" | xargs -r git branch -d
+}
+
+# start mon2cam
+function mon2cam {
+    deno run --unstable -A -r -q ~/Programs/Mon2Cam/src/mod.ts
+}
+
