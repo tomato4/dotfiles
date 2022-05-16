@@ -11,6 +11,11 @@ confirm(){
    return 0
 }
 
+input(){
+    read -p "$1"": " reply < /dev/tty
+    echo $reply
+}
+
 dd(){
     read -n1 -s -r -p $'Press any key to exit...\n' key
     if [ -z "$1" ]
