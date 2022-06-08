@@ -35,9 +35,12 @@
 [submodule "Kde/Theme/Layan/Layan-kde"]
 	path = Kde/Theme/Layan/Layan-kde
 	url = https://github.com/vinceliuice/Layan-kde.git
-[submodule "colorscheme/phpstorm-light-lite-theme"]
-	path = colorscheme/phpstorm-light-lite-theme
+[submodule "theme/phpstorm-light-lite-theme"]
+	path = themes/phpstorm-light-lite-theme
 	url = git@github.com:brendt/phpstorm-light-lite-theme.git
 [submodule "zsh/powerlevel10k"]
 	path = zsh/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "themes/dracula"]
+	path = themes/dracula
+	url = git@github.com:tomato4/dracula.git
