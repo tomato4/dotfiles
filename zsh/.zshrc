@@ -29,6 +29,11 @@ _comp_options+=(globdots)               # Include hidden files.
 # Custom ZSH Binds
 bindkey '^ ' autosuggest-accept
 
+# fix special keys
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
+
 # Load aliases and shortcuts if existent.
 [ -f "$DOTFILES/zsh/zsh_alias" ] && source "$DOTFILES/zsh/zsh_alias"
 
