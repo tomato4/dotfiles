@@ -29,6 +29,9 @@ _comp_options+=(globdots)               # Include hidden files.
 # Custom ZSH Binds
 bindkey '^ ' autosuggest-accept
 
+# change dir shortcut
+setopt autocd autopushd pushdignoredups
+
 # fix special keys
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
@@ -45,6 +48,8 @@ source $DOTFILES/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# source $DOTFILES/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # welcome screen
 fastfetch
