@@ -11,3 +11,5 @@
 [alias]
   ll = log --oneline --graph --all --decorate
   amend = commit --amend --no-edit
+[push]
+  autoSetupRemote = true
