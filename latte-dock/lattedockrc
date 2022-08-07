@@ -1,0 +1,64 @@
+[ActionsWidget]
+ColumnState=AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhAAAAACAQAAAQAAAAAAAAAAAAAAAGn/////AAAAgQAAAAAAAAACAAAA+gAAAAEAAAAAAAABFgAAAAEAAAAAAAAD6AAAAABp
+
+[ConfigDialog]
+HDMI-0 DP-1 Height 1920x1080=571
+HDMI-0 DP-1 Width 1920x1080=681
+
+[General]
+Number of Actions=0
+
+[KFileDialog Settings]
+Recent Files[$e]=Custom TLE.layout.latte,file:$HOME/dotfiles/Kde/Theme/Layan/Layan.layout.latte,file:$HOME/dotfiles/Kde/Theme/Layan/Custom TLE.layout.latte,file:$HOME/KdeTheme/Custom TLE.layout.latte
+Recent URLs[$e]=file:$HOME/KdeTheme/,file:$HOME/,file:$HOME/dotfiles/Kde/Theme/Layan/,file:$HOME/dotfiles/Kde/Theme/
+detailViewIconSize=16
+
+[LatteSettingsDialog]
+downloadWindowSize=980,600
+windowSize=1100,878
+
+[LatteSettingsDialog][DetailsDialog]
+windowSize=560,640
+
+[LatteSettingsDialog][TabLayouts]
+columnWidths=48,508,129,104
+sortColumn=3
+sortOrder=0
+
+[LatteSettingsDialog][ViewsDialog]
+columnWidths=59,256,142,135,131
+sortColumn=2
+sortOrder=0
+windowSize=980,694
+
+[Notification Messages]
+klipperClearHistoryAskAgain=false
+
+[PIMEventsPlugin]
+calendars=12,13,16,17,18,19
+
+[PlasmaThemeExtended]
+outlineWidth=1
+
+[PlasmaTransientsConfig]
+PreloadWeight=34
+
+[ScreenConnectors]
+10=HDMI-0:::0,0 1920x1080
+11=DP-1:::1920,0 1920x1080
+
+[UniversalSettings]
+badges3DStyle=false
+canDisableBorders=false
+contextMenuActionsAlwaysShown=_layouts,_preferences,_quit_latte,_separator1,_add_latte_widgets,_add_view
+inAdvancedModeForEditSettings=true
+isAvailableGeometryBroadcastedToPlasma=true
+launchers=
+memoryUsage=0
+metaPressAndHoldEnabled=true
+mouseSensitivity=2
+screenTrackerInterval=2500
+showInfoWindow=true
+singleModeLayoutName=Custom TLE
+userConfiguredAutostart=true
+version=2
