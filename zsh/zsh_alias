@@ -74,6 +74,7 @@ alias q='exit'
 alias cl='clear; fastfetch'
 alias sc='php bin/console'
 alias setup='(cd $DOTFILES/setup; ./setup.sh)'
+alias dockerkill='docker kill $(docker ps -q)'
 
 # ranger function with auto-cd to directory
 function r {
