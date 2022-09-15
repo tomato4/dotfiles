@@ -102,3 +102,6 @@ function mon2cam {
     deno run --unstable -A -r -q ~/Programs/Mon2Cam/src/mod.ts
 }
 
+function de {
+    docker exec -it "$1" /bin/bash
+}
