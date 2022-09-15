@@ -38,6 +38,11 @@ get_all_files(){
     for file in $1/*; do echo "$(basename $file)"; done
 }
 
+link(){
+    rm -f $2
+    ln -s $1 $2
+}
+
 install_pacman(){
    for arg in "$@"
    do

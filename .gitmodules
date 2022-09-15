@@ -47,3 +47,6 @@
 [submodule "zsh/zsh-autocomplete"]
 	path = zsh/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete.git
+[submodule "rofi-themes-collection"]
+	path = rofi-themes-collection
+	url = https://github.com/lr-tech/rofi-themes-collection.git

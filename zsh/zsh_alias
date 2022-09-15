@@ -78,7 +78,7 @@ alias dockerkill='docker kill $(docker ps -q)'
 
 # ranger function with auto-cd to directory
 function r {
-    local SID=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 5)
+    local SID=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 3)
     ranger --choosedir=$HOME/.config/ranger/sessions/$SID
     cd $(cat ~/.config/ranger/sessions/$SID)
     rm ~/.config/ranger/sessions/$SID
