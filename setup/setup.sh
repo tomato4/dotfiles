@@ -20,12 +20,18 @@ export DOTFILES_ENV=$(cat $DOTFILES_ENV_FILE)
 # check setups for this env
 source ./env_checker.sh
 
-# Open rofi menu with all commands available
-message_info "Opening menu for commands. Multiple items can be selected by holding shift."
-OUTPUT=$(for file in ./scripts/*; do echo "$(basename $file)"; done | rofi -dmenu -multi-select -format 's\n' 2> /dev/null | sed 's/\\n//g')
-PRINT=$(echo "$OUTPUT" | sed -z 's/\n/, /g')
-message_info "Selected commands: ${PRINT::-2}"
+# if script is run with arguments - scripts
+if [ $# -ne 0 ]; then
+    OUTPUT=$(sed 's/ /\n/g' <<< "$@")
+    PRINT=$@
+else
+    # Open rofi menu with all commands available
+    message_info "Opening menu for commands. Multiple items can be selected by holding shift."
+    OUTPUT=$(for file in ./scripts/*; do echo "$(basename $file)"; done | rofi -dmenu -multi-select -format 's\n' 2> /dev/null | sed 's/\\n//g')
+    PRINT=$(echo "$OUTPUT" | sed -z 's/\n/, /g')
+fi
 
+message_info "Selected commands: ${PRINT::-2}"
 while IFS= read -r line
 do
    # skip empty line
