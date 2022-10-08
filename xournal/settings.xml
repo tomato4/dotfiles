@@ -3,11 +3,11 @@
 <settings>
   <property name="pressureSensitivity" value="true"/>
   <property name="minimumPressure" value="0.05000000"/>
-  <property name="pressureMultiplier" value="1.00000000"/>
+  <property name="pressureMultiplier" value="0.80000000"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Right hand Note Taking Copy"/>
-  <property name="lastSavePath" value="/home/tomato"/>
-  <property name="lastOpenPath" value="/home/tomato/sandbox/school"/>
+  <property name="lastSavePath" value="/home/tomato/school/AAGv2/lab"/>
+  <property name="lastOpenPath" value="/home/tomato/school/AAGv2/du/du_1"/>
   <property name="lastImagePath" value=""/>
   <property name="edgePanSpeed" value="20.00000000"/>
   <property name="edgePanMaxMult" value="5.00000000"/>
@@ -16,10 +16,10 @@
   <property name="displayDpi" value="102"/>
   <property name="mainWndWidth" value="1920"/>
   <property name="mainWndHeight" value="1056"/>
-  <property name="maximized" value="false"/>
+  <property name="maximized" value="true"/>
   <property name="showToolbar" value="true"/>
-  <property name="showSidebar" value="true"/>
-  <property name="sidebarWidth" value="150"/>
+  <property name="showSidebar" value="false"/>
+  <property name="sidebarWidth" value="50"/>
   <property name="sidebarOnRight" value="false"/>
   <property name="scrollbarOnLeft" value="false"/>
   <property name="menubarVisible" value="true"/>
@@ -145,6 +145,14 @@
     </data>
   </data>
   <data name="deviceClasses">
+    <data name="ELAN2301:00 04F3:306B Mouse">
+      <attribute name="deviceClass" type="int" value="1"/>
+      <attribute name="deviceSource" type="int" value="0"/>
+    </data>
+    <data name="ELAN2301:00 04F3:306B Touchpad">
+      <attribute name="deviceClass" type="int" value="1"/>
+      <attribute name="deviceSource" type="int" value="6"/>
+    </data>
     <data name="Kingston HyperX Alloy FPS Mechanical Gaming Keyboard Consumer Control">
       <attribute name="deviceClass" type="int" value="0"/>
       <attribute name="deviceSource" type="int" value="0"/>
@@ -160,6 +168,10 @@
     <data name="Logitech Gaming Mouse G402 Consumer Control">
       <attribute name="deviceClass" type="int" value="1"/>
       <attribute name="deviceSource" type="int" value="0"/>
+    </data>
+    <data name="Wacom One by Wacom M Pen Pen (0)">
+      <attribute name="deviceClass" type="int" value="2"/>
+      <attribute name="deviceSource" type="int" value="1"/>
     </data>
     <data name="Wacom One by Wacom M Pen eraser">
       <attribute name="deviceClass" type="int" value="3"/>
@@ -189,7 +201,7 @@
     </data>
     <data name="eraser">
       <attribute name="drawingType" type="string" value="default"/>
-      <attribute name="size" type="string" value="THIN"/>
+      <attribute name="size" type="string" value="MEDIUM"/>
       <attribute name="type" type="string" value="default"/>
     </data>
     <data name="hand">
@@ -210,7 +222,7 @@
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
-      <attribute name="size" type="string" value="MEDIUM"/>
+      <attribute name="size" type="string" value="BIG"/>
       <attribute name="style" type="string" value="plain"/>
     </data>
     <data name="playObject">
