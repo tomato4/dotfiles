@@ -43,6 +43,10 @@ link(){
     ln -s $1 $2
 }
 
+install(){
+    install_yay $@
+}
+
 install_pacman(){
    for arg in "$@"
    do
