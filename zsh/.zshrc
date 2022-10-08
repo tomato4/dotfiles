@@ -13,6 +13,9 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 EDITOR=nvim
 DOTFILES=~/dotfiles
 
+export USER_ID=$(id -u)
+export USER_GROUP=$(id -g)
+
 # Disable case sensitive completion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
