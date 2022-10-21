@@ -1,6 +1,6 @@
 message_info "Installing latte-dock"
 
-install_yay "latte-dock"
+install_yay "latte-dock-git"
 
 message_info "Linking config files"
 
