@@ -43,6 +43,7 @@ outlineWidth=1
 [ScreenConnectors]
 10=HDMI-0:::0,0 1920x1080
 11=DP-1:::1920,0 1920x1080
+12=eDP-1:::0,0 1920x1080
 
 [UniversalSettings]
 badges3DStyle=false
@@ -59,6 +60,6 @@ parabolicSpread=3
 parabolicThicknessMarginInfluence=1
 screenTrackerInterval=2500
 showInfoWindow=true
-singleModeLayoutName=Custom TLE
+singleModeLayoutName=Main
 userConfiguredAutostart=true
 version=2
