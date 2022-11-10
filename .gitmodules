@@ -50,3 +50,6 @@
 [submodule "rofi-themes-collection"]
 	path = rofi-themes-collection
 	url = https://github.com/lr-tech/rofi-themes-collection.git
+[submodule "zsh/zsh-history-substring-search"]
+	path = zsh/zsh-history-substring-search
+	url = git@github.com:zsh-users/zsh-history-substring-search.git

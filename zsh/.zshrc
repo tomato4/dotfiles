@@ -53,6 +53,14 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/autojump/autojump.zsh 2>/dev/null
 source $DOTFILES/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
+# fishlike history search
+if [ -f "$DOTFILES/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh" ]
+then
+    source "$DOTFILES/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh"
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
