@@ -14,6 +14,7 @@ export DOTFILES_I3BLOCK="$DOTFILES/i3blocks"
 export DOTFILES_BASH="$DOTFILES/bash"
 export DOTFILES_PROGRAMS="$DOTFILES/programs"
 export DOTFILES_XKB="$DOTFILES/xkb"
+export DOTFILES_ZSH="$DOTFILES/zsh"
 export WORK_CME="$SETUP_HOME/NetBeansProjects/cme"
 export DOTFILES_WORK="$DOTFILES/Work/config"
 

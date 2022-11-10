@@ -12,6 +12,7 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # Custom Variables
 EDITOR=nvim
 DOTFILES=~/dotfiles
+DOTFILES_ZSH=$DOTFILES/zsh
 
 export USER_ID=$(id -u)
 export USER_GROUP=$(id -g)
@@ -45,18 +46,18 @@ bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
 
 # Load aliases and shortcuts if existent.
-[ -f "$DOTFILES/zsh/zsh_alias" ] && source "$DOTFILES/zsh/zsh_alias"
+[ -f "$DOTFILES_ZSH/zsh_alias" ] && source "$DOTFILES_ZSH/zsh_alias"
 
 # Load ; should be last.
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/autojump/autojump.zsh 2>/dev/null
-source $DOTFILES/zsh/powerlevel10k/powerlevel10k.zsh-theme
+source $DOTFILES_ZSH/powerlevel10k/powerlevel10k.zsh-theme
 
 # fishlike history search
-if [ -f "$DOTFILES/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh" ]
+if [ -f "$DOTFILES_ZSH/zsh-history-substring-search/zsh-history-substring-search.zsh" ]
 then
-    source "$DOTFILES/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh"
+    source "$DOTFILES_ZSH/zsh-history-substring-search/zsh-history-substring-search.zsh"
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
 fi

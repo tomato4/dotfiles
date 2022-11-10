@@ -24,7 +24,7 @@ install_and_check(){
 
     if ! [[ $(pacman -Qe | grep "$PKG") ]]
     then
-        if confirm "Requiered app $CMD is not installed. Install?"
+        if confirm "Required app $CMD is not installed. Install?"
         then
             install_pacman $PKG
         fi

@@ -38,9 +38,8 @@ do
    if ! [ $line ]; then continue; fi
 
    # run each selected script
-   source ./scripts/$line
-   # reset script location
-   cd $DOTFILES_SETUP
+   ./scripts/$line
+
 done <<< "$OUTPUT"
 
 message_done "Execution finished."

@@ -10,11 +10,13 @@ confirm(){
    fi
    return 0
 }
+export -f confirm
 
 input(){
     read -p "$1"": " reply < /dev/tty
     echo $reply
 }
+export -f input
 
 dd(){
     read -n1 -s -r -p $'Press any key to exit...\n' key
@@ -25,27 +27,33 @@ dd(){
         exit $1
     fi
 }
+export -f dd
 
 ask_rofi(){
     echo -n $@ | sed 's/ /\n/g' | rofi -dmenu -format 's\n' 2> /dev/null | sed 's/\\n//g'
 }
+export -f ask_rofi
 
 ask_rofi_multi(){
     echo -n $@ | sed 's/ /\n/g' | rofi -dmenu -multi-select -format 's\n' 2> /dev/null | sed 's/\\n//g'
 }
+export -f ask_rofi_multi
 
 get_all_files(){
     for file in $1/*; do echo "$(basename $file)"; done
 }
+export -f get_all_files
 
 link(){
     rm -f $2
     ln -s $1 $2
 }
+export -f link
 
 install(){
     install_yay $@
 }
+export -f install
 
 install_pacman(){
    for arg in "$@"
@@ -59,6 +67,7 @@ install_pacman(){
       sudo pacman -S --needed --noconfirm $arg > /dev/null
    done
 }
+export -f install_pacman
 
 install_yay(){
    for arg in "$@"
@@ -72,6 +81,7 @@ install_yay(){
       yay -S --answerdiff None --answerclean None --nocleanmenu --nodiffmenu --removemake $arg < /dev/tty
    done
 }
+export -f install_yay
 
 install_pamac(){
     message_warn "Pamac install function is deprecated. Using YAY install instead."
@@ -88,6 +98,7 @@ install_pamac(){
    #    sudo pamac install --no-confirm $arg > /dev/null
    # done
 }
+export -f install_pamac
 
 install_snap(){
     if ! confirm "Installing $@ from snap (not recommended). Do you really want to continue?"
@@ -105,4 +116,5 @@ install_snap(){
       sudo snap install $arg > /dev/null
    done
 }
+export -f install_snap
 
