@@ -13,6 +13,10 @@ Recent Files[$e]=Custom TLE.layout.latte,file:$HOME/dotfiles/Kde/Theme/Layan/Lay
 Recent URLs[$e]=file:$HOME/KdeTheme/,file:$HOME/,file:$HOME/dotfiles/Kde/Theme/Layan/,file:$HOME/dotfiles/Kde/Theme/
 detailViewIconSize=16
 
+[KPropertiesDialog]
+eDP-1 Height 1920x1080 eDP-1=566
+eDP-1 Width 1920x1080 eDP-1=588
+
 [LatteSettingsDialog]
 downloadWindowSize=980,600
 windowSize=1100,878
@@ -46,6 +50,7 @@ outlineWidth=1
 12=eDP-1:::0,0 1920x1080
 13=DP-1-5:::3840,0 1920x1200
 14=DP-1-6:::1920,60 1920x1080
+15=HDMI-2:::1920,0 1920x1080
 
 [UniversalSettings]
 badges3DStyle=false
