@@ -1,4 +1,5 @@
-#
+#!/usr/bin/zsh
+
 # # ex - archive extractor
 # # usage: ex <file>
 ex ()
@@ -23,6 +24,9 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+
+# alias vim
+alias vim=nvim
 
 # List commands
 alias ls='ls'
@@ -107,6 +111,12 @@ function mon2cam {
     deno run --unstable -A -r -q ~/Programs/Mon2Cam/src/mod.ts
 }
 
+# Docker exec
 function de {
     docker exec -it "$1" /bin/bash
 }
+
+_de() {
+    compadd $(docker ps --format "{{.Names}}")
+}
+compdef _de de
