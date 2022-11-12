@@ -1,2 +1,5 @@
-//@theme "/usr/share/rofi/themes/Pop-Dark.rasi"
 @theme "/home/tomato/.local/share/rofi/themes/rounded-orange-dark.rasi"
+
+element-icon {
+    size: 0;
+}
