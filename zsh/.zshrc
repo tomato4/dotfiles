@@ -11,11 +11,14 @@
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
-# Custom Variables
-EDITOR=nvim
-DOTFILES=~/dotfiles
-DOTFILES_ZSH=$DOTFILES/zsh
+# Custom settings
+export TERM="xterm-256color"
+export EDITOR=nvim
+export MANPAGER="nvim -c 'Man!' -o -"
 
+# Custom variables
+export DOTFILES=~/dotfiles
+DOTFILES_ZSH=$DOTFILES/zsh
 export USER_ID=$(id -u)
 export USER_GROUP=$(id -g)
 
