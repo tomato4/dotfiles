@@ -29,13 +29,10 @@ ex ()
 alias vim=nvim
 
 # List commands
-alias ls='ls'
-alias ll='exa -alF'
-# ls, the common ones I use a lot shortened for rapid fire usage
-alias ll='exa -lF'    #size,show type
-alias la='exa -alF'   #show all, long, show type
-alias ldot='ls -l .*'
-alias lS='ls -1FSsh'
+alias ls='exa -a --color=always --group-directories-first'
+alias ll='exa -alF --color=always --group-directories-first'
+alias lt='exa -aT --color=always --group-directories-first'
+alias l.='exa -a | grep "^\."'
 
 # Quick access to the zshrc files
 alias zshrc='${=EDITOR} ~/.zshrc'
@@ -85,6 +82,9 @@ alias cl='clear; fastfetch'
 alias sc='php bin/console'
 alias setup='(cd $DOTFILES/setup; ./setup.sh)'
 alias dockerkill='docker kill $(docker ps -q)'
+
+# don't mind me here
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
 # ranger function with auto-cd to directory
 function r {
