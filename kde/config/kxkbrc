@@ -1,0 +1,9 @@
+[$Version]
+update_info=kxkb_variants.upd:split-variants,kxkb.upd:remove-empty-lists,kxkb.upd:add-back-resetoptions
+
+[Layout]
+DisplayNames=
+LayoutLoopCount=-1
+Model=pc86
+ResetOldOptions=false
+SwitchMode=Global

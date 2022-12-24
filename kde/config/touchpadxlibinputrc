@@ -1,0 +1,7 @@
+[ELAN2301:00 04F3:306B Touchpad]
+middleEmulation=true
+naturalScroll=true
+pointerAcceleration=0
+scrollEdge=false
+scrollTwoFinger=true
+tapDragLock=false
