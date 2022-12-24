@@ -44,13 +44,16 @@ calendars=12,13,16,17,18,19
 [PlasmaThemeExtended]
 outlineWidth=1
 
+[PlasmaTransientsConfig]
+PreloadWeight=0
+
 [ScreenConnectors]
 10=HDMI-0:::0,0 1920x1080
 11=DP-1:::1920,0 1920x1080
 12=eDP-1:::0,0 1920x1080
 13=DP-1-5:::3840,0 1920x1200
 14=DP-1-6:::1920,60 1920x1080
-15=HDMI-2:::1920,0 1920x1080
+15=HDMI-2:::0,0 1920x1080
 
 [UniversalSettings]
 badges3DStyle=false
