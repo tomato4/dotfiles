@@ -18,6 +18,10 @@ export DOTFILES_ZSH="$DOTFILES/zsh"
 export WORK_CME="$SETUP_HOME/NetBeansProjects/cme"
 export DOTFILES_WORK="$DOTFILES/Work/config"
 
+# KDE configuration
+export DOTFILES_KDE="$DOTFILES/kde"
+export DOTFILES_KDE_CONFIG="$DOTFILES_KDE/config"
+
 # Apache
 export HTTPD="/etc/httpd/conf"
 export HTTPD_VHOSTS="$HTTPD/vhosts"

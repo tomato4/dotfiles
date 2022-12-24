@@ -1,3 +1,8 @@
+if ! confirm "Latte-dock is not maintained anymore. Do you really want to install it?"
+then
+    return
+fi
+
 message_info "Installing latte-dock"
 
 install_yay "latte-dock-git"

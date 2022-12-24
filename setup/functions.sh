@@ -40,12 +40,12 @@ ask_rofi_multi(){
 export -f ask_rofi_multi
 
 get_all_files(){
-    for file in $1/*; do echo "$(basename $file)"; done
+    for file in $1/*; do basename -- "$file"; done
 }
 export -f get_all_files
 
 link(){
-    rm -f $2
+    rm -fr $2
     ln -s $1 $2
 }
 export -f link
