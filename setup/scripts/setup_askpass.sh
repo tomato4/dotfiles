@@ -1,8 +1,13 @@
-install_pacman openssh-askpass
+install_pacman ksshaskpass
 
-if ! [[ $(cat /etc/sudo.conf | grep "^Path askpass /usr/bin/qt4-ssh-askpass$") ]]
+if grep -q "^Path askpass /usr/bin/qt4-ssh-askpass$" /etc/sudo.conf
 then
-    echo "Path askpass /usr/bin/qt4-ssh-askpass" | sudo tee -a /etc/sudo.conf
-    message_done "Wrote askpass settings to sudo.conf."
+    grep -v "^Path askpass /usr/bin/qt4-ssh-askpass$" /etc/sudo.conf | sudo tee /etc/sudo.conf >/dev/null
+    message_info "Removed old qt4-ssh-askpass."
 fi
 
+if ! grep -q "^Path askpass /usr/bin/ksshaskpass$" /etc/sudo.conf
+then
+    echo "Path askpass /usr/bin/ksshaskpass" | sudo tee -a /etc/sudo.conf >/dev/null
+    message_done "Wrote askpass settings to sudo.conf."
+fi
