@@ -126,3 +126,20 @@ _de() {
     compadd $(docker ps --format "{{.Names}}")
 }
 compdef _de de
+
+# remove symlink (and substitute with real file)
+function lnrm {
+    if [ $# != 1 ]; then
+        echo "Invalid number of arguments."
+        return 1
+    fi
+
+    if [ ! -L "$1" ]; then
+        echo "Not a symlinked file."
+        return 1
+    fi
+
+    realpath=$(readlink -f "$1")
+    rm -f "$1"
+    cp -r "$realpath" "$1"
+}
