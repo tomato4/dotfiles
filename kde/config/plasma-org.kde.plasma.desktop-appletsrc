@@ -154,8 +154,18 @@ wallpaperplugin=org.kde.image
 immutability=1
 plugin=org.kde.plasma.simplemenu
 
+[Containments][124][Applets][125][Configuration]
+PreloadWeight=100
+
+[Containments][124][Applets][125][Configuration][ConfigDialog]
+DialogHeight=780
+DialogWidth=1040
+
 [Containments][124][Applets][125][Configuration][General]
 favoritesPortedToKAstats=true
+
+[Containments][124][Applets][125][Shortcuts]
+global=Meta+F1
 
 [Containments][124][Applets][126]
 immutability=1
@@ -170,7 +180,7 @@ immutability=1
 plugin=org.kde.plasma.betterinlineclock
 
 [Containments][124][Applets][129][Configuration]
-PreloadWeight=55
+PreloadWeight=60
 
 [Containments][124][Applets][131]
 immutability=1

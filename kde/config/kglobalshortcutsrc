@@ -34,6 +34,7 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 [khotkeys]
 _k_friendly_name=Custom Shortcuts Service
 {1a902a88-2d10-4a55-a45b-0c8af94a7980}=Meta+.,none,Rofimoji
+{3d7c4f30-4814-4782-8360-ff2aee3bf9a2}=Meta+Shift+Q,none,Rofipowermenu
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=none,none,Search
 
 [kmix]
@@ -326,6 +327,7 @@ activate task manager entry 7=Meta+7,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=Meta+8,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=Meta+9,Meta+9,Activate Task Manager Entry 9
 activate widget 103=none,none,Activate Application Launcher Widget
+activate widget 125=Meta+F1,none,Activate Simple Menu Widget
 activate widget 3=Alt+F1,none,Activate Application Launcher Widget
 activate widget 30=none,none,Activate Application Launcher Widget
 activate widget 52=none,none,Activate Application Launcher Widget
