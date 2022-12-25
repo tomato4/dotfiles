@@ -13,5 +13,5 @@ PointerAccelerationProfile=2
 TapToClick=true
 
 [Mouse]
-X11LibInputXAccelProfileFlat=false
+X11LibInputXAccelProfileFlat=true
 XLbInptAccelProfileFlat=true
