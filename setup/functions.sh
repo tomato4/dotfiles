@@ -50,6 +50,52 @@ link(){
 }
 export -f link
 
+# removes content from file
+file_remove_content() {
+    if [[ $# != 2 ]]; then
+        echo "Invalid argument count."
+        return 1
+    fi
+
+    if ! [[ -f $1 ]]; then
+        printf "File '%s' does not exists.\n" "$1"
+        return 1
+    fi
+
+    # ignore if file does not contain requested string
+    grep -q "^$2$" "$1" || return 0
+
+    if [[ -w $1 ]]; then
+        grep -v "^$2$" "$1" | tee "$1" >/dev/null
+    else
+        grep -v "^$2$" "$1" | sudo tee "$1" >/dev/null
+    fi
+}
+export -f file_remove_content
+
+# adds content to file, if not already in file
+file_add_content() {
+    if [[ $# != 2 ]]; then
+        echo "Invalid argument count."
+        return 1
+    fi
+
+    if ! [[ -f $1 ]]; then
+        printf "File '%s' does not exists.\n" "$1"
+        return 1
+    fi
+
+    # ignore if file contains requested string
+    grep -q "^$2$" "$1" && return 0
+
+    if [[ -w $1 ]]; then
+        echo "$2" | tee -a "$1" >/dev/null
+    else
+        echo "$2" | sudo tee -a "$1" >/dev/null
+    fi
+}
+export -f file_add_content
+
 install(){
     install_yay $@
 }
