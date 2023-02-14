@@ -1,4 +1,4 @@
-export SETUP_USER="tomato"
+export SETUP_USER=$(whoami)
 export SETUP_HOME="/home/$SETUP_USER"
 export PROGRAMS="$SETUP_HOME/Programs"
 export CONFIG="$SETUP_HOME/.config"
