@@ -1,6 +1,6 @@
 message_info "Installing ZSH"
 
-install_yay zsh zsh-syntax-highlighting zsh-autosuggestions
+install_yay zsh zsh-syntax-highlighting zsh-autosuggestions fastfetch-git
 
 rm -f $SETUP_HOME/.zshrc
 ln -s $DOTFILES_ZSH/.zshrc $SETUP_HOME/.zshrc
