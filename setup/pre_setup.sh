@@ -13,6 +13,16 @@ check(){
     fi
 }
 
+install(){
+    if ! [[ $(pacman -Qe | grep "$1") ]]
+    then
+        if confirm "Required app $1 is not installed. Install?"
+        then
+            install_pacman $1
+        fi
+    fi
+}
+
 install_and_check(){
     CMD=$1
     PKG=$2
@@ -22,13 +32,7 @@ install_and_check(){
         PKG=$CMD
     fi
 
-    if ! [[ $(pacman -Qe | grep "$PKG") ]]
-    then
-        if confirm "Required app $CMD is not installed. Install?"
-        then
-            install_pacman $PKG
-        fi
-    fi
+    install $PKG
     check $CMD
 }
 
@@ -36,6 +40,10 @@ message_info "Checking requirements for setup scripts."
 
 install_and_check rofi
 install_and_check yay
+if ! $(which pkgconf > /dev/null 2>&1)
+then
+    install_and_check pkgconf base-devel
+fi
 install_and_check pip python-pip
 
 for file in $DOTFILES_SETUP/scripts/*
