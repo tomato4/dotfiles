@@ -69,11 +69,13 @@ alias slurp='pushd - && pushd'
 alias g='git'
 alias ga='git add -A'
 alias gc='git commit'
+alias gh='git checkout'
 alias gA='git amend'
 alias gd='git diff'
 alias gl='git log --oneline --graph --all --decorate'
 alias gp='git push'
 alias gs='git status'
+alias gf='git fetch --all'
 
 # custom shortcuts
 alias e='exit'
