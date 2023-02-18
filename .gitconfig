@@ -6,8 +6,6 @@
   autocrlf = input
 [init]
   defaultBranch = master
-[pull]
-  rebase = false
 [alias]
   ll = log --oneline --graph --all --decorate
   amend = commit --amend --no-edit
