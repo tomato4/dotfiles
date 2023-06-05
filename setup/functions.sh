@@ -12,6 +12,11 @@ confirm(){
 }
 export -f confirm
 
+stop(){
+    read -rsn1 -p $'Press any key to continue...\n' < /dev/tty
+}
+export -f stop
+
 input(){
     read -p "$1"": " reply < /dev/tty
     echo $reply
@@ -29,6 +34,22 @@ dd(){
 }
 export -f dd
 
+is_x11(){
+  if [ "$XDG_SESSION_TYPE" = "x11" ]; then
+    return 0
+  fi
+  return 1
+}
+export -f is_x11
+
+is_wayland(){
+  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    return 0
+  fi
+  return 1
+}
+export -f is_wayland
+
 ask_rofi(){
     echo -n $@ | sed 's/ /\n/g' | rofi -dmenu -format 's\n' 2> /dev/null | sed 's/\\n//g'
 }
@@ -45,10 +66,16 @@ get_all_files(){
 export -f get_all_files
 
 link(){
-    rm -fr $2
-    ln -s $1 $2
+    rm -rf "$2"
+    ln -s "$1" "$2"
 }
 export -f link
+
+sudo_link(){
+    sudo rm -rf "$2"
+    sudo ln -s "$1" "$2"
+}
+export -f sudo_link
 
 # removes content from file
 file_remove_content() {
