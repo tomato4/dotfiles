@@ -1,3 +1,12 @@
 message_info "Installing rofimoji."
-install_pacman rofimoji noto-fonts-emoji rofi xdotool xsel
+
+if is_wayland
+then
+    install rofi-lbonn-wayland-git wl-clipboard wtype
+else
+    install rofi xdotool xsel
+fi
+
+install rofimoji noto-fonts-emoji
+
 message_done "Rofimoji installed."
