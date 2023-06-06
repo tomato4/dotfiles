@@ -9,4 +9,6 @@ fi
 
 install rofimoji noto-fonts-emoji
 
+link $DOTFILES/rofimoji/rofimoji.rc $CONFIG/rofimoji.rc
+
 message_done "Rofimoji installed."
