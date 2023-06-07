@@ -5,7 +5,7 @@ source ./messages.sh
 source ./functions.sh
 
 # Check all requirements for setup
-source ./pre_setup.sh
+./pre_setup.sh
 
 # check env value
 if ! [[ -f $DOTFILES_SETUP/env ]]
@@ -18,7 +18,7 @@ fi
 export DOTFILES_ENV=$(cat "$DOTFILES_ENV_FILE")
 
 # check setups for this env
-source ./env_checker.sh
+./env_checker.sh
 
 # if script is run with arguments - scripts
 if [ $# -ne 0 ]; then
