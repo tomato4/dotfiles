@@ -38,7 +38,7 @@ echo "Backup location: $EXTERNAL_PATH_BACKUP"
 if ! confirm "Proceed with this configuration?"
 then
   message_warn "Aborted..."
-  return 0
+  exit 0
 fi
 
 if grep -qs "$EXTERNAL_DEV" /proc/mounts
@@ -52,7 +52,7 @@ then
         if ! confirm "Should I proceed?"
         then
             message_warn "Aborted..."
-            return 1
+            exit 1
         fi
     fi
 else
