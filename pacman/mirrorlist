@@ -1,0 +1,15 @@
+##
+## Manjaro Linux custom mirrorlist
+## Generated on 2023-07-04 12:54
+##
+## Please use 'pacman-mirrors -id' To reset custom mirrorlist
+## Please use 'pacman-mirrors -c all' To reset custom mirrorlist
+## To remove custom config run  'pacman-mirrors -c all'
+##
+
+## Country : Local
+Server = http://10.0.1.39:9129/repo/manjaro/stable/$repo/$arch
+
+## Country : Global
+Server = https://mirrors.manjaro.org/repo/stable/$repo/$arch
+
