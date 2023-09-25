@@ -1,4 +1,4 @@
-install_yay fish fastfetch-git exa
+install fish fastfetch-git eza
 
 rm -rf $CONFIG/fish
 ln -s $DOTFILES/fish $CONFIG/fish
