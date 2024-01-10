@@ -150,7 +150,9 @@ runtime ./maps.vim
 
 " true color
 if exists("&termguicolors") && exists("&winblend")
-  set termguicolors
+  if has('macunix') == 0
+    set termguicolors
+  endif
   set winblend=0
   set wildoptions=pum
   set pumblend=5
