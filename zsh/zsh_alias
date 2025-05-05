@@ -29,9 +29,9 @@ ex ()
 alias vim=nvim
 
 # List commands
-alias ls='exa -a --color=always --group-directories-first'
-alias ll='exa -alF --color=always --group-directories-first'
-alias lt='exa -aT --color=always --group-directories-first'
+alias ls='exa -a --color=always --icons=always --group-directories-first'
+alias ll='exa -alF --color=always --icons=always --group-directories-first'
+alias lt='exa -aT --color=always --icons=always --group-directories-first'
 alias l.='exa -a | grep "^\."'
 
 # Quick access to the zshrc files
@@ -90,7 +90,7 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 
 # ranger function with auto-cd to directory
 function r {
-    local SID=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 3)
+    local SID=$(LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 10)
     ranger --choosedir=$HOME/.config/ranger/sessions/$SID
     cd "$(cat ~/.config/ranger/sessions/$SID)"
     rm ~/.config/ranger/sessions/$SID
@@ -145,3 +145,12 @@ function lnrm {
     rm -f "$1"
     cp -r "$realpath" "$1"
 }
+
+function gitCurrentBranch {
+  git symbolic-ref --short HEAD
+}
+
+# TODO this must be fixed
+#function gitRebase {
+#  git rebase --onto $1 $(git rev-parse $(git log $1..$(gitCurrentBranch) --oneline --pretty=format:"%h" --no-patch | tail -1)^) $(gitCurrentBranch)
+#}

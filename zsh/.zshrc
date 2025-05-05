@@ -21,16 +21,23 @@ export DOTFILES=~/dotfiles
 DOTFILES_ZSH=$DOTFILES/zsh
 export USER_ID=$(id -u)
 export USER_GROUP=$(id -g)
+export OS="$(uname)"
+[[ "$(uname)" == "Darwin" ]]
+IS_MAC=$?
 
 # Disable case sensitive completion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# History in cache directory:
-HISTSIZE=10000
-SAVEHIST=10000
+# History setup:
+HISTSIZE=1000
+SAVEHIST=999
 HISTFILE=~/.cache/zshhistory
 setopt appendhistory
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_verify
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -49,14 +56,31 @@ setopt autocd
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
+bindkey "\e[1;3D" backward-word     # ⌥←
+bindkey "\e[1;3C" forward-word      # ⌥→
+bindkey "^[[1;9D" beginning-of-line # cmd+←
+bindkey "^[[1;9C" end-of-line       # cmd+→
 
 # Load aliases and shortcuts if existent.
 [ -f "$DOTFILES_ZSH/zsh_alias" ] && source "$DOTFILES_ZSH/zsh_alias"
 
 # Load ; should be last.
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-source /usr/share/autojump/autojump.zsh 2>/dev/null
+if [[ IS_MAC -eq 0 ]]; then
+  ZSH_BASE="$(brew --prefix)/share"
+  ZSH_AUTOSUGGESTIONS="$ZSH_BASE/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  ZSH_HIGHLIGHTING="$ZSH_BASE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  AUTOJUMP="$ZSH_BASE/autojump/autojump.zsh"
+else
+  ZSH_BASE="/usr/share"
+  ZSH_AUTOSUGGESTIONS="$ZSH_BASE/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  ZSH_HIGHLIGHTING="$ZSH_BASE/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  AUTOJUMP="$ZSH_BASE/autojump/autojump.zsh"
+fi
+
+# Source all
+source "$ZSH_AUTOSUGGESTIONS"
+source "$ZSH_HIGHLIGHTING"
+source "$AUTOJUMP"
 source $DOTFILES_ZSH/powerlevel10k/powerlevel10k.zsh-theme
 
 # fishlike history search
