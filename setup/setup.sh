@@ -25,13 +25,15 @@ if [ $# -ne 0 ]; then
     OUTPUT=${@// /\\n}
     PRINT=$@
 else
+    check rofi
     # Open rofi menu with all commands available
     message_info "Opening menu for commands. Multiple items can be selected by holding shift."
     OUTPUT=$(for file in ./scripts/*; do basename "$file"; done | rofi -dmenu -multi-select -format 's\n' 2> /dev/null | sed 's/\\n//g')
     PRINT=$(echo "$OUTPUT" | sed -z 's/\n/, /g')
+    PRINT=${PRINT::-2}
 fi
 
-message_info "Selected commands: ${PRINT::-2}"
+message_info "Selected commands: $PRINT"
 while IFS= read -r line
 do
    # skip empty line

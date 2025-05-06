@@ -5,14 +5,6 @@ source ./messages.sh
 
 # This script checks all requirements for setup
 
-check(){
-    if ! $(which $1 > /dev/null 2>&1)
-    then
-        message_error "$1 is not installed. Exiting..."
-        dd 1
-    fi
-}
-
 install(){
     if ! [[ $(pacman -Qe | grep "$1") ]]
     then
@@ -38,13 +30,25 @@ install_and_check(){
 
 message_info "Checking requirements for setup scripts."
 
-install_and_check rofi
-install_and_check yay
-if ! $(which pkgconf > /dev/null 2>&1)
+if [[ $IS_MAC -ne 0 ]]
 then
-    install_and_check pkgconf base-devel
+    message_info "Linux detected. Checking requirements."
+    install yay
+    install rofi
+    if ! check pkgconf
+    then
+        install_and_check pkgconf base-devel
+    fi
+    install_and_check python
+else
+    message_info "Mac detected. Checking requirements."
+    if ! check brew
+    then
+        message_error "Brew is not installed. Exiting..."
+        dd 1
+    fi
+    install_brew python
 fi
-install_and_check pip python-pip
 
 for file in $DOTFILES_SETUP/scripts/*
 do

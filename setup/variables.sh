@@ -1,5 +1,4 @@
-export SETUP_USER=$(whoami)
-export SETUP_HOME="/home/$SETUP_USER"
+export SETUP_HOME="$HOME"
 export PROGRAMS="$SETUP_HOME/Programs"
 export CONFIG="$SETUP_HOME/.config"
 export LOCAL="$SETUP_HOME/.local"
@@ -29,3 +28,8 @@ export HTTPD_VHOSTS_ENABLED="$HTTPD/vhosts-enabled"
 export DOTFILES_APACHE="$DOTFILES/apache"
 export DOTFILES_HTTPD="$DOTFILES_APACHE/httpd"
 export PHP="/etc/php"
+
+# OS
+export OS="$(uname)"
+[[ "$(uname)" == "Darwin" ]]
+export IS_MAC=$?

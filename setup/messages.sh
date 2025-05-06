@@ -12,12 +12,12 @@ message_done() {
 }
 export -f message_done
 
-message_warn () {
+message_warn() {
    echo -e "$SETUP_COLOR_ORANGE$SETUP_FORMATING_BOLD[WARN]$SETUP_COLOR_RESET $1"
 }
 export -f message_warn
 
-message_info () {
+message_info() {
    echo -e "$SETUP_COLOR_WHITE$SETUP_FORMATING_BOLD[INFO]$SETUP_COLOR_RESET $1"
 }
 export -f message_info
