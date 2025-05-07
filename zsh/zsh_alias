@@ -82,8 +82,28 @@ alias e='exit'
 alias q='exit'
 alias cl='clear; fastfetch'
 alias sc='php bin/console'
-alias setup='(cd $DOTFILES/setup; ./setup.sh)'
 alias dockerkill='docker kill $(docker ps -q)'
+
+function setup {
+  cd "$DOTFILES/setup" || return
+  # shellcheck disable=SC2068
+  ./setup.sh $@
+}
+_setup_completion() {
+  local script_dir="$DOTFILES/setup/scripts"
+  local -a files
+
+  # Populate files array with file names (no path)
+  files=()
+  if [[ -d $script_dir ]]; then
+    for f in "$script_dir"/*; do
+      [[ -f "$f" ]] && files+=("${f##*/}")
+    done
+  fi
+
+  _describe 'setup script' files
+}
+compdef _setup_completion setup
 
 # don't mind me here
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'

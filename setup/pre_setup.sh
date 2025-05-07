@@ -47,7 +47,10 @@ else
         message_error "Brew is not installed. Exiting..."
         dd 1
     fi
-    install_brew python
+    if ! check python
+    then
+      install_brew python
+    fi
 fi
 
 for file in $DOTFILES_SETUP/scripts/*

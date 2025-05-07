@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./functions_install.sh
+
 confirm() {
   echo -en "$SETUP_COLOR_ORANGE$SETUP_FORMATING_BOLD[WARN]$SETUP_COLOR_RESET $1"
   read -p " [y/n]: "$reply -n 1 -r </dev/tty
@@ -129,96 +131,3 @@ check(){
     fi
 }
 export -f check
-
-install() {
-  if [[ $IS_MAC -eq 0 ]]; then
-    install_brew $@
-  else
-    install_yay $@
-  fi
-}
-export -f install
-
-install_pacman() {
-  if [[ $IS_MAC -eq 0 ]]; then
-      message_error "Install pacman function is only for Linux. Exiting..."
-      dd 1
-  fi
-  for arg in "$@"; do
-    if pacman -Q $arg >/dev/null 2>&1; then
-      message_info "$SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET already installed. Skipping..."
-      continue
-    fi
-    message_info "Installing $SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET."
-    sudo pacman -S --needed --noconfirm $arg >/dev/null
-  done
-}
-export -f install_pacman
-
-install_yay() {
-  if [[ $IS_MAC -eq 0 ]]; then
-      message_error "Install yay function is only for Linux. Exiting..."
-      dd 1
-  fi
-  for arg in "$@"; do
-    if yay -Q $arg >/dev/null 2>&1; then
-      message_info "$SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET already installed. Skipping..."
-      continue
-    fi
-    message_info "Installing $SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET."
-    yay -S --answerdiff None --answerclean None --nocleanmenu --nodiffmenu --removemake $arg </dev/tty
-  done
-}
-export -f install_yay
-
-install_pamac() {
-  message_warn "Pamac install function is deprecated. Using YAY install instead."
-  install_yay $@
-  return
-  # for arg in "$@"
-  # do
-  #    if [[ $(pamac search -a --installed $arg) ]]
-  #    then
-  #       message_info "$SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET already installed. Skipping..."
-  #       continue
-  #    fi
-  #    message_info "Installing $SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET."
-  #    sudo pamac install --no-confirm $arg > /dev/null
-  # done
-}
-export -f install_pamac
-
-install_snap() {
-  if [[ $IS_MAC -eq 0 ]]; then
-    message_error "Install snap function is only for Linux. Exiting..."
-    dd 1
-  fi
-  if ! confirm "Installing $@ from snap (not recommended). Do you really want to continue?"; then
-    return
-  fi
-  for arg in "$@"; do
-    if [[ $(snap list $arg) ]]; then
-      message_info "$SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET already installed. Skipping..."
-      continue
-    fi
-    message_info "Installing $SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET."
-    sudo snap install $arg >/dev/null
-  done
-}
-export -f install_snap
-
-install_brew() {
-  if [[ $IS_MAC -eq 1 ]]; then
-    message_error "Install brew function is only for MacOS. Exiting..."
-    dd 1
-  fi
-  for arg in "$@"; do
-    if [[ $(brew list "$arg" 2>/dev/null) ]]; then
-      message_info "$SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET already installed. Skipping..."
-      continue
-    fi
-    message_info "Installing $SETUP_COLOR_YELLOW$SETUP_FORMATING_BOLD$arg$SETUP_COLOR_RESET."
-    brew install "$arg" >/dev/null
-  done
-}
-export -f install_brew

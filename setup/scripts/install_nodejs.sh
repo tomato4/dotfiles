@@ -1,1 +1,1 @@
-install_pacman nodejs npm
+install nodejs npm

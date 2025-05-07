@@ -22,7 +22,7 @@ export DOTFILES_ENV=$(cat "$DOTFILES_ENV_FILE")
 
 # if script is run with arguments - scripts
 if [ $# -ne 0 ]; then
-    OUTPUT=${@// /\\n}
+    OUTPUT=$(printf "%s\n" "$@")
     PRINT=$@
 else
     check rofi
@@ -40,7 +40,7 @@ do
    if ! [ "$line" ]; then continue; fi
 
    # run each selected script
-   ./scripts/"$line"
+   "$DOTFILES_SETUP_SCRIPTS/$line"
 
 done <<< "$OUTPUT"
 
