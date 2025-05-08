@@ -124,11 +124,11 @@ file_add_content() {
 export -f file_add_content
 
 check(){
-    if ! which "$1" > /dev/null 2>&1
+    if which "$1" > /dev/null 2>&1
     then
-      return 1
-    else
       return 0
+    else
+      return 1
     fi
 }
 export -f check
