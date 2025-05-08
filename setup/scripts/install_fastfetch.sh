@@ -15,7 +15,7 @@ set -e
 GITHUB_REPO="fastfetch-cli/fastfetch"
 TMP_DIR=$(mktemp -d)
 # Detect system architecture
-ARCH=$(dpkg --print-architecture)  # e.g., amd64, arm64
+ARCH=$(uname -m)
 
 # Determine the latest version from GitHub
 get_latest_version() {
