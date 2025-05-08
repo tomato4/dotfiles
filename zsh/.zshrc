@@ -21,9 +21,11 @@ export DOTFILES=~/dotfiles
 DOTFILES_ZSH=$DOTFILES/zsh
 export USER_ID=$(id -u)
 export USER_GROUP=$(id -g)
-export OS="$(uname)"
+OS="$(uname)"
 [[ "$(uname)" == "Darwin" ]]
 IS_MAC=$?
+[[ "$(cat /etc/os-release | grep -i 'ID_LIKE=debian')" ]]
+IS_DEBIAN_BASED=$?
 
 # Disable case sensitive completion
 autoload -Uz compinit && compinit
@@ -64,14 +66,17 @@ bindkey "^[[1;9C" end-of-line       # cmd+→
 # Load aliases and shortcuts if existent.
 [ -f "$DOTFILES_ZSH/zsh_alias" ] && source "$DOTFILES_ZSH/zsh_alias"
 
-# Load ; should be last.
-if [[ IS_MAC -eq 0 ]]; then
+if [[ $IS_MAC -eq 0 ]]; then
   ZSH_BASE="$(brew --prefix)/share"
+else
+  ZSH_BASE="/usr/share"
+fi
+
+if [[ $IS_MAC -eq 0 || $IS_DEBIAN_BASED -eq 0 ]]; then
   ZSH_AUTOSUGGESTIONS="$ZSH_BASE/zsh-autosuggestions/zsh-autosuggestions.zsh"
   ZSH_HIGHLIGHTING="$ZSH_BASE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
   AUTOJUMP="$ZSH_BASE/autojump/autojump.zsh"
 else
-  ZSH_BASE="/usr/share"
   ZSH_AUTOSUGGESTIONS="$ZSH_BASE/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
   ZSH_HIGHLIGHTING="$ZSH_BASE/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
   AUTOJUMP="$ZSH_BASE/autojump/autojump.zsh"
