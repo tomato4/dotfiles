@@ -34,3 +34,9 @@ export PHP="/etc/php"
 export OS="$(uname)"
 [[ "$(uname)" == "Darwin" ]]
 export IS_MAC=$?
+
+command -v apt &>/dev/null
+export IS_DEBIAN_BASED=$?
+
+command -v pacman &>/dev/null
+export IS_ARCH_BASED=$?

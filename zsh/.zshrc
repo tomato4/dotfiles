@@ -30,8 +30,8 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # History setup:
-HISTSIZE=1000
-SAVEHIST=999
+HISTSIZE=10000
+SAVEHIST=9999
 HISTFILE=~/.cache/zshhistory
 setopt appendhistory
 setopt share_history
