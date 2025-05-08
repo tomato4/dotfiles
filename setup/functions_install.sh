@@ -7,7 +7,7 @@ export CHECKER_YAY="yay -Q"
 export INSTALLER_PACMAN="pacman -S --needed --noconfirm"
 export CHECKER_PACMAN="pacman -Q"
 export INSTALLER_APT="apt install"
-export CHECKER_APT="apt list --installed"
+export CHECKER_APT="dpkg -s"
 export INSTALLER_SNAP="snap install"
 export CHECKER_SNAP="snap list"
 
