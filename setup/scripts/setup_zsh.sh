@@ -1,6 +1,6 @@
 message_info "Installing ZSH"
 
-install zsh "zsh-syntax-highlighting" "zsh-autosuggestions" eza
+install zsh zsh-syntax-highlighting zsh-autosuggestions eza autojump
 
 source "$DOTFILES_SETUP_SCRIPTS/install_fastfetch.sh"
 
