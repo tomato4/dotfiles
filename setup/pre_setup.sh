@@ -34,10 +34,10 @@ elif command -v pacman &>/dev/null; then
   then
       install_and_check pkgconf base-devel
   fi
-  install_and_check python python3
+  install_and_check python3 python
 elif command -v apt &>/dev/null; then
   message_info "Debian based linux detected. Checking requirements."
-  install_and_check python python3
+  install_and_check python3 python
 else
   message_error "No supported package manager found. Exiting..."
   dd 1
