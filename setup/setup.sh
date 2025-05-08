@@ -25,7 +25,8 @@ if [ $# -ne 0 ]; then
     OUTPUT=$(printf "%s\n" "$@")
     PRINT=$@
 else
-    check rofi
+    message_info "No arguments provided. Opening menu (rofi) for commands."
+    check_and_dd rofi
     # Open rofi menu with all commands available
     message_info "Opening menu for commands. Multiple items can be selected by holding shift."
     OUTPUT=$(for file in ./scripts/*; do basename "$file"; done | rofi -dmenu -multi-select -format 's\n' 2> /dev/null | sed 's/\\n//g')

@@ -126,8 +126,18 @@ export -f file_add_content
 check(){
     if ! which "$1" > /dev/null 2>&1
     then
+      return 1
+    else
+      return 0
+    fi
+}
+export -f check
+
+check_and_dd(){
+    if ! check "$1"
+    then
         message_error "$1 is not installed. Exiting..."
         dd 1
     fi
 }
-export -f check
+export -f check_and_dd
