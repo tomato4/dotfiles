@@ -8,17 +8,12 @@ source ./functions.sh
 ./pre_setup.sh
 
 # check env value
-if ! [[ -f $DOTFILES_SETUP/env ]]
-then
-   message_error "Env variable not set. Exiting..."
-   dd 1
-fi
-
-# set env variable
-export DOTFILES_ENV=$(cat "$DOTFILES_ENV_FILE")
-
-# check setups for this env
-./env_checker.sh
+#./env_checker.sh
+#if ! [[ -f $DOTFILES_SETUP/env ]]
+#then
+#  message_error "Env variable not set. Exiting..."
+#  dd 1
+#fi
 
 # if script is run with arguments - scripts
 if [ $# -ne 0 ]; then
