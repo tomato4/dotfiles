@@ -8,7 +8,11 @@ message_info "Downloading node.js for coc.nvim."
 message_done "Installed node.js."
 
 message_info "Installing pynvim and ueberzug for rnvimr..."
-pip3 install pynvim ueberzug > /dev/null
+if [[ $IS_DEBIAN_BASED -eq 0 ]]; then
+  install_apt python3-pynvim
+else
+  pip3 install pynvim ueberzug > /dev/null
+fi
 message_done "Installed pynvim and ueberzug."
 
 #message_info "Installing Jedi for python."

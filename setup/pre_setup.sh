@@ -38,6 +38,10 @@ elif command -v pacman &>/dev/null; then
 elif command -v apt &>/dev/null; then
   message_info "Debian based linux detected. Checking requirements."
   install_and_check python3
+  if ! check pip
+  then
+      install_apt python3-pip
+  fi
 else
   message_error "No supported package manager found. Exiting..."
   dd 1
@@ -47,5 +51,7 @@ for file in $DOTFILES_SETUP/scripts/*
 do
    chmod +x $file
 done
+
+mkdir -p "$CONFIG"
 
 message_done "Requirements done."
