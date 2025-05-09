@@ -2,7 +2,7 @@ message_info "Installing ZSH"
 
 install zsh zsh-syntax-highlighting zsh-autosuggestions eza autojump
 
-source "$DOTFILES_SETUP_SCRIPTS/install_fastfetch.sh"
+"$DOTFILES_SETUP_SCRIPTS/install_fastfetch.sh"
 
 link "$DOTFILES_ZSH/.zshrc" "$SETUP_HOME/.zshrc"
 link "$DOTFILES_ZSH/.p10k.zsh" "$SETUP_HOME/.p10k.zsh"

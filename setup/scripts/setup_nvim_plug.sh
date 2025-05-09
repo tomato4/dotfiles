@@ -3,7 +3,7 @@ sh -c "curl -fLo ${SETUP_HOME}/.local/share/nvim/site/autoload/plug.vim --create
 message_done "Downloaded plug manager."
 
 message_info "Downloading node.js for coc.nvim."
-source $DOTFILES_SETUP/scripts/install_nodejs.sh
+"$DOTFILES_SETUP_SCRIPTS/install_nodejs.sh"
 #sudo curl -sL install-node.now.sh/lts | sudo bash
 message_done "Installed node.js."
 

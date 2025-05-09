@@ -5,7 +5,7 @@ message_info "Installing Fastfetch"
 if [[ $IS_DEBIAN_BASED -ne 0 ]]; then
   install_yay fastfetch-git
   install_brew fastfetch
-  return
+  exit
 fi
 
 message_warn "Installing fastfetch on Debian based system doesn't use apt."
