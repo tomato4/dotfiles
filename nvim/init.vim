@@ -41,7 +41,7 @@ set scrolloff=10
 " use spaces when tab pressed
 set expandtab
 " set default shell
-set shell=fish
+set shell=zsh
 " location of vim swap files
 set backupskip=/tmp/*,/private/tmp/*
 " Use system clipboard

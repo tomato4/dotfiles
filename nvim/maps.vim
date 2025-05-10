@@ -13,7 +13,13 @@ nnoremap dW vb"_d
 nmap <C-a> gg<S-v>G
 
 " Save with root permission
-command! W w !sudo tee > /dev/null %
+command! W call SudoWrite()
+
+function! SudoWrite()
+  let l:password = inputsecret("Password: ")
+  let l:cmd = "echo '" . shellescape(l:password) . "' | sudo -S tee " . shellescape(expand('%:p')) . " > /dev/null"
+  execute 'write !' . l:cmd
+endfunction
 
 " Comment line
 nmap <silent><c-_> gcc<CR>
