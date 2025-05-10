@@ -28,6 +28,7 @@ if has("nvim")
     Plug 'b3nj5m1n/kommentary' " Plugin for comments
     Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'} " File manager
     Plug 'kevinhwang91/rnvimr' " Ranger floating window
+    Plug 'lambdalisue/vim-suda' " Sudo read/write
 endif
 
 " Themes

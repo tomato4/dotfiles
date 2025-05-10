@@ -13,13 +13,16 @@ nnoremap dW vb"_d
 nmap <C-a> gg<S-v>G
 
 " Save with root permission
-command! W call SudoWrite()
-
-function! SudoWrite()
-  let l:password = inputsecret("Password: ")
-  let l:cmd = "echo '" . shellescape(l:password) . "' | sudo -S tee " . shellescape(expand('%:p')) . " > /dev/null"
-  execute 'write !' . l:cmd
-endfunction
+"command! W call SudoWrite()
+"
+"function! SudoWrite()
+"  let l:password = inputsecret("Password: ")
+"  " Pipe buffer content to sudo tee
+"  let l:cmd = "silent write !echo '" . shellescape(l:password) . "' | sudo -S tee % > /dev/null"
+"  execute l:cmd
+"  " Reload buffer to clear modified flag and update from disk
+"  edit!
+"endfunction
 
 " Comment line
 nmap <silent><c-_> gcc<CR>
