@@ -15,6 +15,8 @@ else
 fi
 message_done "Installed pynvim and ueberzug."
 
+install_apt python3-venv
+
 #message_info "Installing Jedi for python."
 #pip install jedi-language-server
 #message_done "Installed Jedi."
