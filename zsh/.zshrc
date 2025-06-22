@@ -21,6 +21,8 @@ export DOTFILES=~/dotfiles
 DOTFILES_ZSH=$DOTFILES/zsh
 export USER_ID=$(id -u)
 export USER_GROUP=$(id -g)
+export KUBECONFIG=~/.kube/config
+
 OS="$(uname)"
 [[ "$(uname)" == "Darwin" ]]
 IS_MAC=$?
