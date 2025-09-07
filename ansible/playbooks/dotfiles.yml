@@ -1,0 +1,17 @@
+- name: Clone dotfiles repository
+  hosts: all
+  vars:
+    path_dotfiles: "{{ path_home }}/dotfiles"
+    repo_dotfiles: "git@github.com:tomato4/dotfiles.git"
+  tasks:
+    - name: Ensure git is installed
+      become: true
+      package:
+        name: git
+        state: present
+    - name: Clone dotfiles repository
+      git:
+        repo: "{{ repo_dotfiles }}"
+        dest: "{{ path_dotfiles }}"
+        version: master
+        accept_hostkey: yes
