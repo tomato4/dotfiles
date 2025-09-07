@@ -103,5 +103,8 @@ fi
 
 # source $DOTFILES/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
+# Created by `pipx` on 2025-09-06 21:03:10
+export PATH="$PATH:~/.local/bin"
+
 # welcome screen
 fastfetch
