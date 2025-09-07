@@ -8,14 +8,6 @@
         prompt: "Enter Cloudflare tunnel token (leave blank to skip cloudflare setup)"
         private: yes
         default: ""
-      - name: cloudflare_tunnel_id
-        prompt: "Enter Cloudflare tunnel ID (leave blank to skip cloudflare setup)"
-        private: yes
-        default: ""
-      - name: cloudflare_account_tag
-        prompt: "Enter Cloudflare account tag (leave blank to skip cloudflare setup)"
-        private: yes
-        default: ""
   tasks:
     - name: Download and install k3s
       shell: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik --disable servicelb" sh -
@@ -105,11 +97,9 @@
           stringData:
             credentials.json: |
               {
-                "AccountTag": "{{ cloudflare_account_tag }}",
                 "TunnelSecret": "{{ cloudflare_tunnel_token }}",
-                "TunnelID": "{{ cloudflare_tunnel_id }}",
               }
-      when: cloudflare_tunnel_token != "" and cloudflare_account_tag != "" and cloudflare_tunnel_id != ""
+      when: cloudflare_tunnel_token != ""
 
     - name: Install cloudflared
       k8s:
