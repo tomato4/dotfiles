@@ -1,7 +1,12 @@
+- import_playbook: core/k3s_python.yml
+
 - name: Install k3s
   hosts: server
   become: true
-  args:
+  collections:
+    - kubernetes.core
+  vars:
+    kubeconfig_path: /etc/rancher/k3s/k3s.yaml
     metallb_ip_range: "10.0.0.150-10.0.0.200"
   vars_prompt:
       - name: cloudflare_tunnel_token
@@ -24,6 +29,19 @@
       k8s:
         state: present
         src: https://raw.githubusercontent.com/metallb/metallb/v0.15.2/config/manifests/metallb-native.yaml
+        kubeconfig: "{{ kubeconfig_path }}"
+
+    - name: Wait until MetalLB controller
+      k8s_info:
+        api_version: apps/v1
+        kind: Deployment
+        namespace: metallb-system
+        name: controller
+        kubeconfig: "{{ kubeconfig_path }}"
+      register: metallb_controller
+      until: metallb_controller.resources | length > 0 and metallb_controller.resources[0].status.availableReplicas is defined and metallb_controller.resources[0].status.availableReplicas > 0
+      retries: 20
+      delay: 5
 
     - name: Configure MetalLB IPAddressPool
       k8s:
@@ -37,22 +55,18 @@
           spec:
             addresses:
               - "{{ metallb_ip_range }}"
+        kubeconfig: "{{ kubeconfig_path }}"
 
-  # TODO is this required? Remove if not
-  #    - name: Configure MetalLB L2Advertisement
-  #      k8s:
-  #        state: present
-  #        definition:
-  #          apiVersion: metallb.io/v1beta1
-  #          kind: L2Advertisement
-  #          metadata:
-  #            name: default-l2-advertisement
-  #            namespace: metallb-system
-
-    - name: Install ingress controllers
+    - name: Configure MetalLB L2Advertisement
       k8s:
         state: present
-        src: https://raw.githubusercontent.com/tomato4/homelab/refs/heads/master/applications/ingress.yaml
+        definition:
+          apiVersion: metallb.io/v1beta1
+          kind: L2Advertisement
+          metadata:
+            name: default-l2-advertisement
+            namespace: metallb-system
+        kubeconfig: "{{ kubeconfig_path }}"
 
     - name: Create ArgoCD namespace
       k8s:
@@ -62,18 +76,27 @@
           kind: Namespace
           metadata:
             name: argocd
+        kubeconfig: "{{ kubeconfig_path }}"
 
-    - name: Install ArgoCD manifests
+    - name: Install ArgoCD
       k8s:
         state: present
         src: https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
         namespace: argocd
+        kubeconfig: "{{ kubeconfig_path }}"
 
     - name: Apply ArgoCD configuration
       k8s:
         state: present
         src: https://raw.githubusercontent.com/tomato4/homelab/refs/heads/master/applications/argo.yaml
         namespace: argocd
+        kubeconfig: "{{ kubeconfig_path }}"
+
+    - name: Install ingress controllers
+      k8s:
+        state: present
+        src: https://raw.githubusercontent.com/tomato4/homelab/refs/heads/master/applications/ingress.yaml
+        kubeconfig: "{{ kubeconfig_path }}"
 
     - name: Create cloudflare namespace
       k8s:
@@ -83,6 +106,7 @@
           kind: Namespace
           metadata:
             name: cloudflared
+        kubeconfig: "{{ kubeconfig_path }}"
 
     - name: Create Cloudflare credentials secret
       k8s:
@@ -91,26 +115,41 @@
           apiVersion: v1
           kind: Secret
           metadata:
-            name: cloudflare-credentials
+            name: cloudflared-token
             namespace: cloudflared
           type: Opaque
           stringData:
-            credentials.json: |
-              {
-                "TunnelSecret": "{{ cloudflare_tunnel_token }}",
-              }
+            token: "{{ cloudflare_tunnel_token }}"
+        kubeconfig: "{{ kubeconfig_path }}"
       when: cloudflare_tunnel_token != ""
 
     - name: Install cloudflared
       k8s:
+        namespace: argocd
         state: present
         src: https://raw.githubusercontent.com/tomato4/homelab/refs/heads/master/applications/cloudflared.yaml
+        kubeconfig: "{{ kubeconfig_path }}"
+
+    - name: Install Helm
+      shell: curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+      args:
+        creates: /usr/local/bin/helm
+
+    - name: Install helm-diff plugin
+      command: helm plugin install https://github.com/databus23/helm-diff
+      args:
+        creates: /root/.local/share/helm/plugins/helm-diff
 
     - name: Add Helm repo for SealedSecrets
       helm_repository:
         name: sealed-secrets
         repo_url: https://bitnami-labs.github.io/sealed-secrets
-        update_cache: true
+        kubeconfig: "{{ kubeconfig_path }}"
+
+    - name: Update Helm repo cache
+      command: helm repo update
+      environment:
+        KUBECONFIG: "{{ kubeconfig_path }}"
 
     - name: Install SealedSecrets controller
       helm:
@@ -120,3 +159,4 @@
         values:
           fullnameOverride: "sealed-secrets-controller"
         state: present
+        kubeconfig: "{{ kubeconfig_path }}"
