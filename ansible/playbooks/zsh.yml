@@ -9,13 +9,14 @@
     path_zshrc: "{{ path_zsh }}/{{ name_zshrc }}"
     path_p10k: "{{ path_zsh }}/{{ name_p10k }}"
   tasks:
-    - name: Install ZSH
+    - name: Install ZSH and dependencies
       become: true
       package:
         name:
           - zsh
           - zsh-syntax-highlighting
           - zsh-autosuggestions
+          - eza
           - autojump
         state: present
 
