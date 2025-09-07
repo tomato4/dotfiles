@@ -1,0 +1,132 @@
+- name: Install k3s
+  hosts: server
+  become: true
+  args:
+    metallb_ip_range: "10.0.0.150-10.0.0.200"
+  vars_prompt:
+      - name: cloudflare_tunnel_token
+        prompt: "Enter Cloudflare tunnel token (leave blank to skip cloudflare setup)"
+        private: yes
+        default: ""
+      - name: cloudflare_tunnel_id
+        prompt: "Enter Cloudflare tunnel ID (leave blank to skip cloudflare setup)"
+        private: yes
+        default: ""
+      - name: cloudflare_account_tag
+        prompt: "Enter Cloudflare account tag (leave blank to skip cloudflare setup)"
+        private: yes
+        default: ""
+  tasks:
+    - name: Download and install k3s
+      shell: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik --disable servicelb" sh -
+      args:
+        creates: /usr/local/bin/k3s  # prevents rerun unless k3s is removed
+
+    - name: Ensure k3s service is enabled and running
+      systemd:
+        name: k3s
+        state: started
+        enabled: yes
+
+    - name: Install MetalLB
+      k8s:
+        state: present
+        src: https://raw.githubusercontent.com/metallb/metallb/v0.15.2/config/manifests/metallb-native.yaml
+
+    - name: Configure MetalLB IPAddressPool
+      k8s:
+        state: present
+        definition:
+          apiVersion: metallb.io/v1beta1
+          kind: IPAddressPool
+          metadata:
+            name: default-address-pool
+            namespace: metallb-system
+          spec:
+            addresses:
+              - "{{ metallb_ip_range }}"
+
+  # TODO is this required? Remove if not
+  #    - name: Configure MetalLB L2Advertisement
+  #      k8s:
+  #        state: present
+  #        definition:
+  #          apiVersion: metallb.io/v1beta1
+  #          kind: L2Advertisement
+  #          metadata:
+  #            name: default-l2-advertisement
+  #            namespace: metallb-system
+
+    - name: Install ingress controllers
+      k8s:
+        state: present
+        src: https://raw.githubusercontent.com/tomato4/homelab/refs/heads/master/applications/ingress.yaml
+
+    - name: Create ArgoCD namespace
+      k8s:
+        state: present
+        resource_definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: argocd
+
+    - name: Install ArgoCD manifests
+      k8s:
+        state: present
+        src: https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+        namespace: argocd
+
+    - name: Apply ArgoCD configuration
+      k8s:
+        state: present
+        src: https://raw.githubusercontent.com/tomato4/homelab/refs/heads/master/applications/argo.yaml
+        namespace: argocd
+
+    - name: Create cloudflare namespace
+      k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: cloudflared
+
+    - name: Create Cloudflare credentials secret
+      k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Secret
+          metadata:
+            name: cloudflare-credentials
+            namespace: cloudflared
+          type: Opaque
+          stringData:
+            credentials.json: |
+              {
+                "AccountTag": "{{ cloudflare_account_tag }}",
+                "TunnelSecret": "{{ cloudflare_tunnel_token }}",
+                "TunnelID": "{{ cloudflare_tunnel_id }}",
+              }
+      when: cloudflare_tunnel_token != "" and cloudflare_account_tag != "" and cloudflare_tunnel_id != ""
+
+    - name: Install cloudflared
+      k8s:
+        state: present
+        src: https://raw.githubusercontent.com/tomato4/homelab/refs/heads/master/applications/cloudflared.yaml
+
+    - name: Add Helm repo for SealedSecrets
+      helm_repository:
+        name: sealed-secrets
+        repo_url: https://bitnami-labs.github.io/sealed-secrets
+        update_cache: true
+
+    - name: Install SealedSecrets controller
+      helm:
+        name: sealed-secrets
+        chart_ref: sealed-secrets/sealed-secrets
+        namespace: kube-system
+        values:
+          fullnameOverride: "sealed-secrets-controller"
+        state: present
