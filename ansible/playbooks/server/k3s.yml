@@ -12,7 +12,6 @@
       - name: cloudflare_tunnel_token
         prompt: "Enter Cloudflare tunnel token (leave blank to skip cloudflare setup)"
         private: yes
-        default: ""
   tasks:
     - name: Download and install k3s
       shell: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik --disable servicelb" sh -
@@ -121,7 +120,7 @@
           stringData:
             token: "{{ cloudflare_tunnel_token }}"
         kubeconfig: "{{ kubeconfig_path }}"
-      when: cloudflare_tunnel_token != ""
+      when: cloudflare_tunnel_token | default('') | length > 0
 
     - name: Install cloudflared
       k8s:
@@ -160,3 +159,68 @@
           fullnameOverride: "sealed-secrets-controller"
         state: present
         kubeconfig: "{{ kubeconfig_path }}"
+
+    - name: Ensure group server exists
+      group:
+        name: server
+        gid: 1002
+        state: present
+
+    - name: Create user server
+      user:
+        name: server
+        uid: 1002
+        groups: server
+        append: true
+        create_home: no
+        shell: /sbin/nologin
+        state: present
+
+    - name: Ensure main user has server group
+      user:
+        name: glazrtom
+        groups: server
+        append: true
+
+- name: Mount storage disk
+  hosts: server
+  become: true
+  vars_prompt:
+    - name: storage_disk_device
+      prompt: "Enter the device path for the storage disk (leave empty to skip this step)"
+      private: no
+
+  pre_tasks:
+    - name: Skip storage mount if device not provided
+      meta: end_play
+      when: storage_disk_device | default('') | length == 0
+
+  tasks:
+    - name: Get UUID of storage disk
+      command: blkid -s UUID -o value {{ storage_disk_device }}
+      register: storage_disk_uuid
+      changed_when: false
+      failed_when: storage_disk_uuid.stdout == ""
+
+    - name: Ensure /mnt/storage exists
+      file:
+        path: /mnt/storage
+        state: directory
+        owner: server
+        group: server
+        mode: '0770'
+
+    - name: Add storage disk to /etc/fstab
+      mount:
+        path: /mnt/storage
+        src: "UUID={{ storage_disk_uuid.stdout }}"
+        fstype: auto
+        opts: defaults
+        state: present
+
+    - name: Mount storage disk
+      mount:
+        path: /mnt/storage
+        src: "UUID={{ storage_disk_uuid.stdout }}"
+        fstype: auto
+        state: mounted

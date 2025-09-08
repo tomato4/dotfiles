@@ -12,6 +12,7 @@
     - name: Ensure user exists
       user:
         name: "{{ user_name }}"
+        uid: 1001
         state: present
         password: "{{ user_password | password_hash('sha512') }}"
         create_home: yes
