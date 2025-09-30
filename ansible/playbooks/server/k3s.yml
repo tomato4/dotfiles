@@ -1,5 +1,3 @@
-- import_playbook: core/k3s_python.yml
-
 - name: Install k3s
   hosts: server
   become: true
@@ -185,6 +183,7 @@
 - name: Mount storage disk
   hosts: server
   become: true
+  gather_facts: false
   vars_prompt:
     - name: storage_disk_device
       prompt: "Enter the device path for the storage disk (leave empty to skip this step)"
@@ -224,3 +223,52 @@
         src: "UUID={{ storage_disk_uuid.stdout }}"
         fstype: auto
         state: mounted
+
+# TODO this will not work on fresh installation due to missing namespaces. Also it is ugly. Refactor!
+- name: Create Windscribe VPN secret in Kubernetes
+  hosts: server
+  become: true
+  gather_facts: false
+  vars_prompt:
+    - name: vpn_username
+      prompt: "Enter Windscribe username (leave empty to skip)"
+      private: no
+    - name: vpn_password
+      prompt: "Enter Windscribe password (leave empty to skip)"
+      private: yes
+
+  pre_tasks:
+    - name: Skip if no VPN credentials provided
+      meta: end_play
+      when: vpn_username | default('') | length == 0 or vpn_password | default('') | length == 0
+
+  tasks:
+    - name: Create Windscribe-auth secret in media namespace
+      k8s:
+        state: present
+        namespace: media
+        definition:
+          apiVersion: v1
+          kind: Secret
+          metadata:
+            name: windscribe-auth
+          type: Opaque
+          stringData:
+            username: "{{ vpn_username }}"
+            password: "{{ vpn_password }}"
+        kubeconfig: "{{ kubeconfig_path }}"
+
+    - name: Create Windscribe-auth secret in transmission namespace
+      k8s:
+        state: present
+        namespace: transmission
+        definition:
+          apiVersion: v1
+          kind: Secret
+          metadata:
+            name: windscribe-auth
+          type: Opaque
+          stringData:
+            username: "{{ vpn_username }}"
+            password: "{{ vpn_password }}"
+        kubeconfig: "{{ kubeconfig_path }}"
